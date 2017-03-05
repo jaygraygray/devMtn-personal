@@ -1,0 +1,147 @@
+articles
+{
+	"author_id" : 4,
+	"title" : "This is the title of an amazing article.",
+	"body" : "This is the extended body of text that would be used f;lak ds;ldjkf ",
+	"date_started" : "2013-08-26 12:39:39.122218+02",
+	"date_published" : "2013-08-26 12:39:39.122218+02",
+	"headline_img" : "http://www.bhald.com/img.gif",
+	"published" : true,
+	"tags" : "leprosy, cholera, snickers, cheese doodles, crime",
+	"views" : 43232423,
+	"likes" : 47321,
+	"bookmarks" : 423,
+	"responses" : 3452,
+	"response_parent" : 3,
+	"tagline" : "Ain't this some shit"
+}
+
+--query for test data
+INSERT INTO articles (
+author_id, title, body, date_started, date_published, headline_img, published, tags,
+views, likes, bookmarks, responses, response_parent, tagline) 
+VALUES
+($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14);
+
+----------------------------------------------------------------------------
+responses
+{
+	"author_id" : 2,
+	"body" : "This is the body of the comment, response, what the hell ever.",
+	"date" : "2013-08-26 12:39:39.122218+02",
+	"article_id" : 4,
+	"views" : 1234,
+	"likes" : 675433,
+	"char_begin" : 4523,
+	"char_end" : 4654,
+	"personal" : false
+}
+
+--query for test data
+INSERT INTO responses (
+author_id, body, date, article_id, views, likes, char_begin, char_end, personal)
+VALUES
+($1, $2, $3, $4, $5, $6, $7, $8, $9)
+
+-----------------------------------------------------------------
+users
+{
+	"date_joined" : "2013-08-26 12:39:39.122218+02",
+	"last_login" : "2013-08-26 12:39:39.122218+02",
+	"email" : "jlkjasd@bdf.com",
+	"profile_pic" : "http://www.faceplant.gif",
+	"settings" : "'{"name": "Paint house", "tags": ["Improvements", "Office"], "finished": true}'",
+	"bio" : "This is some information about me and how awesome I am",
+	"firstname" : "Billy Bob",
+	"lastname" : "Thornton",
+	"tags" : "internet, alcohol, artificial intelligence, politics, food",
+	"bookmarks_list" : "65,897,32,1,98",
+	"follows" : "3, 41, 2",
+	"followed_by" : "4",
+	"articles_liked" : "34,42,7,86,54,32,65,78,90"
+}
+
+--query for test data
+INSERT INTO users (
+date_joined, last_login, email, profile_pic, settings, bio, firstname, lastname, tags, bookmarks_list, follows, followed_by, articles_liked) 
+VALUES 
+($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13)
+
+----------------------------------------------------------------------------
+drafts
+{
+	"author_id" : 43,
+	"article_id" : 4,
+	"date" : "2013-08-26 12:39:39.122218+02",
+	"body" : "thix is lkff kkjl;ak lkjf mfd m, am, klrew lk wklgf jl ;la lk;asdlfkj l;kj "
+}
+
+--query for dest data
+--yes, dest.
+INSERT INTO drafts (
+article_id, date, body) VALUES
+($1 $2 $3 $4)
+
+---------------------------------------------------------------------------
+notifications
+{
+	"user_id" : 1,
+	"action" : "like",
+	"action_by_userid" : 2,
+	"action_on" : "a4",
+	"date" : "2013-08-26 12:39:39.122218+02"
+}
+
+action can be :
+	like // respond // bookmark // share // read(?)
+action_on :
+	"a4" = article with id 4
+	"r51" = response with id 51
+
+--query for test notification
+INSERT INTO notifications (
+user_id, action, action_by_userid, action_on, date) VALUES
+($1, $2, $3, $4, $5)
+
+----------------------------------------------
+featured articles
+{
+	"article_id" : 4,
+	"date" : "2013-08-26 12:39:39.122218+02",
+	"active" : true
+}
+--create new featured article
+INSERT INTO featured_articles (
+article_id, date, active) VALUES
+($1, $2, $3)
+
+--------------------------------
+article_highlights
+{
+	"user_id" : 4,
+	"article_id" : 1,
+	"char_begin" : 421,
+	"char_end" : 498
+}
+--create highlight for an article
+INSERT INTO article_highlights (
+user_id, article_id, char_begin, char_end) VALUES
+($1, $2, $3, $4)
+
+
+--------------------------------
+article_stats
+{
+	"article_id" : 4,
+	"viewed_by" : "6,1,4,5",
+	"liked_by" : "1,2",
+	"finished_by" : "6,1",
+	"facebook_shared_by" : "",
+	"twitter_shared_by" : "1",
+	"bookmarked_by" : "5,1",
+}
+-- create new stat line for article
+INSERT INTO article_stats (
+article_id, viewed_by, liked_by, finished_by, facebook_shared_by, twitter_shared_by, bookmarked_by
+) VALUES 
+($1, $2, $3, $4, $5, $6, $7)
