@@ -45,12 +45,8 @@ body {
 
 @media (max-width:1200px) {
 
-	.notifications-container {
-		margin-right:68px;
-	}
-
 	.user-menu-container {
-		margin-right:168px;
+		margin-right:48px;
 	}
 
 	.tag-filler {
@@ -175,8 +171,7 @@ body {
 	right:0;
 	z-index: 2;
 	line-height:12px;
-	visibility:hidden;
-	
+	margin-right:48px;
 }
 
 .notification {
@@ -228,7 +223,6 @@ body {
 	z-index: 1;
 	line-height:12px;
 	background-color:#fff;
-	visibility:hidden;
 }
 
 .user-menu-container ul {

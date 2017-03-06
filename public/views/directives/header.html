@@ -1,11 +1,4 @@
-
-<html>
-
-<head>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css"/>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" href="/style/directives/header.css" />
+<link rel="stylesheet" href="/style/directives/header.css" />
 
 <body>
 
@@ -24,8 +17,8 @@
 	<div class="col-xs-7 col-sm-7 col-md-7 header-nav-container">
 	<a href="#" class="write-a-story">Write a story</a>
 		<img src="/images/search.svg" class="header-nav-buttons">
-		<img src="/images/notification.svg" class="header-nav-buttons" id="notifications">
-		<img src="/images/profile.png" class="profile-picture">
+		<img src="/images/notification.svg" class="header-nav-buttons" ng-click="notificationsMenu = !notificationsMenu">
+		<img src="/images/profile.png" class="profile-picture" ng-click="userMenu = !userMenu">
 	</div>
 </div>
 </div>
@@ -53,7 +46,7 @@
 
 
 <notifications>
-<div class="notifications-container">
+<div class="notifications-container" ng-hide="notificationsMenu">
 	<div class="notification">
 		<span class="notification-profile-pic-container">
 		<img src="/images/profile.png" class="notfication-profile-pic"></span>
@@ -83,7 +76,7 @@
 
 
 <usermenu>
-<div class="user-menu-container">
+<div class="user-menu-container" ng-hide="userMenu">
 	<div class="menu-section">
 		<ul>
 			<li><a href="#">New story</li>
