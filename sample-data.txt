@@ -50,7 +50,7 @@ users
 	"last_login" : "2013-08-26 12:39:39.122218+02",
 	"email" : "jlkjasd@bdf.com",
 	"profile_pic" : "http://www.faceplant.gif",
-	"settings" : "'{"name": "Paint house", "tags": ["Improvements", "Office"], "finished": true}'",
+	"settings" : "{'name': 'Paint house', 'tags': ['Improvements', 'Office'], 'finished': true}",
 	"bio" : "This is some information about me and how awesome I am",
 	"firstname" : "Billy Bob",
 	"lastname" : "Thornton",

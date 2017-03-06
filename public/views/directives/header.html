@@ -47,28 +47,15 @@
 
 <notifications>
 <div class="notifications-container" ng-hide="notificationsMenu">
-	<div class="notification">
+	<div class="notification" ng-repeat="notification in notifications">
 		<span class="notification-profile-pic-container">
 		<img src="/images/profile.png" class="notfication-profile-pic"></span>
 		<span class="follower-text">
-		<a href="#">Ryan Zulham Ramadhani</a> started following you.<br>
-		<span class="notification-date">Jan 4</span>
-		</span>
-	</div>
-	<div class="notification">
-		<span class="notification-profile-pic-container">
-		<img src="/images/profile.png" class="notfication-profile-pic"></span>
-		<span class="follower-text">
-		<a href="#">Ryan Zulham Ramadhani</a> started following you.<br>
-		<span class="notification-date">Jan 4</span>
-		</span>
-	</div>
-	<div class="notification">
-		<span class="notification-profile-pic-container">
-		<img src="/images/profile.png" class="notfication-profile-pic"></span>
-		<span class="follower-text">
-		<a href="#">Ryan Zulham Ramadhani</a> started following you.<br>
-		<span class="notification-date">Jan 4</span>
+		{{notification.notification_id}}
+		Member number {{notification.action_by_userid}}	did action {{notification.action}} on 
+		{{notification.action_on}}
+		<br>
+		<span class="notification-date">{{notification_date}}</span>
 		</span>
 	</div>
 </div>

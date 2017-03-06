@@ -3,6 +3,13 @@ angular.module("appName", [])
 	return {
 		restrict: 'AE',
 		templateUrl: '/views/directives/header.html',
+		controller: function($scope, headerSvc) {
+			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
+				$scope.notifications = resp.data
+				console.log($scope.notifications)
+			})
+			
+		}
 	}
 }).directive('makeTagsSticky', function($window) {
 	var win = angular.element($window)
