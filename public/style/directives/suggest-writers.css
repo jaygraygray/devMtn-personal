@@ -42,8 +42,8 @@
 }
 
 .writer {
-	min-width:210px;
-	max-width:210px;
+/*	min-width:210px;
+	max-width:210px;*/
 	background-color:#fff;
 	border-width:1px;
 	border-color:#bdbdbd;
@@ -100,6 +100,10 @@
 	margin: 0 0 12px 0;
 }
 
+.suggestions-footer {
+	text-align:center;
+}
+
 .writer-follow-button {
 	border-radius: 25px;
 	border-style: solid;
@@ -109,6 +113,5 @@
 	color: #00AB6C;
 	background-color: #fff;
 	margin-top:12px;
-	margin-left:48px;
 	font-size:.8rem;
 }

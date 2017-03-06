@@ -1,0 +1,1 @@
+Header scroll bar changes width when scrolling down
