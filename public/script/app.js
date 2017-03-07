@@ -7,10 +7,12 @@ angular.module("appName", [])
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
 				console.log($scope.notifications)
-
+				var responses = [];
+				var articles = [];
 				for (var i = 0; i < $scope.notifications.length; i++) {
 					for (var prop in $scope.notifications[i]) {
 
+						// Create proper textual responses
 						switch($scope.notifications[i].action) {
 							case 'l':
 							$scope.notifications[i].action = 'liked';
@@ -28,16 +30,20 @@ angular.module("appName", [])
 							$scope.notifications[i].action = 'responded';
 							break;
 						}
+
 					}
+						//Determine if a RESPONSE or an ARTICLE was the target of a notification
+						//by checking first letter 
+						if ($scope.notifications[i].action_on.slice(0,1) === 'r') {
+							responses.push($scope.notifications[i].action_on.slice(2,3))
+						}
+						if ($scope.notifications[i].action_on.slice(0,1) === 'a') {
+							articles.push($scope.notifications[i].action_on.slice(2,3))
+						}
 				}
-// action:"l"
-// action_by_userid:6
-// action_on:"r_1"
-// date:"2013-08-26T06:00:00.000Z"
-// notification_id:18
-// user_id:3
-			})
-			
+				console.log("Reponse IDs: " + responses)
+				console.log("Article IDs: " + articles)
+			})	
 		}
 	}
 }).directive('makeTagsSticky', function($window) {
