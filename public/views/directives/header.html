@@ -50,11 +50,11 @@
 		<span class="notification-profile-pic-container">
 		<img ng-src="{{notification.profile_pic}}" class="notfication-profile-pic"></span>
 		<span class="follower-text">
-		{{notification.action_by_userid}}
-		{{notification.firstname}} {{notification.lastname}} {{notification.action}} 
-		{{notification.title}}
+		<!--{{notification.action_by_userid}} -->
+		<a href="#">{{notification.firstname}} {{notification.lastname}}</a> {{notification.action}} 
+		<a href="#">{{notification.title}}</a>
 		<br>
-		<span class="notification-date">{{notification_date}}</span>
+		<span class="notification-date">{{notification.date | date : 'MMM dd'}}</span>
 		</span>
 	</div>
 </div>

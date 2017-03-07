@@ -4,9 +4,11 @@ angular.module("appName", [])
 		restrict: 'AE',
 		templateUrl: '/views/directives/header.html',
 		controller: function($scope, headerSvc) {
+			$scope.userMenu = true
+			$scope.notificationsMenu = true
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
-				console.log($scope.notifications)
+				console.log($scope.notifications[0].date)
 
 				for (var i = 0; i < $scope.notifications.length; i++) {
 					
@@ -40,10 +42,18 @@ angular.module("appName", [])
 						(function(i) {
 							headerSvc.getArticleTitle($scope.notifications[i].action_on_id)
 							.then(function(resp) {
-								$scope.notifications[i].title = ' article ' + resp.data[0].title
-					
+								$scope.notifications[i].title = ' your article ' + resp.data[0].title
 							})
 						})(i);	
+					}
+
+					if ($scope.notifications[i].response === true) {
+						(function(i) {
+							headerSvc.getArticleTitleByResponse($scope.notifications[i].action_on_id)
+							.then(function(resp) {
+								$scope.notifications[i].title = resp.data[0].title
+							})
+						})(i);
 					}
 				}
 			})	
@@ -76,7 +86,9 @@ angular.module("appName", [])
 }).directive('sideMenu', function() {
 	return {
 		restrict: 'AE',
-		templateUrl: '/views/home.html'
+		templateUrl: '/views/home.html',
+		scope: true,
+		controller: 'homeCtrl'
 	}
 }).directive('storyHolder', function() {
 	return {

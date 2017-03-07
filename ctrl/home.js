@@ -13,16 +13,35 @@ module.exports = {
 	},
 
 	GetArticleTitle : function(req, res) {
-		console.log(req.params.id)
 		db.article_get_title([req.params.id], function(err, resp) {
 			if (err) {
 				console.log(err)
 			} else {
-				console.log(resp)
+				res.status(200).send(resp)
+			}
+		})
+	},
+
+	GetArticleTitleByResponse : function(req, res) {
+		db.get_article_title_by_response([req.params.id], function(err, resp) {
+			if (err) {
+				console.log(err)
+			} else {
+				res.status(200).send(resp)
+			}
+		})
+	},
+
+	GetUserTags : function(req, res) {
+		db.user_get_tags([req.params.id], function(err, resp) {
+			if (err) {
+				console.log(err)
+			} else {
 				res.status(200).send(resp)
 			}
 		})
 	}
+
 }
 
 

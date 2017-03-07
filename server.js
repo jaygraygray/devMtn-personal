@@ -37,6 +37,8 @@ homeCtrl = require('./ctrl/home')
 
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
 app.get('/api/article/:id', homeCtrl.GetArticleTitle)
+app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
+app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
 
 
 app.post('/api/createuser', function(req, res) {
