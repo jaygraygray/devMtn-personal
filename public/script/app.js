@@ -7,9 +7,11 @@ angular.module("appName", [])
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
 				console.log($scope.notifications)
-				
+
 				for (var i = 0; i < $scope.notifications.length; i++) {
-	
+					
+					$scope.notifications[i].title = ''
+
 					for (var prop in $scope.notifications[i]) {
 
 						// Create proper textual responses
@@ -30,6 +32,18 @@ angular.module("appName", [])
 							$scope.notifications[i].action = 'responded to';
 							break;
 						}
+					}
+
+					//When using asynch calls within a loop
+					//you need to use a closure to capute the value of i at each iteration
+					if ($scope.notifications[i].article === true) {
+						(function(i) {
+							headerSvc.getArticleTitle($scope.notifications[i].action_on_id)
+							.then(function(resp) {
+								$scope.notifications[i].title = ' article ' + resp.data[0].title
+					
+							})
+						})(i);	
 					}
 				}
 			})	

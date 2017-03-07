@@ -38,6 +38,7 @@ homeCtrl = require('./ctrl/home')
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
 app.get('/api/article/:id', homeCtrl.GetArticleTitle)
 
+
 app.post('/api/createuser', function(req, res) {
 	db.test_create_notification([req.body.user_id,
 		req.body.action,
