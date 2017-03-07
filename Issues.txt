@@ -1,2 +1,12 @@
 Header scroll bar changes width when scrolling down
 Can retrieve title of articles/responses for notifications, but can't attach them to the corresponding notification information.
+	-- What if you use a multidimensional array?
+	the first index would store the ID of the notification and the second would store the ACTED_ON portion
+
+	notification[1]['Article of Amazing Article']
+	notification[2]['Article of Amazing Article']
+	notification[3]['Rules of Spelling']
+	notification[4]['Rules of Spelling']
+
+	Would need to rework ng-repeat to fit.
+	
