@@ -49,10 +49,10 @@
 <div class="notifications-container" ng-hide="notificationsMenu">
 	<div class="notification" ng-repeat="notification in notifications">
 		<span class="notification-profile-pic-container">
-		<img src="/images/profile.png" class="notfication-profile-pic"></span>
+		<img ng-src="{{notification.profile_pic}}" class="notfication-profile-pic"></span>
 		<span class="follower-text">
-		
-		Member number {{notification.action_by_userid}}	did action {{notification.action}} on 
+		{{notification.action_by_userid}}
+		{{notification.firstname}} {{notification.lastname}} {{notification.action}} 
 		{{notification.action_on}}
 		<br>
 		<span class="notification-date">{{notification_date}}</span>

@@ -28,17 +28,7 @@ angular.module("appName", [])
 							$scope.notifications[i].action = 'responded';
 							break;
 						}
-
-						// if ($scope.notifications[i].action === 'l') {
-						// 	$scope.notifications[i].action = 'liked'
-						// 	console.log("This is entry " + i + ": " + $scope.notifications[i])
-						// }
 					}
-
-					$scope.getUserNames = headerSvc.getUserNames($scope.notifications[i].action_by_userid)
-					.then(function(resp) {
-						console.log("ERROR??" + resp)
-					})
 				}
 // action:"l"
 // action_by_userid:6
