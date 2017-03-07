@@ -7,8 +7,6 @@ angular.module("appName", [])
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
 				console.log($scope.notifications)
-				var responses = [];
-				var articles = [];
 				
 				for (var i = 0; i < $scope.notifications.length; i++) {
 	
@@ -32,32 +30,8 @@ angular.module("appName", [])
 							$scope.notifications[i].action = 'responded to';
 							break;
 						}
-
 					}
-						//Determine if a RESPONSE or an ARTICLE was the target of a notification
-						//by checking first letter 
-						if ($scope.notifications[i].action_on.slice(0,1) === 'r') {
-							responses.push($scope.notifications[i].action_on.slice(2,3))
-						}
-						if ($scope.notifications[i].action_on.slice(0,1) === 'a') {
-							articles.push($scope.notifications[i].action_on.slice(2,3))
-						}
-					}
-					//remove duplicates
-					articles = articles.filter(function(item, pos) {
-						return articles.indexOf(item) == pos
-					})
-					responses = responses.filter(function(item, pos) {
-						return articles.indexOf(item) == pos
-					})
-					//retrieve title for each ID
-					for (var q = 0; q < articles.length; q++)
-					$scope.getArticleTitle = headerSvc.getArticleTitle(articles[q]).then(function(resp) {
-						
-						$scope.notifications.push(resp.data[q-1].title)
-						console.log($scope.notifications)
-					})
-
+				}
 			})	
 		}
 	}

@@ -4,7 +4,7 @@
 
 
 SELECT users.firstname, users.lastname, users.id, users.profile_pic, notifications.user_id, notifications.action, 
-notifications.action_by_userid, notifications.action_on
+notifications.action_by_userid, notifications.action_on_id, notifications.article, notifications.response, notifications.self
 FROM notifications
 JOIN users ON users.id = notifications.action_by_userid 
 WHERE user_id=3
