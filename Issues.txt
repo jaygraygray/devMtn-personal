@@ -1,1 +1,2 @@
 Header scroll bar changes width when scrolling down
+Can retrieve title of articles/responses for notifications, but can't attach them to the corresponding notification information.

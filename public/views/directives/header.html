@@ -47,13 +47,13 @@
 
 <notifications>
 <div class="notifications-container" ng-hide="notificationsMenu">
-	<div class="notification" ng-repeat="notification in notifications">
+	<div class="notification" ng-repeat="notification in notifications track by $index">
 		<span class="notification-profile-pic-container">
 		<img ng-src="{{notification.profile_pic}}" class="notfication-profile-pic"></span>
 		<span class="follower-text">
 		{{notification.action_by_userid}}
 		{{notification.firstname}} {{notification.lastname}} {{notification.action}} 
-		{{notification.action_on}}
+		{{notification.title}}
 		<br>
 		<span class="notification-date">{{notification_date}}</span>
 		</span>

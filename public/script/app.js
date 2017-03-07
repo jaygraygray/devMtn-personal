@@ -9,7 +9,9 @@ angular.module("appName", [])
 				console.log($scope.notifications)
 				var responses = [];
 				var articles = [];
+				
 				for (var i = 0; i < $scope.notifications.length; i++) {
+	
 					for (var prop in $scope.notifications[i]) {
 
 						// Create proper textual responses
@@ -40,9 +42,20 @@ angular.module("appName", [])
 						if ($scope.notifications[i].action_on.slice(0,1) === 'a') {
 							articles.push($scope.notifications[i].action_on.slice(2,3))
 						}
-				}
-				console.log("Reponse IDs: " + responses)
-				console.log("Article IDs: " + articles)
+					}
+					//remove duplicates
+					articles = articles.filter(function(item, pos) {
+						return articles.indexOf(item) == pos
+					})
+					
+					//retrieve title for each ID
+					for (var q = 0; q < articles.length; q++)
+					$scope.getArticleTitle = headerSvc.getArticleTitle(articles[q]).then(function(resp) {
+						
+						$scope.notifications.push(resp.data[q-1].title)
+						console.log($scope.notifications)
+					})
+
 			})	
 		}
 	}

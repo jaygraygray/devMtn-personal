@@ -1,0 +1,1 @@
+SELECT title FROM articles WHERE id = $1
