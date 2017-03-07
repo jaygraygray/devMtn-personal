@@ -17,19 +17,19 @@ angular.module("appName", [])
 						// Create proper textual responses
 						switch($scope.notifications[i].action) {
 							case 'l':
-							$scope.notifications[i].action = 'liked';
+							$scope.notifications[i].action = 'liked your';
 							break;
 							case 'b':
-							$scope.notifications[i].action = 'bookmarked';
+							$scope.notifications[i].action = 'bookmarked your';
 							break;
 							case 'f':
-							$scope.notifications[i].action = 'followed';
+							$scope.notifications[i].action = 'followed you';
 							break;
 							case 's':
-							$scope.notifications[i].action = 'shared';
+							$scope.notifications[i].action = 'shared your';
 							break;
 							case 'r':
-							$scope.notifications[i].action = 'responded';
+							$scope.notifications[i].action = 'responded to';
 							break;
 						}
 
@@ -47,7 +47,9 @@ angular.module("appName", [])
 					articles = articles.filter(function(item, pos) {
 						return articles.indexOf(item) == pos
 					})
-					
+					responses = responses.filter(function(item, pos) {
+						return articles.indexOf(item) == pos
+					})
 					//retrieve title for each ID
 					for (var q = 0; q < articles.length; q++)
 					$scope.getArticleTitle = headerSvc.getArticleTitle(articles[q]).then(function(resp) {

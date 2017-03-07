@@ -60,7 +60,10 @@ notification_id		SERIAL PRIMARY KEY NOT NULL,
 user_id				INT,
 action				VARCHAR(10),
 action_by_userid	INT,
-action_on			INT,
+action_on_id		INT,
+article 			BOOLEAN,
+response 			BOOLEAN,
+self  				BOOLEAN,
 date 				DATE
 );
 

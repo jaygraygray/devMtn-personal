@@ -88,19 +88,21 @@ notifications
 	"user_id" : 1,
 	"action" : "like",
 	"action_by_userid" : 2,
-	"action_on" : "a4",
+	"action_on_id" : "1",
+	"article" :	true,
+	"response" : false,
+	"self" : false
 	"date" : "2013-08-26 12:39:39.122218+02"
 }
 
 action can be :
 	like // respond // bookmark // share // read(?)
-action_on :
-	"a4" = article with id 4
-	"r51" = response with id 51
+action_on_id : id of response or article
+article / response / self : only one can be true
 
 --query for test notification
 INSERT INTO notifications (
-user_id, action, action_by_userid, action_on, date) VALUES
+user_id, action, action_by_userid, action_on_id, article, response, self, date) VALUES
 ($1, $2, $3, $4, $5)
 
 ----------------------------------------------
