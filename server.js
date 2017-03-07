@@ -1,6 +1,7 @@
 const 	express = require('express')
 		bodyParser = require('body-parser')
 		massive = require('massive')
+		cors = require('cors')
 		port = 9090
 
 
@@ -9,7 +10,7 @@ const app = module.exports = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
-
+app.use(cors())
 
 //db connection
 var conn = massive.connectSync({
@@ -35,7 +36,7 @@ homeCtrl = require('./ctrl/home')
 // viewArticleCtrl = require('/ctrl/viewArticle')
 
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
-
+app.get('/api/users/:id', homeCtrl.GetUserName)
 
 app.post('/api/createuser', function(req, res) {
 	db.test_create_notification([req.body.user_id,
