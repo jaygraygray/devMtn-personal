@@ -1,5 +1,5 @@
 <div class="story-container">
-<div class="col-xs-12 article-tags"><p class="tag">User Experience</p></div>
+<div class="col-xs-12 article-tags"></div>
 
 <!--Author Mini-Bio -->
 <div class="row">
@@ -7,23 +7,23 @@
 	<img src="/images/profile.png" class="author-profile-picture">
 </div>
 <div class="col-xs-10 author-bio">
-	<a href="#">Quincy Larson</a> in <a href="#">Free Code Camp</a>
+	<a href="#">{{headline.firstname}} {{headline.lastname}}</a>
 	<br>
-	Feb 20 &#183; 2 min read
+	{{headline.date_published | date : 'MMM dd'}} &#183; 2 min read
 </div>
 </div>
 <!-- End Author Mini Bio -->
 
 <!--Article Info -->
-<h1>I'll never bring my phone on an international flight again. Neither should you.</h1>
+<h1>{{headline.title}}</h1>
 <img src="/images/first_article.jpeg" class="img-responsive">
 <br><br>
 <p class="read-more">Read more...</p>
 
 <div class="article-footer">
 <div class="article-footer-left">
-	<img src="/images/favorite.svg" class="favorite"> 8.5k</div>
-<span class="article-footer-right">428 responses <img src="images/bookmark.svg" class="response">
+	<img src="/images/favorite.svg" class="favorite">{{headline.likes | number}}</div>
+<span class="article-footer-right">{{headline.responses | number}} responses<img src="images/bookmark.svg" class="response">
 <img src="images/down-carat.svg" class="down-carat"></span>
 </div>
 </div>

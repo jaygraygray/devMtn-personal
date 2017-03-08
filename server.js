@@ -36,11 +36,15 @@ homeCtrl = require('./ctrl/home')
 // viewArticleCtrl = require('/ctrl/viewArticle')
 
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
+
+
 app.get('/api/article/:id', homeCtrl.GetArticleTitle)
 app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
+app.get('/api/headline', homeCtrl.GetHeadline)
+
+
+
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
-
-
 app.post('/api/createuser', function(req, res) {
 	db.test_create_notification([req.body.user_id,
 		req.body.action,

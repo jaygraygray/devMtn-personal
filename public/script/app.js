@@ -72,32 +72,4 @@ angular.module("appName", [])
 			});
 		}
 	}
-//})
-// .directive('profileMenu', function() {
-// 	return {
-// 		restrict: 'AE',
-// 		template: '<img src="/images/profile.png" class="profile-picture">',
-// 		link: function(scope, ele, attr) {
-// 			ele.on("click", function() {
-				
-// 			})
-// 		}
-// 	}
-}).directive('sideMenu', function() {
-	return {
-		restrict: 'AE',
-		templateUrl: '/views/home.html',
-		scope: true,
-		controller: 'homeCtrl'
-	}
-}).directive('storyHolder', function() {
-	return {
-		restrict: 'AE',
-		templateUrl: '/views/directives/story-holder.html'
-	}
-}).directive('suggestWriters', function() {
-	return {
-		restrict: 'AE',
-		templateUrl: '/views/directives/suggest-writers.html'
-	}
-});
+})

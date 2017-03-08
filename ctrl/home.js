@@ -23,7 +23,7 @@ module.exports = {
 	},
 
 	GetArticleTitleByResponse : function(req, res) {
-		db.get_article_title_by_response([req.params.id], function(err, resp) {
+		db.article_get_title_by_response([req.params.id], function(err, resp) {
 			if (err) {
 				console.log(err)
 			} else {
@@ -40,8 +40,17 @@ module.exports = {
 				res.status(200).send(resp)
 			}
 		})
-	}
+	},
 
+	GetHeadline : function(req, res) {
+		db.article_get_container_info_headline(function(err, resp) {
+			if (err) {
+				console.log(err)
+			} else {
+				res.status(200).send(resp)
+			}
+		})
+	}
 }
 
 
