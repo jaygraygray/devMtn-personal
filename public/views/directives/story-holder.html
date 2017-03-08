@@ -7,23 +7,25 @@
 	<img src="/images/profile.png" class="author-profile-picture">
 </div>
 <div class="col-xs-10 author-bio">
-	<a href="#">{{headline.firstname}} {{headline.lastname}}</a>
+	<a href="#">{{article.firstname}} {{article.lastname}}</a>
 	<br>
-	{{headline.date_published | date : 'MMM dd'}} &#183; 2 min read
+	{{article.date_published | date : 'MMM dd'}} &#183; 2 min read
 </div>
 </div>
 <!-- End Author Mini Bio -->
 
 <!--Article Info -->
-<h1>{{headline.title}}</h1>
+<h1>{{article.title}}</h1>
 <img src="/images/first_article.jpeg" class="img-responsive">
 <br><br>
 <p class="read-more">Read more...</p>
 
 <div class="article-footer">
 <div class="article-footer-left">
-	<img src="/images/favorite.svg" class="favorite">{{headline.likes | number}}</div>
-<span class="article-footer-right">{{headline.responses | number}} responses<img src="images/bookmark.svg" class="response">
+	<div class="favorite-unclicked" ng-class="{'favorite-clicked':isActive}" ng-click="likeArticle()">&nbsp;
+	<span class="favorite-text"> {{article.likes | number}}</span></div> 
+</div>
+<span class="article-footer-right">{{article.responses | number}} responses<img src="images/bookmark.svg" class="response">
 <img src="images/down-carat.svg" class="down-carat"></span>
 </div>
 </div>

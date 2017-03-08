@@ -53,9 +53,9 @@ module.exports = {
 	},
 
 	UpdateLikes : function(req,res,next) {
-		db.article_update_likes([req.body.num_likes, req.body.article_id], function(err, resp) {
+		db.article_update_likes([req.body.article_id], function(err, resp) {
 			if (err) {
-				console.log("Couldn't update article likes: ")
+				console.log("Couldn't update target likes: ")
 				return next(err)
 			} else {
 				db.user_update_likes([req.body.article_id, req.body.user_id], function(err, resp) {
@@ -76,13 +76,15 @@ module.exports = {
 									return next(err)
 								} else {
 									console.log("Notification logged!")
+									res.status(200).send(resp);
 								}
 							})
 					}
 				})
 			}
 		})
-	}
+	},
+
 }
 
 

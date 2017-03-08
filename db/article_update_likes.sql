@@ -1,3 +1,3 @@
 UPDATE articles
-SET likes = $1
-WHERE id = $2
+SET likes = likes + 1
+WHERE id = $1

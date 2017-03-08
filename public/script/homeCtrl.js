@@ -7,16 +7,31 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 
 	//gets headline info
 	homeSvc.getHeadline().then(function(resp) {
-		$scope.headline = resp.data[0]
+		$scope.article = resp.data[0]
 
-		//uses results of that to create notification
-		//needs to be invokable, not like this
-		// homeSvc.likedArticle(obj).then(function(resp) {
-		// 	$scope.likedArticle = resp.data[0]
-		// })
-
-
+		$scope.isActive = false
+		$scope.likeArticle = function() {
+			$scope.isActive = !$scope.isActive
+			if ($scope.isActive === true) {
+				$scope.article.likes++;
+				var obj = {
+					article_id : $scope.article.id,
+					user_id : 3,
+					user_id_notified: $scope.article.author_id,
+					action: "L",
+					date : new Date(),
+					article_boolean : true,
+					response_boolean: false,
+					self_boolean: false
+				}
+				homeSvc.likedArticle(obj).then(function(resp) {
+					console.log("Liked!")
+				})
+		}
+	}
 	})
+
+	
 
 
 }).directive('sideMenu', function() {
@@ -40,7 +55,7 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 	return {
 		restrict: 'AE',
 		scope: {
-			getHeadline : '&'
+			clicked : '&'
 		},
 		templateUrl: '/views/directives/story-holder.html',
 		controller : 'homeCtrl'

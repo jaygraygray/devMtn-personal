@@ -1,4 +1,6 @@
 Header scroll bar changes width when scrolling down
 
+Keep track of all places userID is manually entered.
+	homeCtrl.js
 
-	
+User can't dislike/unbookmark articles
