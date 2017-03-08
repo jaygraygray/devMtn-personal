@@ -9,7 +9,12 @@ this.getUserTags = function(id) {
 
 this.getHeadline = function() {
 	return $http.get('/api/headline').then(function(resp) {
-		console.log(resp)
+		return resp
+	})
+}
+
+this.likedArticle = function(notObj) {
+	return $http.put('/api/articleliked', notObj).then(function(resp) {
 		return resp
 	})
 }

@@ -2,14 +2,22 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 
 	//takes user ID as parameter
 	homeSvc.getUserTags(3).then(function(resp) {
-		console.log(resp.data[0].tags)
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
 
+	//gets headline info
 	homeSvc.getHeadline().then(function(resp) {
-		console.log(resp.data)
 		$scope.headline = resp.data[0]
+
+		//uses results of that to create notification
+		//needs to be invokable, not like this
+		// homeSvc.likedArticle(obj).then(function(resp) {
+		// 	$scope.likedArticle = resp.data[0]
+		// })
+
+
 	})
+
 
 }).directive('sideMenu', function() {
 	return {
