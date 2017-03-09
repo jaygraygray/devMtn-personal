@@ -42,14 +42,30 @@ module.exports = {
 		})
 	},
 
-	GetHeadline : function(req, res) {
-		db.article_get_container_info_headline(function(err, resp) {
-			if (err) {
-				console.log(err)
-			} else {
-				res.status(200).send(resp)
-			}
-		})
+	GetHeadlines : function(req, res) {
+
+		switch(req.params.cmd) {
+			case 'mostRecent' :
+			db.article_get_container_info_headline(function(err, resp) {
+				if (err) {
+					console.log(err)
+				} else {
+					res.status(200).send(resp)
+				}
+			})
+			break;
+			case 'all' :
+			console.log(req.params.cmd)
+			db.article_get_container_info_all(function(err, resp) {
+				if (err) {
+					console.log(err)
+				} else {
+					res.status(200).send(resp)
+				}
+			})
+		}
+
+
 	},
 
 	ArticleFollowedOrBookmarked : function(req,res,next) {

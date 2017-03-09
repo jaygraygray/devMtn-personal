@@ -55,7 +55,7 @@
 	border-color:#cacaca;
 	border-radius:2px;
 	background-color: #fff;
-	font-size:.7rem;
+	font-size:.87rem;
 	text-align:center;
 	vertical-align: middle;
 	line-height:24px;
@@ -73,7 +73,6 @@
 .side-bar-tags {
 	margin-top:12px;
 	margin-bottom:12px;
-	font-size:.8rem;
 	color:#bdbdbd;
-	width:80%;
+	width:95%;
 }

@@ -6,3 +6,5 @@ Keep track of all places userID is manually entered.
 User can't dislike/unbookmark articles
 
 Display correct style if article is already liked/bookmarked
+
+In homeCtrl, make like and bookmark functions invokable rather than auto invoking

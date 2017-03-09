@@ -280,3 +280,8 @@ h1 {
 	top:0;
 	z-index:1;
 }
+
+.search {
+	border-style:none;
+	margin-right:12px;
+}

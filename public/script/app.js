@@ -4,6 +4,7 @@ angular.module("appName", [])
 		restrict: 'AE',
 		templateUrl: '/views/directives/header.html',
 		controller: function($scope, headerSvc) {
+			$scope.search = true
 			$scope.userMenu = true
 			$scope.notificationsMenu = true
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){

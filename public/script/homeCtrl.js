@@ -6,8 +6,8 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 	})
 
 	//gets headline info
-	homeSvc.getHeadline().then(function(resp) {
-		$scope.article = resp.data[0]
+	homeSvc.getHeadlines("mostRecent").then(function(resp) {
+		$scope.article = resp.data
 
 		$scope.isLikeActive = false
 		$scope.likeArticle = function() {
@@ -81,4 +81,20 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 		templateUrl: '/views/directives/story-holder.html',
 		controller : 'homeCtrl'
 	}
+}).directive('listArticles', function() {
+	return {
+		restrict: 'E',
+		scope: {
+			text: '@'
+		},
+		transclude: true,
+		templateUrl: '/views/directives/story-holder.html',
+		replace:true,
+		controller : function($scope, homeSvc) {
+			homeSvc.getHeadlines($scope.text).then(function(resp) {
+				$scope.article = resp.data
+			})
+		}
+
+	};
 })

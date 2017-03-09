@@ -40,7 +40,8 @@ app.get('/api/getnotifications', homeCtrl.GetNotifications)
 
 app.get('/api/article/:id', homeCtrl.GetArticleTitle)
 app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
-app.get('/api/headline', homeCtrl.GetHeadline)
+app.get('/api/headlines/:cmd', homeCtrl.GetHeadlines)
+
 
 app.put('/api/articlenotification', homeCtrl.ArticleFollowedOrBookmarked)
 
