@@ -22,10 +22,11 @@
 
 <div class="article-footer">
 <div class="article-footer-left">
-	<div class="favorite-unclicked" ng-class="{'favorite-clicked':isActive}" ng-click="likeArticle()">&nbsp;
+	<div class="favorite-unclicked" ng-class="{'favorite-clicked':isLikeActive}" ng-click="likeArticle()">&nbsp;
 	<span class="favorite-text"> {{article.likes | number}}</span></div> 
 </div>
-<span class="article-footer-right">{{article.responses | number}} responses<img src="images/bookmark.svg" class="response">
+<span class="article-footer-right">{{article.responses | number}} responses 
+<span class="response-unclicked" ng-class="{'response-clicked':isResponseActive}" ng-click="bookmarkArticle()">&nbsp;</span>
 <img src="images/down-carat.svg" class="down-carat"></span>
 </div>
 </div>

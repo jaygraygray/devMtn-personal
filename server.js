@@ -42,7 +42,7 @@ app.get('/api/article/:id', homeCtrl.GetArticleTitle)
 app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
 app.get('/api/headline', homeCtrl.GetHeadline)
 
-app.put('/api/articleliked', homeCtrl.UpdateLikes)
+app.put('/api/articlenotification', homeCtrl.ArticleFollowedOrBookmarked)
 
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
 app.post('/api/createuser', function(req, res) {

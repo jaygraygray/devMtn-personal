@@ -14,7 +14,7 @@ this.getHeadline = function() {
 }
 
 this.likedArticle = function(notObj) {
-	return $http.put('/api/articleliked', notObj).then(function(resp) {
+	return $http.put('/api/articlenotification', notObj).then(function(resp) {
 		return resp
 	})
 }

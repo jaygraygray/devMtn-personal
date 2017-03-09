@@ -4,3 +4,5 @@ Keep track of all places userID is manually entered.
 	homeCtrl.js
 
 User can't dislike/unbookmark articles
+
+Display correct style if article is already liked/bookmarked

@@ -9,13 +9,14 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 	homeSvc.getHeadline().then(function(resp) {
 		$scope.article = resp.data[0]
 
-		$scope.isActive = false
+		$scope.isLikeActive = false
 		$scope.likeArticle = function() {
-			$scope.isActive = !$scope.isActive
-			if ($scope.isActive === true) {
+			$scope.isLikeActive = !$scope.isLikeActive
+			if ($scope.isLikeActive === true) {
 				$scope.article.likes++;
 				var obj = {
-					article_id : $scope.article.id,
+					article_id_array : ',' + $scope.article.id,
+					article_id_just_int : $scope.article.id,
 					user_id : 3,
 					user_id_notified: $scope.article.author_id,
 					action: "L",
@@ -27,8 +28,28 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc) {
 				homeSvc.likedArticle(obj).then(function(resp) {
 					console.log("Liked!")
 				})
+			}
 		}
-	}
+		$scope.isResponseActive = false
+		$scope.bookmarkArticle = function() {
+			$scope.isResponseActive = !$scope.isResponseActive
+			if ($scope.isResponseActive === true) {
+				var obj = {
+					article_id_array : ',' + $scope.article.id,
+					article_id_just_int : $scope.article.id,
+					user_id : 3,
+					user_id_notified: $scope.article.author_id,
+					action: "B",
+					date : new Date(),
+					article_boolean : true,
+					response_boolean: false,
+					self_boolean: false
+				}
+				homeSvc.likedArticle(obj).then(function(resp) {
+					console.log("Bookmarked!")
+				})
+			}
+		}
 	})
 
 	
