@@ -21,7 +21,7 @@
 
 <div class="article-footer">
 <div class="article-footer-left">
-	<div class="favorite-unclicked" ng-class="{'favorite-clicked':isLikeActive}" ng-click="likeArticle()">&nbsp;
+	<div class="favorite-unclicked" ng-class="{'favorite-clicked':isLikeActive}" ng-click="likeArticle(article.id)">&nbsp;
 	<span class="favorite-text"> {{article.likes | number}}</span></div> 
 </div>
 <span class="article-footer-right">{{article.responses | number}} responses 

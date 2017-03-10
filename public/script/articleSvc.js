@@ -8,6 +8,8 @@ this.getHeadlines = function(cmd) {
 
 this.likedArticle = function(notObj) {
 	return $http.put('/api/articlenotification', notObj).then(function(resp) {
+		console.log("svc")
+		return resp
 	})
 }
 

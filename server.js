@@ -2,7 +2,7 @@ const 	express = require('express')
 		bodyParser = require('body-parser')
 		massive = require('massive')
 		cors = require('cors')
-		port = 9090
+		port = 9999
 
 
 //middle ware
@@ -34,7 +34,7 @@ homeCtrl = require('./ctrl/home')
 // storiesCtrl = require('/ctrl/stories')
 // textEditorCtrl = require('/ctrl/textEditor')
 // viewArticleCtrl = require('/ctrl/viewArticle')
-
+app.put('/api/articlenotification', homeCtrl.ArticleNotification)
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
 
 
@@ -43,7 +43,7 @@ app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
 app.get('/api/headlines/:cmd', homeCtrl.GetHeadlines)
 
 
-app.put('/api/articlenotification', homeCtrl.ArticleNotification)
+
 
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
 app.get('/api/user/articlesliked/:id', homeCtrl.GetArticleLikes)

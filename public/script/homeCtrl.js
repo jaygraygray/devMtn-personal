@@ -5,10 +5,17 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
 
-	userSvc.getUserArticleLikes(3).then(function(resp) {
-		$scope.userLikes = resp.data;
-		console.log($scope.userLikes)
-	})
+	$scope.getUserArticles = function(userID) {
+		userSvc.getUserArticleLikes(userID)
+		.then(function(resp){
+			console.log(resp.data[0].articles_liked)
+			var userArticles = resp.data[0].articles_liked
+		})
+	}
+
+	//use $q to chain group all the calls OR
+	//have single query send all data at once
+
 
 	$scope.likeArticle = function likeArticle () {
 		$scope.isLikeActive = !$scope.isLikeActive
@@ -30,9 +37,9 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 					self_boolean: false
 				}
 				articleSvc.likedArticle(obj)
-				// .then(function(resp) {
-				// 	console.log("Liked article " + $scope.articles[i].id)
-				// })
+				.then(function(resp) {
+					console.log("Liked article " + $scope.articles[i].id)
+				})
 			}
 		}
 	}
@@ -97,24 +104,22 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 			text: '@',
 		},
 		templateUrl: '/views/directives/story-holder.html',
-		controller : function($scope, articleSvc) {
+		controller : function($scope, articleSvc, userSvc) {
+
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
-				console.log($scope)
 				$scope.articles = resp.data
 			})
-			$scope.likeArticle = function likeArticle () {
+			likeArticle = function (id) {
+
 				$scope.isLikeActive = !$scope.isLikeActive
 
-
-				for (let i = 0; i < $scope.articles.length; i++) {
-
 					if ($scope.isLikeActive === true) {
-						$scope.articles[i].likes++;
+						$scope.articles.likes++;
 						var obj = {
-							article_id_array : ',' + $scope.articles[i].id,
-							article_id_just_int : $scope.articles[i].id,
+							article_id_array : ',' + id,
+							article_id_just_int : id,
 							user_id : 3,
-							user_id_notified: $scope.articles[i].author_id,
+							user_id_notified: $scope.articles.author_id,
 							action: "L",
 							date : new Date(),
 							article_boolean : true,
@@ -122,10 +127,10 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 							self_boolean: false
 						}
 						articleSvc.likedArticle(obj).then(function(resp) {
-							console.log("Liked article " + $scope.articles[i].id)
+							console.log("Liked article " + $scope.articles.id)
 						})
 					}
-				}
+
 			}
 		}
 

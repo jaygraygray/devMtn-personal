@@ -88,15 +88,15 @@ module.exports = {
 		switch(req.body.action) {
 		case 'L' :
 			db.article_update_likes([req.body.article_id_just_int], function(err, resp) {
-			if (err) { console.log("Couldn't update target likes: ") } return next(err) })
+			if (err) { console.log("Couldn't update target likes: ", err) } })
 			db.user_update_likes([req.body.article_id_array, req.body.user_id], function(err, resp) {
-			if (err) { console.log("Couldn't update user likes: ") } return next(err) })
+			if (err) { console.log("Couldn't update user likes: ", err) } })
 		break;
 		case 'B':
 			db.article_update_bookmarks([req.article_just_int], function(err, resp) {
-			if (err) { console.log("Couldn't update target bookmarks:") } return next(err) })
+			if (err) { console.log("Couldn't update target bookmarks:", err) } })
 			db.user_update_bookmarks([req.body.article_id_array, req.body.user_id], function(err, resp) {
-			if (err) { console.log("Couldn't update user likes: ") } return next(err) })
+			if (err) { console.log("Couldn't update user likes: ", err) } })
 		break;
 		}
 	},

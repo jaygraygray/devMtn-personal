@@ -9,7 +9,6 @@ angular.module("appName", [])
 			$scope.notificationsMenu = true
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
-				console.log($scope.notifications[0].date)
 
 				for (var i = 0; i < $scope.notifications.length; i++) {
 					
@@ -67,7 +66,6 @@ angular.module("appName", [])
 		link: function(scope, ele, attrs) {
 			var topClass = attrs.makeTagsSticky
 			var offsetTop = ele.prop('offsetTop') + 70;
-			console.log($window.pageYOffset)
 			win.on('scroll', function(e) {
 				ele[($window.pageYOffset >= offsetTop) ? 'addClass' : 'removeClass']('no-moving-for-you');
 			});
