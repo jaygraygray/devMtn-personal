@@ -1,1 +1,1 @@
-select articles_liked from users where id = $1
+select articles_liked, bookmarks_list from users where id = $1

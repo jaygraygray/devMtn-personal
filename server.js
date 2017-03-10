@@ -43,8 +43,9 @@ app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
 app.get('/api/headlines/:cmd', homeCtrl.GetHeadlines)
 
 
-
-app.put('/api/user/dislikearticle', homeCtrl.RemoveArticleLike)
+app.get('/api/user/bookmarks/:id', homeCtrl.GetBookmarks)
+app.put('/api/user/unlikearticle', homeCtrl.RemoveArticleLike)
+app.put('/api/user/deletebookmark', homeCtrl.RemoveBookmark)
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
 app.get('/api/user/articlesliked/:id', homeCtrl.GetArticleLikes)
 app.post('/api/createuser', function(req, res) {

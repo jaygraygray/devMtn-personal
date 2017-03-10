@@ -6,16 +6,23 @@ this.getHeadlines = function(cmd) {
 	})
 }
 
-this.likeArticle = function(notObj) {
+this.createNotification = function(notObj) {
 	return $http.put('/api/articlenotification', notObj).then(function(resp) {
 		return resp
 	})
 }
 
-this.unlikedArticle = function(deleteObj) {
-	return $http.put('/api/user/dislikearticle', deleteObj).then(function(resp) {
+this.unlikeArticle = function(deleteObj) {
+	return $http.put('/api/user/unlikearticle', deleteObj).then(function(resp) {
 		return resp
 	})
 }
+
+this.unbookmarkArticle = function(deleteObj) {
+	return $http.put('/api/user/deletebookmark', deleteObj).then(function(resp) {
+		return resp
+	})
+}
+
 
 })

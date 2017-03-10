@@ -25,7 +25,7 @@
 	<span class="favorite-text"> {{article.likes | number}}</span></div> 
 </div>
 <span class="article-footer-right">{{article.responses | number}} responses 
-<span class="bookmark-unclicked" ng-class="{'bookmark-clicked':isBookmarkActive}" ng-click="bookmarkArticle()">&nbsp;</span>
+<span class="bookmark-unclicked" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</span>
 <img src="images/down-carat.svg" class="down-carat"></span>
 </div>
 </div>

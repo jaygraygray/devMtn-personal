@@ -55,27 +55,40 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 		templateUrl: '/views/directives/story-holder.html',
 		controller : function($scope, articleSvc, userSvc) {
 			//grab article IDs user has liked
-			userSvc.getUserArticleLikes(3).then(function(resp) {
-				return resp.data[0].articles_liked
-			}).then(function(userArticlesLikedResult) {
+			userSvc.getArticleLikes(3).then(function(resp) {
+				console.log(resp.data[0])
+				return resp.data[0]
+			}).then(function(userArticlesResults) {
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
 				$scope.articles = resp.data
 
+
+					//check to see if article ID is present in the user's liked list
+					console.log("typeof articleid: " + typeof $scope.articles[0].id) //number
+					console.log("typeof results: " + typeof userArticlesResults.articles_liked) //string
+
+					var articles = userArticlesResults.articles_liked.split(',').map(Number)
+					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
 				//loop through all results to see if user has liked each specific article
 				for (let i = 0; i < $scope.articles.length; i++) {
 					//add userLikedProperty
 					$scope.articles[i].userLikedArticle
-					$scope.articles[i].position = i
-					//check to see if article ID is present in the user's liked list
-					if (userArticlesLikedResult.indexOf($scope.articles[i].id) == -1) {
+					$scope.articles[i].userBookmarkedArticle
+
+					
+					if (articles.indexOf($scope.articles[i].id) === -1) {
 						$scope.articles[i].userLikedArticle = false
 					} else {
 						$scope.articles[i].userLikedArticle = true
 					}
-					console.log("Has user liked article " + $scope.articles[i].id + 
-						": " +$scope.articles[i].userLikedArticle)
-
+					
+					//check to see if article ID is present in bookmarks list
+					if (bookmarks.indexOf($scope.articles[i].id) === -1) {
+						$scope.articles[i].userBookmarkedArticle = false
+					} else {
+						$scope.articles[i].userBookmarkedArticle = true
+					}	
 				}
 				return $scope.articles
 			}).then(function(articles) {
@@ -99,18 +112,51 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 								response_boolean: false,
 								self_boolean: false
 							}
-							articleSvc.likeArticle(obj)
+							articleSvc.createNotification(obj)
 							// if use clicks an already liked article, remove like from their list
 						} else {
 							var deleteObj = {
 								user_id : 3,
 								unliked_id : ','+ $scope.articles[i].id
 							}
-							articleSvc.unlikedArticle(deleteObj)
+							articleSvc.unlikeArticle(deleteObj)
 						}	
 					}
 				}	
 				}
+
+				$scope.bookmarkArticle = function(id) {
+				for (let i = 0; i < articles.length; i++) {
+					if (articles[i].id == id) {
+						//change button styles
+						$scope.articles[i].userBookmarkedArticle = ! $scope.articles[i].userBookmarkedArticle
+						//if the user clicks an unliked article, create notification
+						if ($scope.articles[i].userBookmarkedArticle === true) {
+							$scope.articles[i].likes++;
+							var obj = {
+								article_id_array : ',' + id,
+								article_id_just_int : id,
+								user_id : 3,
+								user_id_notified: $scope.articles[i].author_id,
+								action: "B",
+								date : new Date(),
+								article_boolean : true,
+								response_boolean: false,
+								self_boolean: false
+							}
+							articleSvc.createNotification(obj)
+							// if use clicks an already liked article, remove like from their list
+						} else {
+							var deleteObj = {
+								user_id : 3,
+								unliked_id : ','+ $scope.articles[i].id
+							}
+							articleSvc.unbookmarkArticle(deleteObj)
+						}	
+					}
+				}	
+				}
+
 			})	
 		})
 		}
