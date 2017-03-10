@@ -121,7 +121,7 @@
 	color:#000;
 }
 
-.response-unclicked {
+.bookmark-unclicked {
 	margin-left:12px;
 	margin-right:12px;
 	width: 24px;
@@ -131,7 +131,7 @@
 	background-size: 24px 24px;
 }
 
-.response-clicked {
+.bookmark-clicked {
 	margin-left:12px;
 	margin-right:12px;
 	width: 24px;

@@ -7,21 +7,6 @@ this.getUserTags = function(id) {
 	})
 }
 
-this.getHeadlines = function(cmd) {
-	return $http.get('/api/headlines/' + cmd).then(function(resp) {
-		return resp
-	})
-}
-
-this.likedArticle = function(notObj) {
-	return $http.put('/api/articlenotification', notObj).then(function(resp) {
-		return resp
-	})
-}
-
-// this.getTenHeadlines = function() {
-// 	return $http.get('/api/')
-// }
 
 //define all API calls necessary for listArticles directive
 // all: list all artilces in increments of X

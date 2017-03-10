@@ -1,0 +1,1 @@
+select articles_liked from users where id = $1

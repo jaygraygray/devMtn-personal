@@ -43,9 +43,10 @@ app.get('/api/article/response/:id', homeCtrl.GetArticleTitleByResponse)
 app.get('/api/headlines/:cmd', homeCtrl.GetHeadlines)
 
 
-app.put('/api/articlenotification', homeCtrl.ArticleFollowedOrBookmarked)
+app.put('/api/articlenotification', homeCtrl.ArticleNotification)
 
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
+app.get('/api/user/articlesliked/:id', homeCtrl.GetArticleLikes)
 app.post('/api/createuser', function(req, res) {
 	db.test_create_notification([req.body.user_id,
 		req.body.action,

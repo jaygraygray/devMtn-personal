@@ -2,9 +2,17 @@ Header scroll bar changes width when scrolling down
 
 Keep track of all places userID is manually entered.
 	homeCtrl.js
+	userSvc.js
 
 User can't dislike/unbookmark articles
 
 Display correct style if article is already liked/bookmarked
 
-In homeCtrl, make like and bookmark functions invokable rather than auto invoking
+For each article call, get article info AND user data on that article (liked, bookmarked, shared).
+If the user has liked/bookmarked an article, change the style accordingly.
+If the user clicks an unliked/unbookmarked article, change style accordingly, push new ID to database.
+If the user click a liked/bookmarked article, change style accordingly, remove ID from database.
+
+What if likeArticle took in the article ID and just created the DB query? There's no need for scope to become involved whatsoever. 
+
+ArticleNotification is now generating a 404 message despite correctly inputting data in database.
