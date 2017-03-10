@@ -6,8 +6,6 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
 
-
-
 	$scope.bookmarkArticle = function bookmarkArticle (id) {
 		$scope.isBookmarkActive = !$scope.isBookmarkActive
 		if ($scope.isBookmarkActive === true) {
@@ -82,9 +80,12 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 				return $scope.articles
 			}).then(function(articles) {
 			$scope.likeArticle = function (id) {
+				//loop through articles, if ID matches article ID, execute like
 				for (let i = 0; i < articles.length; i++) {
 					if (articles[i].id == id) {
+						//change button styles
 						$scope.articles[i].userLikedArticle = ! $scope.articles[i].userLikedArticle
+						//if the user clicks an unliked article, create notification
 						if ($scope.articles[i].userLikedArticle === true) {
 							$scope.articles[i].likes++;
 							var obj = {
@@ -98,9 +99,15 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 								response_boolean: false,
 								self_boolean: false
 							}
-							articleSvc.likedArticle(obj)
-
-						}		
+							articleSvc.likeArticle(obj)
+							// if use clicks an already liked article, remove like from their list
+						} else {
+							var deleteObj = {
+								user_id : 3,
+								unliked_id : ','+ $scope.articles[i].id
+							}
+							articleSvc.unlikedArticle(deleteObj)
+						}	
 					}
 				}	
 				}

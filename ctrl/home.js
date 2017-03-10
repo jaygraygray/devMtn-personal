@@ -108,6 +108,10 @@ module.exports = {
 				res.status(200).send(resp)
 			}
 		})
+	},
+	RemoveArticleLike : function(req, res) {
+		db.user_remove_like([req.body.unliked_id, req.body.user_id], function(err, resp) {
+			if (err) {console.log("Error removing like: ", err) }}) 
 	}
 
 }

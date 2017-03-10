@@ -44,7 +44,7 @@ app.get('/api/headlines/:cmd', homeCtrl.GetHeadlines)
 
 
 
-
+app.put('/api/user/dislikearticle', homeCtrl.RemoveArticleLike)
 app.get('/api/user/tags/:id', homeCtrl.GetUserTags)
 app.get('/api/user/articlesliked/:id', homeCtrl.GetArticleLikes)
 app.post('/api/createuser', function(req, res) {
