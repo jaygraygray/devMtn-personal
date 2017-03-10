@@ -45,7 +45,7 @@ module.exports = {
 	GetHeadlines : function(req, res) {
 
 		switch(req.params.cmd) {
-			case 'mostRecent' :
+			case 'headline' :
 			db.article_get_container_info_headline(function(err, resp) {
 				if (err) {
 					console.log(err)
