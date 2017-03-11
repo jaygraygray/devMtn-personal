@@ -6,25 +6,25 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
 
-	$scope.bookmarkArticle = function bookmarkArticle (id) {
-		$scope.isBookmarkActive = !$scope.isBookmarkActive
-		if ($scope.isBookmarkActive === true) {
-			var obj = {
-				article_id_array : ',' + $scope.article.id,
-				article_id_just_int : $scope.article.id,
-				user_id : userID,
-				user_id_notified: $scope.article.author_id,
-				action: "B",
-				date : new Date(),
-				article_boolean : true,
-				response_boolean: false,
-				self_boolean: false
-			}
-			articleSvc.likedArticle(obj).then(function(resp) {
-				console.log("Bookmarked!")
-			})
-		}
-	}
+	// $scope.bookmarkArticle = function bookmarkArticle (id) {
+	// 	$scope.isBookmarkActive = !$scope.isBookmarkActive
+	// 	if ($scope.isBookmarkActive === true) {
+	// 		var obj = {
+	// 			article_id_array : ',' + $scope.article.id,
+	// 			article_id_just_int : $scope.article.id,
+	// 			user_id : userID,
+	// 			user_id_notified: $scope.article.author_id,
+	// 			action: "B",
+	// 			date : new Date(),
+	// 			article_boolean : true,
+	// 			response_boolean: false,
+	// 			self_boolean: false
+	// 		}
+	// 		articleSvc.likedArticle(obj).then(function(resp) {
+	// 			console.log("Bookmarked!")
+	// 		})
+	// 	}
+	// }
 
 
 	
@@ -65,8 +65,7 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 
 
 					//check to see if article ID is present in the user's liked list
-					console.log("typeof articleid: " + typeof $scope.articles[0].id) //number
-					console.log("typeof results: " + typeof userArticlesResults.articles_liked) //string
+
 
 					var articles = userArticlesResults.articles_liked.split(',').map(Number)
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)

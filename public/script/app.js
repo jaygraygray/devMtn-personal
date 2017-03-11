@@ -19,7 +19,7 @@ angular.module("appName", [])
 						// Create proper textual responses
 						switch($scope.notifications[i].action) {
 							case 'l':
-							$scope.notifications[i].action = 'liked your';
+							$scope.notifications[i].action = 'PLEASEsdfsdfHANGE';
 							break;
 							case 'b':
 							$scope.notifications[i].action = 'bookmarked your';

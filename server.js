@@ -2,7 +2,7 @@ const 	express = require('express')
 		bodyParser = require('body-parser')
 		massive = require('massive')
 		cors = require('cors')
-		port = 9999
+		port = 9990
 
 
 //middle ware

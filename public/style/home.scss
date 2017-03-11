@@ -1,3 +1,6 @@
+$green: #00AB6C;
+$dark-gray: 
+$light-gray: #BDBDBD;
 
 
 .side-bar-header {
@@ -5,7 +8,7 @@
 	padding-bottom:12px;
 	border-width:0 0 1px 0;
 	border-style: solid;
-	border-color:#BDBDBD;
+	border-color:$light-gray;
 	font-size:.9rem;
 	width:80%;
 }
@@ -15,7 +18,7 @@
 }
 
 .side-bar-header-subtitle {
-	color:#BDBDBD;
+	color:$light-gray;
 	margin-top:6px;
 }
 
@@ -23,7 +26,7 @@
 	margin-top:12px;
 	margin-bottom:24px;
 	font-size:.8rem;
-	color:#bdbdbd;
+	color:$light-gray;
 	display:flex;
 	justify-content: flex-end;
 	width:80%;
@@ -52,7 +55,7 @@
 .followed-tag {
 	border-width:1px;
 	border-style:solid;
-	border-color:#cacaca;
+	border-color:$light-gray;
 	border-radius:2px;
 	background-color: #fff;
 	font-size:.87rem;
@@ -73,6 +76,6 @@
 .side-bar-tags {
 	margin-top:12px;
 	margin-bottom:12px;
-	color:#bdbdbd;
+	color:$light-gray;
 	width:95%;
 }
