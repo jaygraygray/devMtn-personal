@@ -1,4 +1,5 @@
-angular.module('appName').service('userSvc', function($http) {
+angular.module('appName')
+.service('userSvc', function($http) {
 
 
 

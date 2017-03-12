@@ -1,4 +1,5 @@
-angular.module('appName').service('homeSvc', function($http) {
+angular.module('appName')
+.service('homeSvc', function($http) {
 
 //user ID as parameter
 this.getUserTags = function(id) {

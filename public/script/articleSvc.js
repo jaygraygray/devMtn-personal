@@ -1,4 +1,5 @@
-angular.module('appName').service('articleSvc', function($http) {
+angular.module('appName')
+.service('articleSvc', function($http) {
 
 this.getHeadlines = function(cmd) {
 	return $http.get('/api/headlines/' + cmd).then(function(resp) {

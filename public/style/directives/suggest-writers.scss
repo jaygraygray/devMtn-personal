@@ -1,3 +1,5 @@
+@import "../_variables.scss";
+
 .might-like {
 	padding-top: 24px;
 	padding-bottom: 24px;
@@ -81,7 +83,7 @@
 }
 
 .writer-top-stories a {
-	color: #000;
+	color: $dark-gray;
 	text-decoration: none;
 	margin-top:12px;
 	padding-bottom:12px;

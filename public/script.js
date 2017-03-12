@@ -1,4 +1,50 @@
-angular.module("appName", [])
+angular.module("appName", ['ui.router'])
+.config(function($stateProvider, $urlRouterProvider) {
+
+$stateProvider
+	.state('home', {
+		url: '/',
+		templateUrl: 'index.html',
+		controller: 'homeCtrl'
+	})
+	.state('new-story', {
+		url: '/new-story',
+		templateUrl: '/views/text-editor.html'
+		//controller: 'textEditorCtrl'
+	});
+
+	$urlRouterProvider.otherwise('/')
+})
+angular.module('appName')
+.service('articleSvc', function($http) {
+
+this.getHeadlines = function(cmd) {
+	return $http.get('/api/headlines/' + cmd).then(function(resp) {
+		return resp
+	})
+}
+
+this.createNotification = function(notObj) {
+	return $http.put('/api/articlenotification', notObj).then(function(resp) {
+		return resp
+	})
+}
+
+this.unlikeArticle = function(deleteObj) {
+	return $http.put('/api/user/unlikearticle', deleteObj).then(function(resp) {
+		return resp
+	})
+}
+
+this.unbookmarkArticle = function(deleteObj) {
+	return $http.put('/api/user/deletebookmark', deleteObj).then(function(resp) {
+		return resp
+	})
+}
+
+
+})
+angular.module("appName")
 .directive('headerMenu', function(){
 	return {
 		restrict: 'AE',
@@ -19,7 +65,7 @@ angular.module("appName", [])
 						// Create proper textual responses
 						switch($scope.notifications[i].action) {
 							case 'l':
-							$scope.notifications[i].action = 'PLEASE PLEAqweqweSE CHANGE';
+							$scope.notifications[i].action = 'PLEASEsdfsdfHANGE';
 							break;
 							case 'b':
 							$scope.notifications[i].action = 'bookmarked your';
@@ -59,7 +105,68 @@ angular.module("appName", [])
 			})	
 		}
 	}
-}).directive('makeTagsSticky', function($window) {
+}).directive('headerMenuForWriting', function(){
+	return {
+		restrict: 'AE',
+		templateUrl: '/views/directives/header-for-writing.html',
+		controller: function($scope, headerSvc) {
+			$scope.search = true
+			$scope.userMenu = true
+			$scope.notificationsMenu = true
+			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
+				$scope.notifications = resp.data
+
+				for (var i = 0; i < $scope.notifications.length; i++) {
+					
+					$scope.notifications[i].title = ''
+
+					for (var prop in $scope.notifications[i]) {
+
+						// Create proper textual responses
+						switch($scope.notifications[i].action) {
+							case 'l':
+							$scope.notifications[i].action = 'PLEASEsdfsdfHANGE';
+							break;
+							case 'b':
+							$scope.notifications[i].action = 'bookmarked your';
+							break;
+							case 'f':
+							$scope.notifications[i].action = 'followed you';
+							break;
+							case 's':
+							$scope.notifications[i].action = 'shared your';
+							break;
+							case 'r':
+							$scope.notifications[i].action = 'responded to';
+							break;
+						}
+					}
+
+					//When using asynch calls within a loop
+					//you need to use a closure to capute the value of i at each iteration
+					if ($scope.notifications[i].article === true) {
+						(function(i) {
+							headerSvc.getArticleTitle($scope.notifications[i].action_on_id)
+							.then(function(resp) {
+								$scope.notifications[i].title = ' your article ' + resp.data[0].title
+							})
+						})(i);	
+					}
+
+					if ($scope.notifications[i].response === true) {
+						(function(i) {
+							headerSvc.getArticleTitleByResponse($scope.notifications[i].action_on_id)
+							.then(function(resp) {
+								$scope.notifications[i].title = resp.data[0].title
+							})
+						})(i);
+					}
+				}
+			})	
+		}
+	}
+})
+.directive('makeTagsSticky', function($window) {
 	var win = angular.element($window)
 	return {
 		restrict: 'AE',
@@ -72,41 +179,8 @@ angular.module("appName", [])
 		}
 	}
 })
-angular.module('appName').service('articleSvc', function($http) {
-
-this.getHeadlines = function(cmd) {
-	return $http.get('/api/headlines/' + cmd).then(function(resp) {
-		return resp
-	})
-}
-
-this.createNotification = function(notObj) {
-	return $http.put('/api/articlenotification', notObj).then(function(resp) {
-		return resp
-	})
-}
-
-this.unlikeArticle = function(deleteObj) {
-	return $http.put('/api/user/unlikearticle', deleteObj).then(function(resp) {
-		return resp
-	})
-}
-
-this.unbookmarkArticle = function(deleteObj) {
-	return $http.put('/api/user/deletebookmark', deleteObj).then(function(resp) {
-		return resp
-	})
-}
-
-
-})
-angular.module("appName").controller("mainCtrl", function($scope, mainSvc) {
-	
-$scope.ctrlTest = "Controller is working."
-$scope.svcTest = mainSvc.test;
-
-})
-angular.module('appName').service('headerSvc', function($http) {
+angular.module('appName')
+.service('headerSvc', function($http) {
 
 this.getArticleTitleByResponse = function(id) {
 	return $http.get('/api/article/response/' + id).then(function(resp) {
@@ -127,34 +201,14 @@ this.getNotifications = function() {
 }
 
 })
-angular.module('appName').controller('homeCtrl', function($scope, homeSvc, articleSvc, userSvc) {
+angular.module('appName')
+.controller('homeCtrl', function($scope, homeSvc, articleSvc, userSvc) {
 
 	var userID = 3
 	//takes user ID as parameter
 	homeSvc.getUserTags(userID).then(function(resp) {
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
-
-	$scope.bookmarkArticle = function bookmarkArticle (id) {
-		$scope.isBookmarkActive = !$scope.isBookmarkActive
-		if ($scope.isBookmarkActive === true) {
-			var obj = {
-				article_id_array : ',' + $scope.article.id,
-				article_id_just_int : $scope.article.id,
-				user_id : userID,
-				user_id_notified: $scope.article.author_id,
-				action: "B",
-				date : new Date(),
-				article_boolean : true,
-				response_boolean: false,
-				self_boolean: false
-			}
-			articleSvc.likedArticle(obj).then(function(resp) {
-				console.log("Bookmarked!")
-			})
-		}
-	}
-
 
 	
 }).directive('sideMenu', function() {
@@ -194,8 +248,7 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 
 
 					//check to see if article ID is present in the user's liked list
-					console.log("typeof articleid: " + typeof $scope.articles[0].id) //number
-					console.log("typeof results: " + typeof userArticlesResults.articles_liked) //string
+
 
 					var articles = userArticlesResults.articles_liked.split(',').map(Number)
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
@@ -292,7 +345,8 @@ angular.module('appName').controller('homeCtrl', function($scope, homeSvc, artic
 
 	};
 })
-angular.module('appName').service('homeSvc', function($http) {
+angular.module('appName')
+.service('homeSvc', function($http) {
 
 //user ID as parameter
 this.getUserTags = function(id) {
@@ -309,12 +363,8 @@ this.getUserTags = function(id) {
 
 
 })
-angular.module("appName").service("mainSvc", function() {
-	
-this.test = "Service is working";
-
-})
-angular.module('appName').service('userSvc', function($http) {
+angular.module('appName')
+.service('userSvc', function($http) {
 
 
 

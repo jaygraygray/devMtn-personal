@@ -1,3 +1,4 @@
+@import "../_variables.scss";
 
 .author-bio a  {
  color: $green !important;
@@ -50,7 +51,7 @@
 	border-color:#f1f1f1;
 	margin-top:36px;
 	font-size: .7rem;
-	color:#bdbdbd ;
+	color:$light-gray;
 	line-height:14px;
 	padding-right:18px;
 	padding-left:18px;
@@ -62,7 +63,7 @@
 
 .tag {
 	font-size:.7rem;
-	color:#bdbdbd;
+	color:$light-gray;
 	display:inline-block;
 }
 
@@ -104,21 +105,21 @@
 
 .read-more {
 	font-size:.7rem;
-	color:#bdbdbd;
+	color:$light-gray;
 	margin-bottom:12px;
 }
 
 .story-container a {
-	color:#000;
+	color:$dark-gray;
 }
 .story-container a:active {
-	color:#000;
+	color:$dark-gray;
 }
 .story-container a:hover {
-	color:#000;
+	color:$dark-gray;
 }
 .story-container a:visited {
-	color:#000;
+	color:$dark-gray;
 }
 
 .bookmark-unclicked {

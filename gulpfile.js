@@ -12,7 +12,7 @@ gulp.task('js', function() { //type "gulp css" in command line to run task
 })
 
 gulp.task('css', function() {
-	gulp.src(['public/style/fonts.css', 'public/**/*.scss'])
+	gulp.src(['public/style/fonts.css', 'public/style/home.scss', 'public/**/*.scss'])
 	.pipe(sass().on('error', sass.logError))
 	.pipe(concat('style.css'))
 	.pipe(gulp.dest('./public'))
@@ -25,5 +25,5 @@ gulp.task('watch', function() {
 })
 
 
-gulp.task('default', ['watch'])
+gulp.task('default', ['js', 'css'])
 

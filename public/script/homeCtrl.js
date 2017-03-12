@@ -1,31 +1,11 @@
-angular.module('appName').controller('homeCtrl', function($scope, homeSvc, articleSvc, userSvc) {
+angular.module('appName')
+.controller('homeCtrl', function($scope, homeSvc, articleSvc, userSvc) {
 
 	var userID = 3
 	//takes user ID as parameter
 	homeSvc.getUserTags(userID).then(function(resp) {
 		$scope.tags = resp.data[0].tags.split(', ')
 	})
-
-	// $scope.bookmarkArticle = function bookmarkArticle (id) {
-	// 	$scope.isBookmarkActive = !$scope.isBookmarkActive
-	// 	if ($scope.isBookmarkActive === true) {
-	// 		var obj = {
-	// 			article_id_array : ',' + $scope.article.id,
-	// 			article_id_just_int : $scope.article.id,
-	// 			user_id : userID,
-	// 			user_id_notified: $scope.article.author_id,
-	// 			action: "B",
-	// 			date : new Date(),
-	// 			article_boolean : true,
-	// 			response_boolean: false,
-	// 			self_boolean: false
-	// 		}
-	// 		articleSvc.likedArticle(obj).then(function(resp) {
-	// 			console.log("Bookmarked!")
-	// 		})
-	// 	}
-	// }
-
 
 	
 }).directive('sideMenu', function() {

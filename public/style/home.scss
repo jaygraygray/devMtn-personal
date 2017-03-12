@@ -1,7 +1,4 @@
-$green: #00AB6C;
-$dark-gray: 
-$light-gray: #BDBDBD;
-
+@import "_variables.scss";
 
 .side-bar-header {
 	margin-top:42px;
@@ -33,7 +30,16 @@ $light-gray: #BDBDBD;
 }
 
 .side-bar-body a {
-	color:#000;
+	color:$dark-gray;
+}
+.side-bar-body a:visited {
+	color:$dark-gray;
+}
+.side-bar-body a:hover {
+	color:$dark-gray;
+}
+.side-bar-body a:active {
+	color:$dark-gray;
 }
 
 .side-bar-profile {
