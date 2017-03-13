@@ -4,6 +4,7 @@ angular.module("appName")
 		restrict: 'AE',
 		templateUrl: '/views/directives/header.html',
 		controller: function($scope, headerSvc) {
+			$scope.dotMenu = true
 			$scope.search = true
 			$scope.userMenu = true
 			$scope.notificationsMenu = true
@@ -64,9 +65,13 @@ angular.module("appName")
 		restrict: 'AE',
 		templateUrl: '/views/directives/header-for-writing.html',
 		controller: function($scope, headerSvc) {
+			$scope.publishMenu = true
+
+			$scope.dotMenu = true
 			$scope.search = true
 			$scope.userMenu = true
 			$scope.notificationsMenu = true
+
 			$scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 				$scope.notifications = resp.data
 
@@ -100,7 +105,7 @@ angular.module("appName")
 					//you need to use a closure to capute the value of i at each iteration
 					if ($scope.notifications[i].article === true) {
 						(function(i) {
-							hea/giphderSvc.getArticleTitle($scope.notifications[i].action_on_id)
+							headerSvc.getArticleTitle($scope.notifications[i].action_on_id)
 							.then(function(resp) {
 								$scope.notifications[i].title = ' your article ' + resp.data[0].title
 							})

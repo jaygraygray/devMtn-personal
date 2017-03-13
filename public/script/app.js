@@ -9,8 +9,8 @@ $stateProvider
 	})
 	.state('new-story', {
 		url: '/new-story',
-		templateUrl: '/views/text-editor.html'
-		//controller: 'textEditorCtrl'
+		templateUrl: '/views/text-editor.html',
+		controller: 'draftCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')

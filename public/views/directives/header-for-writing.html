@@ -14,23 +14,35 @@
 	</div>
 	<div class="col-xs-7 col-sm-7 col-md-7 header-nav-container">
 		<span class="share">Share</span>
-		<span class="publish">Publish</span>
+		<span class="publish" ng-click="publishMenu = !publishMenu">Publish</span>
 		<span class="publish-down-carat">&nbsp;</span>
 		
-		<img src="/images/dot-menu.svg" class="dot-menu" ng-click="dotMenu = ! dotMenu">
-		<img src="/images/notification.svg" class="header-nav-buttons" ng-click="notificationsMenu = !notificationsMenu">
+		<img src="/images/dot-menu.svg" class="dot-menu" ng-click="dotMenu = !dotMenu">
+		<img src="/images/notification.svg" class="header-nav-buttons"
+		ng-click="notificationsMenu = !notificationsMenu">
 		<img src="/images/profile.png" class="profile-picture" ng-click="userMenu = !userMenu">
 	</div>
 </div>
 </div>
-
+{{tags}}
 <publish-menu>
-
+<div class="publish-menu-container" ng-hide="publishMenu">
+<h1>Ready to publish?</h1>
+Add or change tags (up to 5) so your story reaches more people: <br>
+<input type="text" class="article-tags" />
+	<div class="connect">
+		Connect to share on Twitter <br>
+		Connect to share on Facebook <br>
+	</div>
+<div class="butt-holder">
+	<button class="publish-button">  Publish  </button>
+</div>
+</div>
 </publish-menu>
 
 
 <dot-menu>
-<div class="dot-menu-container">
+<div class="dot-menu-container" ng-hide="dotMenu">
 	Actions
 	<ul class="dot-menu-container-section">
 		<li><a href="#">Add to publication</a></li>

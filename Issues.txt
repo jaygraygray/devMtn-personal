@@ -4,3 +4,6 @@ Keep track of all places userID is manually entered.
 	homeCtrl.js
 	userSvc.js
 
+User notifications/User Menu don't display when clicked while
+writing new Story.
+	-- Most likely a positioning flub

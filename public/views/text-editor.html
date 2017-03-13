@@ -6,6 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ng-tags-input/3.1.1/ng-tags-input.bootstrap.css">
    <link rel="stylesheet" href="style.css">
 
 <ui-view>
@@ -15,8 +16,8 @@
 
 
 <body>
-
 <header-menu-for-writing></header-menu-for-writing>
+
 
 <!-- BODY -->
 <div class="row">
@@ -39,7 +40,21 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
-<script src="../script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+<script src="/script/app.js"></script>
+
+<script src="/script/controllers/draftCtrl.js"></script>
+<script src="/script/controllers/homeCtrl.js"></script>
+
+
+<script src="/script/directives/headerDirectives.js"></script>
+ 
+
+<script src="/script/services/articleSvc.js"></script>
+<script src="/script/services/headerSvc.js"></script>
+<script src="/script/services/homeSvc.js"></script>
+<script src="/script/services/userSvc.js"></script>
+<script src="/script/services/draftSvc.js"></script>
 </ui-view>
 </body>
 </html>
