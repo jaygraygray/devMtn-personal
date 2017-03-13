@@ -2,6 +2,7 @@ angular.module("appName")
 .directive('headerMenu', function(){
 	return {
 		restrict: 'AE',
+		scope: {},
 		templateUrl: '/views/directives/header.html',
 		controller: function($scope, headerSvc) {
 			$scope.dotMenu = true
@@ -63,10 +64,10 @@ angular.module("appName")
 }).directive('headerMenuForWriting', function(){
 	return {
 		restrict: 'AE',
+		scope: {},
 		templateUrl: '/views/directives/header-for-writing.html',
 		controller: function($scope, headerSvc) {
 			$scope.publishMenu = true
-
 			$scope.dotMenu = true
 			$scope.search = true
 			$scope.userMenu = true

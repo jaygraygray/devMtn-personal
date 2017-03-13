@@ -17,14 +17,15 @@
 		<span class="publish" ng-click="publishMenu = !publishMenu">Publish</span>
 		<span class="publish-down-carat">&nbsp;</span>
 		
-		<img src="/images/dot-menu.svg" class="dot-menu" ng-click="dotMenu = !dotMenu" />
-		<img src="/images/notification.svg" class="header-nav-buttons"
-		ng-click="notificationsMenu = !notificationsMenu" />
-		<img src="/images/profile.png" class="profile-picture" ng-click="userMenu = !userMenu" />
+		<div ng-click="dotMenu = !dotMenu"><img src="/images/dot-menu.svg" class="dot-menu"></div>
+		<div ng-click="notificationsMenu = !notificationsMenu"> <img src="/images/notification.svg" class="header-nav-buttons"
+		/></div>
+		<div ng-click="userMenu = !userMenu"><img src="/images/profile.png" class="profile-picture"></div>
 	</div>
 </div>
 </div>
-{{tags}}
+
+
 <publish-menu>
 <div class="publish-menu-container" ng-hide="publishMenu">
 <h1>Ready to publish?</h1>
@@ -65,7 +66,8 @@ Add or change tags (up to 5) so your story reaches more people: <br>
 	<ul class="dot-menu-container-section">
 		<li><a href="#">Hits and keyboard shortcuts</a></li>
 		<li><a href="#">More help</a></li>
-	</ul>	
+	</ul>
+</div>	
 </dot-menu>
 
 <notifications>
