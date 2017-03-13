@@ -285,3 +285,30 @@ h1 {
 	border-style:none;
 	margin-right:12px;
 }
+
+.share {
+	font-size:.9rem;
+	color: $light-gray;
+	margin-right:24px;
+}
+
+.publish {
+	font-size:.9rem;
+	color: $green;
+
+}
+
+.publish-down-carat {
+	background-color: $green;
+	-webkit-mask: url('/images/down-carat.svg') center no-repeat;
+	margin-right:24px;
+	margin-left:6px;
+	margin-bottom:4px;
+	width:12px
+}
+
+.dot-menu {
+	width:24px;
+	opacity:.5;
+	margin-right:24px;
+}

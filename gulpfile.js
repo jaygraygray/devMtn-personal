@@ -12,7 +12,7 @@ gulp.task('js', function() { //type "gulp css" in command line to run task
 })
 
 gulp.task('css', function() {
-	gulp.src(['public/style/fonts.css', 'public/style/home.scss', 'public/**/*.scss'])
+	gulp.src(['public/style/fonts.css', 'public/style/_variables.scss', 'public/**/*.scss'])
 	.pipe(sass().on('error', sass.logError))
 	.pipe(concat('style.css'))
 	.pipe(gulp.dest('./public'))
@@ -20,10 +20,14 @@ gulp.task('css', function() {
 
 
 gulp.task('watch', function() {
-	gulp.watch('public/styles/**/*.scss', ['css'])
-	gulp.watch('public/scripts/**/*.js', ['js'])
+	gulp.watch('public/style/**/*.scss', ['css'])
+	gulp.watch('public/views/*.html', ['css'])
+	gulp.watch('public/script/**/*.js', ['js'])
+	nodemon({
+		script: 'server.js'
+	})
+
 })
 
 
-gulp.task('default', ['js', 'css'])
-
+gulp.task('default', ['js', 'css', 'watch'])

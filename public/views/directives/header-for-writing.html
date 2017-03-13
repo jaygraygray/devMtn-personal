@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="/style/directives/header.css" />
-
 <body>
 
 <div class="row">
@@ -15,33 +13,40 @@
 	</a>
 	</div>
 	<div class="col-xs-7 col-sm-7 col-md-7 header-nav-container">
-		<input type="text" class="search" placeholder="Search Medium" ng-hide="search">
+		<span class="share">Share</span>
+		<span class="publish">Publish</span>
+		<span class="publish-down-carat">&nbsp;</span>
+		
+		<img src="/images/dot-menu.svg" class="dot-menu" ng-click="dotMenu = ! dotMenu">
 		<img src="/images/notification.svg" class="header-nav-buttons" ng-click="notificationsMenu = !notificationsMenu">
 		<img src="/images/profile.png" class="profile-picture" ng-click="userMenu = !userMenu">
 	</div>
 </div>
 </div>
 
+<publish-menu>
 
-<make-tags-sticky class="tagholder">
-<div class="row white">
-	<div class="col-sm-1 col-md-1"></div>
-	<div class="col-xs-12 col-sm-11 col-md-10 tags-container">
-	<ul class="tags-ul">
-		<li><span class="for-you">For you</span></li>
-		<li>Top stories</li>
-		<li>Editor's Picks</li>
-		<li>Politics</li>
-		<li>Technology</li>
-		<li>Humans</li>
-		<li>Culture</li>
-		<li>Business</li>
-		<li>Black history</li>
-		<li>Bookmarks</li>
+</publish-menu>
+
+
+<dot-menu>
+<div class="dot-menu-container">
+	Actions
+	<ul class="dot-menu-container-section">
+		<li><a href="#">Add to publication</a></li>
+		<li><a href="#">Revision history</a></li>
+		<li><a href="#">Delete story</a></li>
 	</ul>
-	</div>
-</div></make-tags-sticky>
-
+	<ul class="dot-menu-container-section">
+		<li><a href="#">Customize title/subtitle</a></li>
+		<li><a href="#">Customize link</a></li>
+	</ul>
+	Help
+	<ul class="dot-menu-container-section">
+		<li><a href="#">Hits and keyboard shortcuts</a></li>
+		<li><a href="#">More help</a></li>
+	</ul>	
+</dot-menu>
 
 <notifications>
 <div class="notifications-container" ng-hide="notificationsMenu">
@@ -59,6 +64,9 @@
 </div>
 </notifications>
 
+
+<bookmarks>
+</bookmarks>
 
 <usermenu>
 <div class="user-menu-container" ng-hide="userMenu">
