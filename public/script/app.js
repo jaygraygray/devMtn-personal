@@ -1,4 +1,4 @@
-angular.module("appName", ['ui.router'])
+angular.module("appName", ['ui.router', 'ngTagsInput'])
 .config(function($stateProvider, $urlRouterProvider) {
 console.log("as;ldkfjas;dfghjklkjhgfdlkfj")
 $stateProvider

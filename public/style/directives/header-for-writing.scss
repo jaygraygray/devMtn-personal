@@ -1,5 +1,4 @@
 @import "../_variables.scss";
-
 .share {
 	font-size:.9rem;
 	color: $light-gray;
@@ -29,26 +28,33 @@
 
 .dot-menu-container {
 	border-radius:2px;
-	width:180px;
-	border-width:1px 1px 0 1px;
+	width:285px;
+	border-width:1px 1px 1px 1px;
 	border-style:solid;
 	border-color:$light-gray;
 	position: absolute;
 	top:70px;
-	right:0;
+	right:68px;
 	z-index: 1;
 	line-height:12px;
-	background-color:#fff;
+	background-color:#fff;	
+	padding:12px;
+	line-height:18px;
+}
+
+.dot-menu-container-section {
+	list-style: none;
+	line-height:28px;
+	font-size:1.2rem;
 }
 
 .dot-menu-container h1 {
 	font-weight:100;
+	font-size:.7rem;
+	color:$light-gray
 }
 
-.article-tags {
-	border-width:0;
-	font-size:.8rem;
-}
+
 
 .connect {
 	border-width: 1px 0 1px 0;
@@ -69,14 +75,14 @@
 	z-index: 1;
 	line-height:12px;
 	background-color:#fff;
-	font-size:1rem;	
-	padding:12px;
+	font-size:.8rem;	
+	padding:18px;
 	line-height:18px;
 }
 
 .publish-menu-container h1 {
 	font-weight:100;
-	font-size:1.5rem;
+	font-size:1rem;
 }
 
 .connect {
@@ -102,4 +108,17 @@
 .butt-holder {
 	width:100%;
 	text-align:center;
+}
+
+.tag-list {
+	width:100%;
+	list-style:none;
+	display:flex;
+	flex-wrap: wrap;
+}
+.tag-list .host {
+	border-width:0;
+	font-size:.8rem;
+	width:100%;
+	margin: 24px 0 24px 0;
 }

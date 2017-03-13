@@ -3,10 +3,7 @@ angular.module('appName')
 
 
 $scope.tags = [
-			{text:'Chicken Wings'},
-			{text: 'Mice'},
-			{text: 'Tag One'},
-			{text: 'Groceries'}
+
 			]
 
 })
