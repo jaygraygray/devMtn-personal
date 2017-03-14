@@ -101,7 +101,7 @@
         modelChanged = false,
         editorChanged = false,
         editor
-      
+      console.log($scope)
 
       this.validate = function (text) {
         if (this.maxLength) {
@@ -213,13 +213,13 @@
 // END AUTO-SAVE CODE
 /////////////////////////////////////////////////////////
 
-
         editor.on('text-change', function (delta, oldDelta, source) {
-          //here, reset the SaveTimer
-       //   time = 500
+
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
       
+
+          //initialize autosave feature
           this.saveMe()          
 
           if (html === '<p><br></p>') {
