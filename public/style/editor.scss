@@ -1,0 +1,73 @@
+
+
+#editor-container {
+  display: block;
+  font-family: 'Open Sans', Helvetica, sans-serif;
+  font-size: 1.2em;
+  height: 200px;
+  margin: 0 auto;
+  width: 450px;
+}
+
+#tooltip-controls, #sidebar-controls {
+  display: flex;
+  flex-display: space-around; 
+  text-align: center;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 24px;
+  margin:12px;
+  text-align: center;
+}
+button:active, button:focus {
+  outline: none;
+}
+
+.toolbar {
+  display: none;
+  z-index:2;
+}
+
+.editor {
+  border-style:none;
+  background-color: white;
+  font-size:1.5rem;
+  font-family: Georgia;
+}
+
+
+ul.tools {
+    z-index:2;
+    display: none;
+    list-style: none;
+    box-shadow: 0px 0px 4px rgba(0,0,0,.5);
+    border: solid 1px #000;
+    position: absolute;
+    background: #000;
+    border-radius:30px;
+    padding: 9px;
+}
+ul.tools li {
+    display: inline-block;
+    border: solid 1px #000;
+    margin: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.ql-bold {
+  margin:0;
+}
+
+.ql-italic {
+  margin:0;
+}
+
+.ql-link {
+  margin: 0;
+}

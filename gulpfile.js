@@ -4,12 +4,12 @@ var gulp = require('gulp')
 	watch = require('gulp-watch')
 	nodemon = require('gulp-nodemon')
 
-gulp.task('js', function() { //type "gulp css" in command line to run task
+// gulp.task('js', function() { //type "gulp css" in command line to run task
 	
-	gulp.src(['public/script/**/*.js'])
-	.pipe(concat('script.js'))
-	.pipe(gulp.dest('./public'))
-})
+// 	gulp.src(['public/script/**/*.js'])
+// 	.pipe(concat('script.js'))
+// 	.pipe(gulp.dest('./public'))
+// })
 
 gulp.task('css', function() {
 	gulp.src(['public/style/fonts.css', 'public/style/_variables.scss', 'public/**/*.scss'])
@@ -22,7 +22,7 @@ gulp.task('css', function() {
 gulp.task('watch', function() {
 	gulp.watch('public/style/**/*.scss', ['css'])
 	gulp.watch('public/views/*.html', ['css'])
-	gulp.watch('public/script/**/*.js', ['js'])
+//	gulp.watch('public/script/**/*.js', ['js'])
 	nodemon({
 		script: 'server.js'
 	})
@@ -30,4 +30,4 @@ gulp.task('watch', function() {
 })
 
 
-gulp.task('default', ['js', 'css', 'watch'])
+gulp.task('default', ['css', 'watch'])

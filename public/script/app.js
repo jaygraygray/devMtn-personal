@@ -1,4 +1,4 @@
-angular.module("appName", ['ui.router'])
+angular.module("appName", ['ui.router', 'ngTagsInput', 'ngQuill'])
 .config(function($stateProvider, $urlRouterProvider) {
 console.log("as;ldkfjas;dfghjklkjhgfdlkfj")
 $stateProvider
@@ -9,8 +9,8 @@ $stateProvider
 	})
 	.state('new-story', {
 		url: '/new-story',
-		templateUrl: '/views/text-editor.html'
-		//controller: 'textEditorCtrl'
+		templateUrl: '/views/text-editor.html',
+		controller: 'draftCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')
