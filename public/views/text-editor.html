@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  
+  <link href="https://cdn.quilljs.com/1.2.2/quill.snow.css" rel="stylesheet">
    <link rel="stylesheet" href="style.css">
 
 <ui-view>
@@ -27,7 +27,34 @@
 	<div class="col-sm-10 col-md-8">
 
 
-    <!-- <text-editor></text-editor> -->
+<ng-quill-editor
+    ng-model="title" class="editor" id="editor" ng-keyup="sayHi()">
+    <ng-quill-toolbar class="toolbar">
+        <div>
+            <span class="ql-formats">
+                <button class="ql-bold" ng-attr-title="{{'Bold'}}"></button>
+                <button class="ql-italic" ng-attr-title="{{'Italic'}}"></button>
+                <button class="ql-link" ng-attr-title="{{'Link'}}">{{stuff}}</button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-header" value="1" ng-attr-title="{{'H1'}}">H1</button>
+                <button class="ql-header" value="2" ng-attr-title="{{'H2'}}">H2</button>
+            </span>
+            <span class="ql-formats">
+                <button class="ql-blockquote" ng-attr-title="{{'Quote1'}}">Q1</button>
+                <button class="ql-code-block" ng-attr-title="{{'Quote2'}}">Q2</button>
+            </span>
+            <span class="ql-formats">
+                <select class="ql-align" ng-attr-title="{{'Aligment'}}">
+                    <option selected></option>
+                    <option value="center"></option>
+                    <option value="right"></option>
+                    <option value="justify"></option>
+                </select>
+            </span>
+        </div>
+    </ng-quill-toolbar>
+</ng-quill-editor>
 
 
   </div>
@@ -41,6 +68,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.js"></script>
+
+
 <script src="/script/app.js"></script>
 
 <script src="/script/controllers/draftCtrl.js"></script>
@@ -55,6 +84,9 @@
 <script src="/script/services/homeSvc.js"></script>
 <script src="/script/services/userSvc.js"></script>
 <script src="/script/services/draftSvc.js"></script>
+
+
+
 </ui-view>
 </body>
 </html>

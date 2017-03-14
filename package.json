@@ -22,7 +22,8 @@
     "cors": "^2.8.1",
     "express": "^4.15.2",
     "express-sessions": "^1.0.6",
-    "massive": "^2.6.0"
+    "massive": "^2.6.0",
+    "ng-quill": "^3.0.0"
   },
   "devDependencies": {
     "gulp": "latest",
