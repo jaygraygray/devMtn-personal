@@ -213,6 +213,54 @@
 // END AUTO-SAVE CODE
 /////////////////////////////////////////////////////////
 
+
+/////////////////////////////////////////////////////////
+// BEGIN MENU CODE
+/////////////////////////////////////////////////////////
+makeMenu = function() {
+   if (!window.x) {
+      x = {};
+  }
+  x.Selector = {};
+  x.Selector.getSelected = function() {
+      var t = '';
+      if (window.getSelection) {
+          t = window.getSelection();
+      } else if (document.getSelection) {
+          t = document.getSelection();
+      } else if (document.selection) {
+          t = document.selection.createRange().text;
+      }
+      return t;
+  }
+
+  console.log("one", action)
+  jQuery(document).on("mouseup", function(e) {
+  var selectedText = x.Selector.getSelected();
+
+  if(selectedText != ''){
+    // console.log("Char Begin: ", selectedText.anchorOffset)
+    // console.log("Char End: ", selectedText.focusOffset)
+      jQuery('.toolbar').css({
+        'display' : 'inline'
+      })
+      jQuery('ul.tools').css({
+          'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
+          'top' : e.pageY + 'px'
+      }).fadeIn(150);
+    } else {
+      jQuery('ul.tools').fadeOut(200);
+    }
+  }); 
+}
+
+    
+
+/////////////////////////////////////////////////////////
+// END MENU CODE
+/////////////////////////////////////////////////////////
+
+
         editor.on('text-change', function (delta, oldDelta, source) {
 
           var html = editorElem.children[0].innerHTML
