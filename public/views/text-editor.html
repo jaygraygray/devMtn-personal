@@ -27,16 +27,15 @@
 	<div class="col-sm-10 col-md-8">
 
 
-<ng-quill-editor
-    ng-model="title" class="editor" id="editor" ng-keyup="sayHi()">
+<ng-quill-editor ng-model="title" class="editor" id="editor">
     <ng-quill-toolbar class="toolbar">
         <div>
-            <span class="ql-formats">
-                <button class="ql-bold" ng-attr-title="{{'Bold'}}"></button>
-                <button class="ql-italic" ng-attr-title="{{'Italic'}}"></button>
-                <button class="ql-link" ng-attr-title="{{'Link'}}">{{stuff}}</button>
-            </span>
-            <span class="ql-formats">
+            <ul class="tools ql-formats" id='tools'>
+                <li><button class="ql-bold" ng-attr-title="{{'Bold'}}"></button></li>
+                <li><button class="ql-italic" ng-attr-title="{{'Italic'}}"></button></li>
+                <li><button class="ql-link" ng-attr-title="{{'Link'}}">{{stuff}}</button></li>
+            </ul>
+<!--        <span class="ql-formats">
                 <button class="ql-header" value="1" ng-attr-title="{{'H1'}}">H1</button>
                 <button class="ql-header" value="2" ng-attr-title="{{'H2'}}">H2</button>
             </span>
@@ -51,7 +50,7 @@
                     <option value="right"></option>
                     <option value="justify"></option>
                 </select>
-            </span>
+            </span> -->
         </div>
     </ng-quill-toolbar>
 </ng-quill-editor>
@@ -68,15 +67,10 @@
 <script>
 
 </script>
+<div id="test">
 This is some text to be tested.
+</div>
 
-
-
-<ul class="tools">
-    <li>B</li>
-    <li>I</li>
-    <li>""</li>
-</ul>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>

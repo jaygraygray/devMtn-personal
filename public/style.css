@@ -26,6 +26,10 @@ button {
 button:active, button:focus {
   outline: none; }
 
+.toolbar {
+  display: none;
+  z-index: 2; }
+
 .editor {
   border-style: none;
   background-color: white;
@@ -33,21 +37,31 @@ button:active, button:focus {
   font-family: Georgia; }
 
 ul.tools {
+  z-index: 2;
   display: none;
   list-style: none;
   box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
   border: solid 1px #000;
   position: absolute;
-  background: #fff; }
+  background: #000;
+  border-radius: 30px;
+  padding: 9px; }
 
 ul.tools li {
   display: inline-block;
-  width: 10px;
-  height: 20px;
   border: solid 1px #000;
   margin: 5px;
   padding: 5px 10px;
   cursor: pointer; }
+
+.ql-bold {
+  margin: 0; }
+
+.ql-italic {
+  margin: 0; }
+
+.ql-link {
+  margin: 0; }
 
 .side-bar-header {
   margin-top: 42px;

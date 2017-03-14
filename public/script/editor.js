@@ -24,24 +24,54 @@ x.Selector.getSelected = function() {
     return t;
 }
 
-var pageX;
-var pageY;
-
 console.log("work")
-    $(document).bind("mouseup", function() {
-        var selectedText = x.Selector.getSelected();
-        if(selectedText != ''){
-          console.log("Char Begin: ", selectedText.anchorOffset)
-          console.log("Char End: ", selectedText.focusOffset)
-            $('ul.tools').css({
-                'left': pageX + 5,
-                'top' : pageY - 55
-            }).fadeIn(150);
-        } else {
-            $('ul.tools').fadeOut(200);
-        }
-    });
-    $(document).on("mousedown", function(e){
-        pageX = e.pageX;
-        pageY = e.pageY;
-    });
+
+$(document).ready(function() {
+
+	var action = true
+
+	if (action) {
+		action = false;
+		console.log("one", action)
+		$(document).on("mouseup", function(e) {
+		var selectedText = x.Selector.getSelected();
+
+		if(selectedText != ''){
+		  // console.log("Char Begin: ", selectedText.anchorOffset)
+		  // console.log("Char End: ", selectedText.focusOffset)
+		    $('.toolbar').css({
+		    	'display' : 'inline'
+		    })
+		    $('ul.tools').css({
+		        'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
+		        'top' : e.pageY + 'px'
+		    }).fadeIn(150);
+			} else {
+		    $('ul.tools').fadeOut(200);
+			}
+		});
+		
+}
+	if (!action) {
+		console.log("two" , action)
+		$(document).on("mouseup", function(e) {
+		var selectedText = x.Selector.getSelected();
+
+		if(selectedText != ''){
+		  // console.log("Char Begin: ", selectedText.anchorOffset)
+		  // console.log("Char End: ", selectedText.focusOffset)
+		    $('.toolbar').css({
+		    	'display' : 'inline'
+		    })
+		    $('ul.tools').fadeIn(150);
+			} else {
+		    $('ul.tools').fadeOut(200);
+			}
+		});
+	}
+
+
+
+})
+
+
