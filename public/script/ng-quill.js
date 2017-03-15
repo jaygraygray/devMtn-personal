@@ -45,7 +45,7 @@ app = angular.module('ngQuill', [])
         ]
       },
       theme: 'bubble',
-      placeholder: 'Begin your story ...',
+      placeholder: '',
       readOnly: false,
       boundary: document.body
     }
@@ -107,6 +107,20 @@ app = angular.module('ngQuill', [])
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
     controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
+
+      //jQuery('.actual-menu').hide();
+
+      jQuery('.base').on('click', function() {
+        //jQuery('.actual-menu').show();
+        jQuery('.menu-item').addClass('menu-item-show')
+        jQuery('.base').removeClass('base').addClass('base-clicked')
+          .on('click', function() {
+          jQuery('.menu-item-show').removeClass('menu-item-show').addClass('menu-item')
+          jQuery('.base-clicked').removeClass('base-clicked').addClass('base')
+        })
+      });
+
+
 
       var config = {},
         content,
@@ -190,11 +204,13 @@ app = angular.module('ngQuill', [])
         editor = new Quill(editorElem, config)
 
         this.ready = true
-
-
+       
+        //editor.insertText(6, '\nTell your story...')
         // mark model as touched if editor lost focus
         editor.on('selection-change', function (range, oldRange, source) {
-
+             ///////////////////////////////////////////////
+             // BEGIN USER SELECTION
+             ///////////////////////////////////////////////
           var range = editor.getSelection();
           if (range) {
             if (range.length == 0) {
@@ -214,7 +230,10 @@ app = angular.module('ngQuill', [])
 
               this.top = bounds.top
               this.left = bounds.left
-             //draftSvc.makeMenu(this.top, this.left)
+             
+             ///////////////////////////////////////////////
+             // END USER SELECTION
+             ///////////////////////////////////////////////
             }
           } else {
             console.log('User cursor is not in editor');
@@ -239,6 +258,8 @@ app = angular.module('ngQuill', [])
           }.bind(this))
         }.bind(this))
 
+
+        
         editor.on('text-change', function (delta, oldDelta, source) {
 
           var html = editorElem.children[0].innerHTML
