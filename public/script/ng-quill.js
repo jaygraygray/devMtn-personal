@@ -107,13 +107,13 @@ app = angular.module('ngQuill', [])
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
     controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
+
       var config = {},
         content,
         editorElem,
         modelChanged = false,
         editorChanged = false,
         editor
-      
 
       this.validate = function (text) {
         if (this.maxLength) {
@@ -191,8 +191,35 @@ app = angular.module('ngQuill', [])
 
         this.ready = true
 
+
         // mark model as touched if editor lost focus
         editor.on('selection-change', function (range, oldRange, source) {
+
+          var range = editor.getSelection();
+          if (range) {
+            if (range.length == 0) {
+              console.log('User cursor is at index', range.index);
+            } else {
+              var text = editor.getText(range.index, range.length);
+
+              console.log('User has highlighted: ', text);
+              
+
+              var location = range.index - range.length
+              var mid = editor.getText(location)
+              var bounds = editor.getBounds(location)
+              console.log('location: ', location)
+              console.log('getBounds: TOP: ', bounds.top)
+             console.log('getBounds: LEFT: ', bounds.left)
+
+              this.top = bounds.top
+              this.left = bounds.left
+              draftSvc.makeMenu(this.top, this.left)
+            }
+          } else {
+            console.log('User cursor is not in editor');
+          }
+
           if (this.onSelectionChanged) {
 
             this.onSelectionChanged({
@@ -216,7 +243,7 @@ app = angular.module('ngQuill', [])
 
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
-      
+           
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////
@@ -266,7 +293,15 @@ app = angular.module('ngQuill', [])
 
       //if there are changes, and if X TIME has passed without a keydown, execute function. 
       //OR if there are changes and enter is hit execute function
-      draftSvc.makeMenu()
+      ///////////////////////////////////////////////////////
+      //initialize menu 
+      ////////////////////////////////////////////////////////
+      
+      ///////////////////////////////////////////////////////
+      //end menu 
+      ////////////////////////////////////////////////////////
+
+
 
 
     }]

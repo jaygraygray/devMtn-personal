@@ -25,7 +25,12 @@ this.saveMe = function() {
   
 this.xCoord;
 this.yCoord;
-this.makeMenu = function() {
+this.makeMenu = function(top, left) {
+
+	///////////////////////
+	// 	GETS CURRENT SELECTION
+	///////////////////////
+
      if (!window.x) {
         x = {};
     }
@@ -43,7 +48,9 @@ this.makeMenu = function() {
         return t;
     }
   
-  //var selectedText = x.Selector.getSelected();
+// OPENS MENU
+//////////////////////////////////
+ 
 $(document).on("mouseup", function(e) {
 var selectedText = x.Selector.getSelected();
 
@@ -54,8 +61,8 @@ if(selectedText != ''){
       'display' : 'inline'
     })
     $('ul.tools').css({
-        'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
-        'top' : e.pageY + 'px'
+        'left': left + 50 + 'px', //use quill character/line IDs for correct targeting
+        'top' : top + 50 + 'px'
     }).fadeIn(150);
   } else {
     $('ul.tools').fadeOut(200);
@@ -72,8 +79,18 @@ if(selectedText != ''){
 // END MENU CODE
 /////////////////////////////////////////////////////////
 
+// this.makeElementAndLogDimensions = function(tag, id, content) {
+// 	var result = document.createElement(tag)
+// 	result.innerHTML = content
+// 	document.body.appendChild(result)
+// 	var rect = result.getBoundingClientRect();
+// 	console.log(rect)
+// 	//wrap text in a span.
+// 	//get width of span.
+// 	//use to calc x/y, plug into menu location
 
-
+// }
+//draftSvc.makeElementAndLogDimensions("span", "content", text)
 
 
 })
