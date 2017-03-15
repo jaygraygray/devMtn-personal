@@ -63,6 +63,9 @@ ul.tools li {
 .ql-link {
   margin: 0; }
 
+.text-holder {
+  visibility: none; }
+
 .side-bar-header {
   margin-top: 42px;
   padding-bottom: 12px;

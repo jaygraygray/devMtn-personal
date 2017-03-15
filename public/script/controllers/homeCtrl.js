@@ -31,7 +31,7 @@ angular.module('appName')
 		controller : function($scope, articleSvc, userSvc) {
 			//grab article IDs user has liked
 			userSvc.getArticleLikes(3).then(function(resp) {
-				console.log(resp.data[0])
+				
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
 			//get the headline info for articles according to $scope.text input

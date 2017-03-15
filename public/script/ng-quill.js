@@ -13,6 +13,85 @@
   // declare ngQuill module
   app = angular.module('ngQuill', [])
 
+app.service('draftSvc', function() {
+///////////////////////////////////////////////////////
+// AUTO-SAVE CODE
+//////////////////////////////////////////////////////
+
+// this.timer;
+// this.saveMe = function() {
+//   clearTimeout(timer)
+//   timer = setTimeout(function() {
+//       console.log("Saved")
+//     }, 4000) 
+// }
+// /////////////////////////////////////////////////////////
+// // END AUTO-SAVE CODE
+// /////////////////////////////////////////////////////////
+
+
+// /////////////////////////////////////////////////////////
+// // BEGIN MENU CODE
+// /////////////////////////////////////////////////////////
+
+  
+  
+// this.makeMenu = function() {
+//      if (!window.x) {
+//         x = {};
+//     }
+//     x.Selector = {};
+//     x.Selector.getSelected = function() {
+//         var t = '';
+//         if (window.getSelection) {
+//             t = window.getSelection();
+//         } else if (document.getSelection) {
+//             t = document.getSelection();
+//         } else if (document.selection) {
+//             t = document.selection.createRange().text;
+//         }
+//         return t;
+//     }
+//   }
+//   var selectedText = x.Selector.getSelected();
+// jQuery(document).on("mouseup", function(e) {
+// //var selectedText = x.Selector.getSelected();
+
+// if(selectedText != ''){
+//   // console.log("Char Begin: ", selectedText.anchorOffset)
+//   // console.log("Char End: ", selectedText.focusOffset)
+//     jQuery('.toolbar').css({
+//       'display' : 'inline'
+//     })
+//     jQuery('ul.tools').css({
+//         'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
+//         'top' : e.pageY + 'px'
+//     }).fadeIn(150);
+//   } else {
+//     jQuery('ul.tools').fadeOut(200);
+//   }
+// }); 
+ 
+
+// select the newly styled line
+// select beginning of newly styled line.
+//when a style is applied 
+    
+
+/////////////////////////////////////////////////////////
+// END MENU CODE
+/////////////////////////////////////////////////////////
+
+})
+
+
+
+//////////////////////////////////////////////////////
+// need to add/edit Quill modules
+/////////////////////////////////////////////////////
+
+
+
   app.provider('ngQuillConfig', function () {
     var config = {
       modules: {
@@ -72,6 +151,8 @@
     }
   })
 
+    
+
   app.component('ngQuillEditor', {
     bindings: {
       'modules': '<modules',
@@ -92,16 +173,20 @@
     transclude: {
       'toolbar': '?ngQuillToolbar'
     },
-    
+    /////////////////////////////////////////////////////////////////////////
+    //will have to inject $http and aother services as well
+    /////////////////////////////////////////////////////////////////////////
+
+    // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
-    controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', function ($scope, $element, $timeout, $transclude, ngQuillConfig) {
+    controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'headerSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, HeaderSvc) {
       var config = {},
         content,
         editorElem,
         modelChanged = false,
         editorChanged = false,
         editor
-      console.log($scope)
+      
 
       this.validate = function (text) {
         if (this.maxLength) {
@@ -123,8 +208,10 @@
       }
 
       this.$onChanges = function (changes) {
-        if (changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) {
+          if (changes.ngModel && changes.ngModel.currentValue !== changes.ngModel.previousValue) {
           content = changes.ngModel.currentValue
+
+          
 
           if (editor && !editorChanged) {
             modelChanged = true
@@ -197,78 +284,19 @@
             this.ngModelCtrl.$setTouched()
           }.bind(this))
         }.bind(this))
-        
-///////////////////////////////////////////////////////
-// AUTO-SAVE CODE
-//////////////////////////////////////////////////////
-
-        var timer
-        this.saveMe = function() {
-          clearTimeout(timer)
-          timer = setTimeout(function() {
-              console.log("Saved")
-            }, 4000) 
-        }
-/////////////////////////////////////////////////////////
-// END AUTO-SAVE CODE
-/////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////////////////////////
-// BEGIN MENU CODE
-/////////////////////////////////////////////////////////
-makeMenu = function() {
-   if (!window.x) {
-      x = {};
-  }
-  x.Selector = {};
-  x.Selector.getSelected = function() {
-      var t = '';
-      if (window.getSelection) {
-          t = window.getSelection();
-      } else if (document.getSelection) {
-          t = document.getSelection();
-      } else if (document.selection) {
-          t = document.selection.createRange().text;
-      }
-      return t;
-  }
-
-  console.log("one", action)
-  jQuery(document).on("mouseup", function(e) {
-  var selectedText = x.Selector.getSelected();
-
-  if(selectedText != ''){
-    // console.log("Char Begin: ", selectedText.anchorOffset)
-    // console.log("Char End: ", selectedText.focusOffset)
-      jQuery('.toolbar').css({
-        'display' : 'inline'
-      })
-      jQuery('ul.tools').css({
-          'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
-          'top' : e.pageY + 'px'
-      }).fadeIn(150);
-    } else {
-      jQuery('ul.tools').fadeOut(200);
-    }
-  }); 
-}
-
-    
-
-/////////////////////////////////////////////////////////
-// END MENU CODE
-/////////////////////////////////////////////////////////
-
 
         editor.on('text-change', function (delta, oldDelta, source) {
 
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
       
-
-          //initialize autosave feature
-          this.saveMe()          
+          ///////////////////////////////////////////////////////
+          //initialize autosave 
+          ////////////////////////////////////////////////////////
+          //draftSvc.saveMe()
+          ///////////////////////////////////////////////////////
+          //     end autosave 
+          ////////////////////////////////////////////////////////          
 
           if (html === '<p><br></p>') {
             html = null
@@ -315,5 +343,9 @@ makeMenu = function() {
 
 
     }]
+
   })
+
+
+
 }))
