@@ -6,3 +6,6 @@ Keep track of all places userID is manually entered.
 
 Make display of header components more elegant: only one open at a time. 
 Any off-clicks make current menu disappear.
+
+Highlight menu, if opened a second time, displays in the OLD location. Re-opens second time
+correctly. Need to improve location detection
