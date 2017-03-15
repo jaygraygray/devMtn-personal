@@ -44,7 +44,7 @@ app = angular.module('ngQuill', [])
           ['link', 'image', 'video']                         // link and image, video
         ]
       },
-      theme: 'snow',
+      theme: 'bubble',
       placeholder: 'Begin your story ...',
       readOnly: false,
       boundary: document.body
@@ -210,11 +210,11 @@ app = angular.module('ngQuill', [])
               var bounds = editor.getBounds(location)
               console.log('location: ', location)
               console.log('getBounds: TOP: ', bounds.top)
-             console.log('getBounds: LEFT: ', bounds.left)
+              console.log('getBounds: LEFT: ', bounds.left)
 
               this.top = bounds.top
               this.left = bounds.left
-              draftSvc.makeMenu(this.top, this.left)
+             //draftSvc.makeMenu(this.top, this.left)
             }
           } else {
             console.log('User cursor is not in editor');
