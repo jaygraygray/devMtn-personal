@@ -11,80 +11,7 @@
 
   var app
   // declare ngQuill module
-  app = angular.module('ngQuill', [])
-
-app.service('draftSvc', function() {
-///////////////////////////////////////////////////////
-// AUTO-SAVE CODE
-//////////////////////////////////////////////////////
-
-// this.timer;
-// this.saveMe = function() {
-//   clearTimeout(timer)
-//   timer = setTimeout(function() {
-//       console.log("Saved")
-//     }, 4000) 
-// }
-// /////////////////////////////////////////////////////////
-// // END AUTO-SAVE CODE
-// /////////////////////////////////////////////////////////
-
-
-// /////////////////////////////////////////////////////////
-// // BEGIN MENU CODE
-// /////////////////////////////////////////////////////////
-
-  
-  
-// this.makeMenu = function() {
-//      if (!window.x) {
-//         x = {};
-//     }
-//     x.Selector = {};
-//     x.Selector.getSelected = function() {
-//         var t = '';
-//         if (window.getSelection) {
-//             t = window.getSelection();
-//         } else if (document.getSelection) {
-//             t = document.getSelection();
-//         } else if (document.selection) {
-//             t = document.selection.createRange().text;
-//         }
-//         return t;
-//     }
-//   }
-//   var selectedText = x.Selector.getSelected();
-// jQuery(document).on("mouseup", function(e) {
-// //var selectedText = x.Selector.getSelected();
-
-// if(selectedText != ''){
-//   // console.log("Char Begin: ", selectedText.anchorOffset)
-//   // console.log("Char End: ", selectedText.focusOffset)
-//     jQuery('.toolbar').css({
-//       'display' : 'inline'
-//     })
-//     jQuery('ul.tools').css({
-//         'left': e.pageX + 'px', //use quill character/line IDs for correct targeting
-//         'top' : e.pageY + 'px'
-//     }).fadeIn(150);
-//   } else {
-//     jQuery('ul.tools').fadeOut(200);
-//   }
-// }); 
- 
-
-// select the newly styled line
-// select beginning of newly styled line.
-//when a style is applied 
-    
-
-/////////////////////////////////////////////////////////
-// END MENU CODE
-/////////////////////////////////////////////////////////
-
-})
-
-
+app = angular.module('ngQuill', [])
 
 //////////////////////////////////////////////////////
 // need to add/edit Quill modules
@@ -179,7 +106,7 @@ app.service('draftSvc', function() {
 
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
-    controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'headerSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, HeaderSvc) {
+    controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
       var config = {},
         content,
         editorElem,
@@ -293,7 +220,7 @@ app.service('draftSvc', function() {
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////
-          //draftSvc.saveMe()
+          draftSvc.saveMe()
           ///////////////////////////////////////////////////////
           //     end autosave 
           ////////////////////////////////////////////////////////          
@@ -339,7 +266,7 @@ app.service('draftSvc', function() {
 
       //if there are changes, and if X TIME has passed without a keydown, execute function. 
       //OR if there are changes and enter is hit execute function
-
+      draftSvc.makeMenu()
 
 
     }]
