@@ -6,7 +6,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/5.0.0/normalize.css"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="styles/quill.bubble.css" rel="stylesheet">
+  <link href="style/quill.bubble.scss" rel="stylesheet">
    <link rel="stylesheet" href="style.css">
 
 <ui-view>
@@ -28,28 +28,31 @@
 
 <div class="embed-menu">
   <div class="menu">
-      <img src="images/plus-symbol.svg" class="base" />
-      <span class="menu-item"><img src="images/photo-camera.svg"></span>
-      <span class="menu-item"><img src="images/play-button.svg" class="menu-item" /></span>
-      <span class="menu-item"><img src="images/curly-brackets.svg" class="menu-item" /></span>
-      <span class="menu-item"><img src="images/divider.svg" class="menu-item" /></span>
+      <img src="images/plus-symbol.svg" class="base" ng-class="{'base-clicked':showMenu}" id="base" ng-click="showMenu = !showMenu">
+      <span class="menu-item ql-image" ng-class="{'menu-item-show':showMenu}"><img src="images/photo-camera.svg"></span>
+      <span class="menu-item" ng-class="{'menu-item-show':showMenu}"><img src="images/play-button.svg" class="menu-item" /></span>
+      <span class="menu-item" ng-class="{'menu-item-show':showMenu}"><img src="images/curly-brackets.svg" class="menu-item" /></span>
+      <span class="menu-item" ng-class="{'menu-item-show':showMenu}"><img src="images/divider.svg" class="menu-item" /></span>
   </div>
 </div>
 
 <input type="text" placeholder="Title" class="ql-title">
 
 <ng-quill-editor ng-model="body" id="editor" placeholder="Write your story...">
+<embed-menu style="z-index:2;">{{test}}</embed-menu>
     <ng-quill-toolbar class="toolbar">
         <div>
             <span class="ql-formats">
                 <button class="ql-bold" ng-attr-title="{{'Bold'}}"></button>
                 <button class="ql-italic" ng-attr-title="{{'Italic'}}"></button>
-                <button class="ql-link" ng-attr-title="{{'Link'}}">{{stuff}}</button>
-            </span>
-            <span class="ql-formats">
+                <button class="ql-link" ng-attr-title="{{'Link'}}">{{stuff}}</button> 
                 <button class="ql-header" value="1" ng-attr-title="{{'H1'}}">T</button>
                 <button class="ql-header" value="2" ng-attr-title="{{'H2'}}">t</button>
-                <button class="ql-blockquote" ng-attr-title="{{'blockquote'}}"></button>
+                <button class="ql-blockquote"></button>
+            </span>  | 
+            <span class='ql-formats'>
+                <button class="ql-image" ng-attr-title="{{'image'}}"></button>
+                <button class="ql-video" ng-attr-video="{{'video'}}"></button>
             </span>
 
         </div>

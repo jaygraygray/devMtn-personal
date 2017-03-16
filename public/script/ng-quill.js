@@ -9,7 +9,7 @@
 }(this, function (Quill) {
   'use strict'
 
-  var app
+var app
   // declare ngQuill module
 app = angular.module('ngQuill', [])
 
@@ -47,7 +47,8 @@ app = angular.module('ngQuill', [])
       theme: 'bubble',
       placeholder: '',
       readOnly: false,
-      boundary: document.body
+      boundary: document.body,
+      embedMenu : true
     }
 
     this.set = function (customConf) {
@@ -78,7 +79,36 @@ app = angular.module('ngQuill', [])
     }
   })
 
-    
+  // app.component('embedMenu', {
+  //   bindings: {
+  //     'modules': '<modules',
+  //     'theme': '@?',
+  //     'readOnly': '<?',
+  //     'formats': '<?',
+  //     'placeholder': '@?',
+  //     'onEditorCreated': '&?',
+  //     'onContentChanged': '&?',
+  //     'onSelectionChanged': '&?',
+  //     'ngModel': '<',
+  //     'maxLength': '<',
+  //     'minLength': '<'
+  //   },
+  //   require: {
+  //     ngModelCtrl: 'ngModel'
+  //   },
+  //   transclude: {
+  //     'toolbar': '?ngQuillToolbar',
+  //     'article': '?ngQuillEditor'
+  //   },
+  //   template: "<div>Hi</div>",
+  //   controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', 
+  //       function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
+  //         var text = editor.getText()
+  //         console.log(text)
+  //    }]
+  //  })
+  
+
 
   app.component('ngQuillEditor', {
     bindings: {
@@ -107,20 +137,6 @@ app = angular.module('ngQuill', [])
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
     controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
-
-      //jQuery('.actual-menu').hide();
-
-      jQuery('.base').on('click', function() {
-        //jQuery('.actual-menu').show();
-        jQuery('.menu-item').addClass('menu-item-show')
-        jQuery('.base').removeClass('base').addClass('base-clicked')
-          .on('click', function() {
-          jQuery('.menu-item-show').removeClass('menu-item-show').addClass('menu-item')
-          jQuery('.base-clicked').removeClass('base-clicked').addClass('base')
-        })
-      });
-
-
 
       var config = {},
         content,
@@ -190,7 +206,7 @@ app = angular.module('ngQuill', [])
 
       this._initEditor = function (editorElem) {
         var $editorElem = angular.element('<div></div>'),
-          container = $element.children()
+        container = $element.children()
 
         editorElem = $editorElem[0]
 
@@ -205,8 +221,12 @@ app = angular.module('ngQuill', [])
 
         this.ready = true
        
-        //editor.insertText(6, '\nTell your story...')
-        // mark model as touched if editor lost focus
+        ////////////////////////////////
+        // create module 
+        ////////////////////////////////
+
+        
+
         editor.on('selection-change', function (range, oldRange, source) {
              ///////////////////////////////////////////////
              // BEGIN USER SELECTION
@@ -261,6 +281,11 @@ app = angular.module('ngQuill', [])
 
         
         editor.on('text-change', function (delta, oldDelta, source) {
+            var showMenu = true
+            function clickMenu () {
+              showMenu = !showMenu
+            }
+          //editor.container.innerHTML 
 
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()

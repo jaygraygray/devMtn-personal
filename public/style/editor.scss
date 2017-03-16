@@ -34,12 +34,12 @@
   opacity: 0;
   padding-left: -15px;
   padding-right: -15px;
-  transition: opacity .5s, padding-left .5s, padding-right .5s;
+  transition: all .5s;
 }
 
 .menu-item-show {
   opacity: .5;
   padding-left: 10px;
   padding-right: 10px;
-  transition: opacity .5s, padding-left .5s, padding-right .5s;
+  transition: all .5s;
 }

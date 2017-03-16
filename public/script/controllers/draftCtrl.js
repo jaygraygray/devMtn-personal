@@ -6,6 +6,6 @@ $scope.tags = [
 
 			]
 
-
+$scope.showMenu = false;
 
 })
