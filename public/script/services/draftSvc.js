@@ -10,22 +10,33 @@ this.draftObj = {
 }
 
 this.updateDraft = function(draftObj) {
-	
 	return $http.post('api/updatedraft/' + draftObj.article_id, draftObj)
-	.then(function(resp) {
-		return resp
-	})
+	.then(function(resp) { return resp })}
+
+this.articleObj = {
+	author_id : 3,
+	title : null,
+	body : null,
+	date_started : new Date(),
+	date_published : null,
+	headline_img : null,
+	published : false,
+	tags : null,
+	views : 0,
+	likes : 0,
+	bookmarks : 0,
+	responses : 0,
+	response_parent : 0,
+	tagline : null	
 }
 
 
-
-
-
-
-
-
-
+this.createArticle = function() {
+	return $http.post('api/createarticle', this.articleObj)
+	.then(function(resp) { return resp })}
 })
+
+
 /////////////////////////////////////////////////////////
 // BEGIN MENU CODE
 /////////////////////////////////////////////////////////

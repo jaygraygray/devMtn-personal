@@ -11,6 +11,11 @@ $stateProvider
 		url: '/new-story',
 		templateUrl: '/views/text-editor.html',
 		controller: 'draftCtrl'
+	})
+	.state('drafts', {
+		url: '/me/stories/drafts',
+		templateUrl: '/views/drafts.html',
+		controller: 'draftCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')

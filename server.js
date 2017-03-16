@@ -27,6 +27,7 @@ var db = app.get('db');
 homeCtrl 					= require('./BEControl/home')
 // bookmarksCtrl  			= require('./BEControl/bookmarks')
 draftsCtrl 					= require('./BEControl/drafts')
+articlesCtrl				= require('./BEControl/articles')
 // followInterestsCtrl 	 	= require('./BEControl/followInterests')
 // profileCtrl 				= require('./BEControl/profile')
 // readingHistoryCtrl 		= require('./BEControl/readingHistory')
@@ -36,10 +37,14 @@ draftsCtrl 					= require('./BEControl/drafts')
 // viewArticleCtrl 			= require('./BEControl/viewArticle')
 
 /////////////////////////////////////////////////////////
-/////////// DRAFTS
+/////////// DRAFTS 
 /////////////////////////////////////////////////////////
 app.post('/api/updatedraft/:id', draftsCtrl.UpdateDraft)
 
+/////////////////////////////////////////////////////////
+/////////// ARTICLES 
+/////////////////////////////////////////////////////////
+app.post('/api/createarticle', articlesCtrl.CreateArticle)
 
 /////////////////////////////////////////////////////////
 /////////// HOME

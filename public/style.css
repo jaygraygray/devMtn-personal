@@ -1,6 +1,33 @@
 @import url("../../reset.css");
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:100,200,300,400,500,600,700,800,900");
 
+body {
+  background: #fff !important; }
+
+.stories-header {
+  margin-top: 3rem; }
+
+.stories-header h1 {
+  font-size: 3rem;
+  font-weight: 900; }
+
+.stories-header button {
+  border-radius: 50px;
+  border-style: solid;
+  border-color: #00AB6C;
+  border-width: 1px;
+  padding: 12px 18px 12px 18px;
+  color: #00AB6C;
+  background-color: #fff;
+  margin-top: 12px;
+  font-size: 1rem; }
+
+.buttons {
+  text-align: right; }
+
+button {
+  margin-right: 12px; }
+
 .ql-title {
   max-height: 150px;
   border-style: none;
