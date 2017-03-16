@@ -8,12 +8,11 @@ var updateDraft = function(draftObj) {
 	})
 }
 
-
-this.status = true
-this.getStatus = function(car) {
-	return car
+this.getTags = function(tags) {
+	return tags
 }
 
+//add additional data to the draftObj here
 this.saveMe = function(draftObj) {
 
 	clearTimeout(this.timer)
@@ -22,29 +21,15 @@ this.saveMe = function(draftObj) {
 	  updateDraft(draftObj).then(function(resp) {
 	  	console.log('Updated article #', draftObj.article_id)})
 	}, 3000)
-
-}
-
+}	
 
 
 
 
 
 
-///////////////////////////////////////////////////////
-// AUTO-SAVE CODE
-//////////////////////////////////////////////////////
 
-
-
-/////////////////////////////////////////////////////////
-// END AUTO-SAVE CODE
-/////////////////////////////////////////////////////////
-
-
-
-
-
+})
 /////////////////////////////////////////////////////////
 // BEGIN MENU CODE
 /////////////////////////////////////////////////////////
@@ -120,6 +105,6 @@ this.saveMe = function(draftObj) {
 //draftSvc.makeElementAndLogDimensions("span", "content", text)
 
 
-})
+
 
 

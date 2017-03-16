@@ -18,7 +18,13 @@
 <body style="background-color: #ffffff;">
 <header-menu-for-writing></header-menu-for-writing>
 
-{{savedMessage}}
+<div ng-controller="draftCtrl as list">
+  <p ng-repeat="message in list.messages">{{message.id}}: {{message.text}}</p>
+</div>
+
+
+
+
 <!-- BODY -->
 <div class="row white">
   <div class="col-sm-12 col-md-12">

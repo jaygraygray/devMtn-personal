@@ -136,7 +136,8 @@ app = angular.module('ngQuill', [])
 
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
-    controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
+    controller: ('editorCtrl', ['$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
+    function ($rootScope, $scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
 
       var config = {},
         content,
@@ -284,16 +285,23 @@ app = angular.module('ngQuill', [])
 
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
-           
+          
+
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////
           //create object to send
+          // var tags = $scope.$on('editorCtrlShare',
+          //             function(event, value) {
+          //               return value
+          //             })
+          // console.log(tags)
           var draftObj = {
             author_id : 3,
             article_id : 4,
             date : new Date(),
-            draftBody : editorElem.children[0].innerHTML
+            draftBody : editorElem.children[0].innerHTML,
+            
           }
           
           draftsSvc.saveMe(draftObj)
@@ -355,7 +363,7 @@ app = angular.module('ngQuill', [])
 
 
 
-    }]
+    }])
 
   })
 

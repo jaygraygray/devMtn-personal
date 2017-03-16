@@ -3,6 +3,7 @@ Header scroll bar changes width when scrolling down
 Keep track of all places userID is manually entered.
 	homeCtrl.js
 	userSvc.js
+	ng-quill.js
 
 Make display of header components more elegant: only one open at a time. 
 Any off-clicks make current menu disappear.
