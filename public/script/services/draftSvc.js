@@ -1,27 +1,23 @@
 angular.module("appName").service("draftsSvc", function($http) {
 
+this.draftObj = {
+	author_id : 3,
+	article_id : 4,
+	date : new Date(),
+	draftBody : '',
+	tags : [],
+	title: ''
+}
 
-var updateDraft = function(draftObj) {
+this.updateDraft = function(draftObj) {
+	
 	return $http.post('api/updatedraft/' + draftObj.article_id, draftObj)
 	.then(function(resp) {
 		return resp
 	})
 }
 
-this.getTags = function(tags) {
-	return tags
-}
 
-//add additional data to the draftObj here
-this.saveMe = function(draftObj) {
-
-	clearTimeout(this.timer)
-	this.timer = setTimeout(function() {
-		this.status = false
-	  updateDraft(draftObj).then(function(resp) {
-	  	console.log('Updated article #', draftObj.article_id)})
-	}, 3000)
-}	
 
 
 

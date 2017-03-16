@@ -1,11 +1,44 @@
 angular.module('appName')
+.directive('addTag', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+            	
+            	for (var i = 0; i < scope.tags.length; i++) {
+            		scope.pushTag(scope.tags[i].text)
+            	}
+            	console.log(scope.tags)
+            	//scope.pushTag(scope.tags)
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
+
+                event.preventDefault();
+            }
+        });
+    };
+})
 .controller('draftCtrl', function($scope, $rootScope, draftsSvc, headerSvc) {
 
 
-$scope.tags = [{'text':''}];
-$scope.showMenu = false;
 
-// draftsSvc.getTags($scope.tags)
+//////////////////////////////////////
+
+$scope.pushTag = function(tag) {
+	draftsSvc.draftObj.tags.push(tag)
+}
+
+$scope.pushTitle = function(title) {
+	draftsSvc.draftObj.title = title
+}
+
+
+///////////////////////////////////////
+
+//declare necessary variables
+
+$scope.tags = draftsSvc.tags
+$scope.showMenu = false;
 
 $scope.publishMenu = true
 $scope.dotMenu = true
@@ -13,6 +46,7 @@ $scope.search = true
 $scope.userMenu = true
 $scope.notificationsMenu = true
 
+//display notifiations
 $scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 	$scope.notifications = resp.data
 

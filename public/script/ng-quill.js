@@ -296,15 +296,22 @@ app = angular.module('ngQuill', [])
           //               return value
           //             })
           // console.log(tags)
-          var draftObj = {
-            author_id : 3,
-            article_id : 4,
-            date : new Date(),
-            draftBody : editorElem.children[0].innerHTML,
+
+          clearTimeout(this.timer)
+          $rootScope.savedMessage = 'Not saved...'
+          //console.log(draftsSvc.savedMessage)
+         
+          this.timer = setTimeout(function() {
+            draftsSvc.draftObj.date = new Date()
+            draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
+           
+            $rootScope.savedMessage = 'Saved!'
+            console.log($rootScope.savedMessage)
             
-          }
+            draftsSvc.updateDraft(draftsSvc.draftObj).then(function(resp) {
+              console.log('Updated article #', draftsSvc.draftObj.article_id)})
+          }, 3000)
           
-          draftsSvc.saveMe(draftObj)
           
           
           ///////////////////////////////////////////////////////

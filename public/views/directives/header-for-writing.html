@@ -13,7 +13,7 @@
 	</a>
 	</div>
 	<div class="col-xs-7 col-sm-7 col-md-7 header-nav-container">
-		<span class="share">Share</span>
+		<span class="share">{{savedMessage}}</span>
 		<span class="publish" ng-click="publishMenu = !publishMenu">Publish</span>
 		<span class="publish-down-carat">&nbsp;</span>
 		
@@ -32,13 +32,12 @@
 Add or change tags (up to 5) so your story reaches more people: <br>
 
 <div class="article-tags-container">
-<tags-input ng-model="tags" add-on-paste="true" class="tag-list">
+<tags-input ng-model="tags" add-on-paste="true" class="tag-list" add-tag>
 	<!-- <auto-complete source="loadTags($query)"></auto-complete> -->
 </tags-input>
 </div>
 
 	<div class="connect">
-		
 		Connect to share on Twitter <br>
 		Connect to share on Facebook <br>
 	</div>

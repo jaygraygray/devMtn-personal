@@ -42,10 +42,10 @@
   </div>
 </div>
 
-<input type="text" placeholder="Title" class="ql-title">
+<input type="text" placeholder="Title" class="ql-title" ng-model="title" ng-keyup="pushTitle(title);">
 
 <ng-quill-editor ng-model="body" id="editor" placeholder="Write your story...">
-<embed-menu style="z-index:2;">{{test}}</embed-menu>
+<embed-menu style="z-index:2;"></embed-menu>
     <ng-quill-toolbar class="toolbar">
         <div>
             <span class="ql-formats">
