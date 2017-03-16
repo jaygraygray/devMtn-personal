@@ -24,16 +24,26 @@ var db = app.get('db');
 //set controllers
 //ALWAYS SET CONTROLLERS AFTER CALLING APP.SET
 //
-homeCtrl = require('./ctrl/home')
-// bookmarksCtrl  = require('/ctrl/bookmarks')
-// draftsCtrl = require('/ctrl/drafts')
-// followInterestsCtrl  = require('/ctrl/followInterests')
-// profileCtrl = require('/ctrl/profile')
-// readingHistoryCtrl = require('/ctrl/readingHistory')
-// settingsCtrl = require('/ctrl/settings')
-// storiesCtrl = require('/ctrl/stories')
-// textEditorCtrl = require('/ctrl/textEditor')
-// viewArticleCtrl = require('/ctrl/viewArticle')
+homeCtrl 					= require('./BEControl/home')
+// bookmarksCtrl  			= require('./BEControl/bookmarks')
+draftsCtrl 					= require('./BEControl/drafts')
+// followInterestsCtrl 	 	= require('./BEControl/followInterests')
+// profileCtrl 				= require('./BEControl/profile')
+// readingHistoryCtrl 		= require('./BEControl/readingHistory')
+// settingsCtrl 			= require('./BEControl/settings')
+// storiesCtrl 				= require('./BEControl/stories')
+// textEditorCtrl 			= require('./BEControl/textEditor')
+// viewArticleCtrl 			= require('./BEControl/viewArticle')
+
+/////////////////////////////////////////////////////////
+/////////// DRAFTS
+/////////////////////////////////////////////////////////
+app.post('/api/updatedraft/:id', draftsCtrl.UpdateDraft)
+
+
+/////////////////////////////////////////////////////////
+/////////// HOME
+/////////////////////////////////////////////////////////
 app.put('/api/articlenotification', homeCtrl.ArticleNotification)
 app.get('/api/getnotifications', homeCtrl.GetNotifications)
 

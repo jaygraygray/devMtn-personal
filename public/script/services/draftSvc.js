@@ -1,4 +1,33 @@
-angular.module("appName").service("draftSvc", function($http) {
+angular.module("appName").service("draftsSvc", function($http) {
+
+
+var updateDraft = function(draftObj) {
+	return $http.post('api/updatedraft/' + draftObj.article_id, draftObj)
+	.then(function(resp) {
+		return resp
+	})
+}
+
+
+this.status = true
+this.getStatus = function(car) {
+	return car
+}
+
+this.saveMe = function(draftObj) {
+
+	clearTimeout(this.timer)
+	this.timer = setTimeout(function() {
+		this.status = false
+	  updateDraft(draftObj).then(function(resp) {
+	  	console.log('Updated article #', draftObj.article_id)})
+	}, 3000)
+
+}
+
+
+
+
 
 
 
@@ -6,17 +35,14 @@ angular.module("appName").service("draftSvc", function($http) {
 // AUTO-SAVE CODE
 //////////////////////////////////////////////////////
 
-this.timer;
-this.saveMe = function() {
-  clearTimeout(this.timer)
-  this.timer = setTimeout(function() {
-      console.log("Saved")
-    }, 4000) 
-}
+
 
 /////////////////////////////////////////////////////////
 // END AUTO-SAVE CODE
 /////////////////////////////////////////////////////////
+
+
+
 
 
 /////////////////////////////////////////////////////////
