@@ -11,7 +11,7 @@ module.exports = {
 						  req.body.title], 
 		function(err, resp) {
 			if (err) { console.log(err)
-			 } else { res.send("Success!") }})},
+			 } else { res.send("Success!") }})},	
 	GetAll : function(req, res, next) {
 		var newOne =[]
 		db.draft_get_all_ids([req.params.author_id],
