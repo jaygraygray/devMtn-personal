@@ -10,7 +10,7 @@ this.draftObj = {
 }
 
 this.updateDraft = function(draftObj) {
-	return $http.post('api/updatedraft/' + draftObj.article_id, draftObj)
+	return $http.post('api/updatedraft/' + draftObj.article_id, this.draftObj)
 	.then(function(resp) { return resp })}
 
 this.articleObj = {

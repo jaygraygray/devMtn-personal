@@ -31,9 +31,9 @@
 </div>
 
 <div class="row">
-	<div class="drafts-list">
-		<a href="#"><h2>Title of your Hawt Article</h2></a>
-		Last edited yesterday. &#8226; 56 words so far.
+	<div class="drafts-list" ng-repeat="draft in drafts">
+		<a href="#"><h2>{{draft.title}}</h2></a>
+		Last edited {{draft.date | date : 'MMM dd' }}. &#8226;
 		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="editMenu = !editMenu" class="down-arrow">
 			<div class="edit-menu" ng-hide="editMenu">
 				<span class="menu-container">

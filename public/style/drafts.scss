@@ -101,11 +101,6 @@ button {
     display: unset;
 }
 
-.edit-menu-display {
-	@extend .edit-menu;
-	display:none;
-}
-
 .edit-menu a {
 	font-size:.9rem;
 	color: $dark-gray;

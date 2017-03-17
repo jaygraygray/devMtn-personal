@@ -7,7 +7,8 @@ module.exports = {
 						  req.body.article_id,
 						  req.body.date,
 						  req.body.draftBody,
-						  req.body.tags], 
+						  req.body.tags,
+						  req.body.title], 
 		function(err, resp) {
 			if (err) { console.log(err)
 			 } else { res.send("Success!") }})},
@@ -32,11 +33,8 @@ module.exports = {
 						} 
 					})	
 					})(i)
-
 				} 
-		} 
-	}) 
-
+			} 
+		}) 
 	}, 
-
 }
