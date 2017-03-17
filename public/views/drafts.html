@@ -1,6 +1,7 @@
 <body>
 <header-menu></header-menu>
 
+{{data}}
 
 <!-- BODY -->
 <div class="row">
@@ -8,7 +9,8 @@
     
   <div class="col-sm-1 col-md-1"></div>
 	<div class="col-sm-10 col-md-10">
-
+	<content>
+<div class="row">
 <div class="stories-header">
 	<div class="col-sm-5">
 		<h1>Your Stories</h1>
@@ -18,9 +20,53 @@
 		<button>Write a story</button>
 	</div>
 </div>
+</div>
 
+<div class="row">
+<div class="drafts">
+	<div class="drafts-menu-active col-sm-2"><span class="emph">Drafts</span> 33</div>
+	<div class="drafts-menu col-sm-2">Public 1</div>
+	<div class="col-sm-8 drafts-menu">&nbsp;</div>
+</div>
+</div>
 
+<div class="row">
+	<div class="drafts-list">
+		<h2>Title of your Hawt Article</h2>
+		Last edited yesterday. &#8226; 56 words so far.
+		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="" class="down-arrow">
+			<div class="edit-menu">
+				<span class="menu-container">
+				<ul>
+					<li><a href="#">Edit Draft</a></li>
+					<li><a href="#">Delete Draft</a></li>
+				</ul>
+				</span>
+			</div>
 	</div>
+	<div class="drafts-list">
+		<h2>Using jqLite Like a Boss</h2>
+		Last edited 8/15/17. &#8226; 732 words so far.
+		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="" class="down-arrow">
+			<div class="edit-menu">
+				<span class="menu-container">
+				<ul>
+					<li><a href="#">Edit Draft</a></li>
+					<li><a href="#">Delete Draft</a></li>
+				</ul>
+				</span>
+			</div>	
+	</div>
+
+</div>
+
+	</content>
+	</div>
+
+
+
+
+
 
 <div class="col-sm-1 col-md-1"></div>
 
@@ -32,4 +78,6 @@
 </div>
 <!-- End Side Menu-->
 </div>
+
+
 <!-- END BODY -->

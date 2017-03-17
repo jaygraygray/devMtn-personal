@@ -21,7 +21,6 @@ angular.module('appName')
 .controller('draftCtrl', function($scope, $rootScope, draftsSvc, headerSvc) {
 
 
-
 //////////////////////////////////////
 
 $scope.pushTag = function(tag) {
