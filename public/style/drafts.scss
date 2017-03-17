@@ -98,6 +98,12 @@ button {
 	top: 71px;
     left: 255px;
     box-shadow: 1px 1px 1px $light-gray;
+    display: unset;
+}
+
+.edit-menu-display {
+	@extend .edit-menu;
+	display:none;
 }
 
 .edit-menu a {

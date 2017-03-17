@@ -2,7 +2,7 @@ angular.module("appName").service("draftsSvc", function($http) {
 
 this.draftObj = {
 	author_id : 3,
-	article_id : 4,
+	article_id : 5,
 	date : new Date(),
 	draftBody : '',
 	tags : [],

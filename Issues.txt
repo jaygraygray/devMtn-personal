@@ -8,8 +8,8 @@ Keep track of all places userID is manually entered.
 Make display of header components more elegant: only one open at a time. 
 Any off-clicks make current menu disappear.
 
-Can't display "Saved" or "Saving..." text in text editor.
-Need to: 	include title and tags in drafts.
-			create new article 
-			build user list of drafts
-				open/edit/update drafts
+Time permitting, convert custom elements to Angular Bootstrap
+
+Need to: 	build user list of drafts
+			open/edit/update drafts
+			For list-articles directive, only pull PUBLISHED articles

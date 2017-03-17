@@ -17,7 +17,7 @@
 	</div>
 	<div class="col-sm-7 buttons">
 		<button>Import a story</button>
-		<button>Write a story</button>
+		<button ui-sref="new-story">Write a story</button>
 	</div>
 </div>
 </div>
@@ -32,10 +32,10 @@
 
 <div class="row">
 	<div class="drafts-list">
-		<h2>Title of your Hawt Article</h2>
+		<a href="#"><h2>Title of your Hawt Article</h2></a>
 		Last edited yesterday. &#8226; 56 words so far.
-		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="" class="down-arrow">
-			<div class="edit-menu">
+		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="editMenu = !editMenu" class="down-arrow">
+			<div class="edit-menu" ng-hide="editMenu">
 				<span class="menu-container">
 				<ul>
 					<li><a href="#">Edit Draft</a></li>
@@ -44,19 +44,12 @@
 				</span>
 			</div>
 	</div>
-	<div class="drafts-list">
-		<h2>Using jqLite Like a Boss</h2>
-		Last edited 8/15/17. &#8226; 732 words so far.
-		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="" class="down-arrow">
-			<div class="edit-menu">
-				<span class="menu-container">
-				<ul>
-					<li><a href="#">Edit Draft</a></li>
-					<li><a href="#">Delete Draft</a></li>
-				</ul>
-				</span>
-			</div>	
-	</div>
+
+<!-- <uib-tabset active="activeJustified" justified="false">
+	<uib-tab index="0" heading="Drafts">Justified content</uib-tab>
+	<uib-tab index="1" heading="Public">Short Labeled Justified content</uib-tab>
+</uib-tabset> -->
+
 
 </div>
 

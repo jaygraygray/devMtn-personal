@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/jaygraygray/devMtn-personal#readme",
   "dependencies": {
+    "angular-ui-bootstrap": "^2.5.0",
     "body-parser": "^1.17.1",
     "cors": "^2.8.1",
     "express": "^4.15.2",

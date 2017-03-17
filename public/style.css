@@ -69,7 +69,7 @@ button {
   opacity: .5;
   margin-top: 3px; }
 
-.edit-menu {
+.edit-menu, .edit-menu-display {
   width: 120px;
   border-width: 1px;
   border-style: solid;
@@ -83,28 +83,32 @@ button {
   position: absolute;
   top: 71px;
   left: 255px;
-  box-shadow: 1px 1px 1px #BDBDBD; }
+  box-shadow: 1px 1px 1px #BDBDBD;
+  display: unset; }
 
-.edit-menu a {
+.edit-menu-display {
+  display: none; }
+
+.edit-menu a, .edit-menu-display a {
   font-size: .9rem;
   color: #4d4d4d; }
 
-.edit-menu a:active {
+.edit-menu a:active, .edit-menu-display a:active {
   font-size: .9rem;
   color: #4d4d4d; }
 
-.edit-menu a:visited {
+.edit-menu a:visited, .edit-menu-display a:visited {
   font-size: .9rem;
   color: #4d4d4d; }
 
-.edit-menu a:hover {
+.edit-menu a:hover, .edit-menu-display a:hover {
   font-size: .9rem;
   color: #4d4d4d; }
 
-.edit-menu ul {
+.edit-menu ul, .edit-menu-display ul {
   list-style: none; }
 
-.edit-menu li {
+.edit-menu li, .edit-menu-display li {
   padding-top: 8px;
   padding-bottom: 8px; }
 

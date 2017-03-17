@@ -302,14 +302,14 @@ app = angular.module('ngQuill', [])
           //console.log(draftsSvc.savedMessage)
          
           this.timer = setTimeout(function() {
-            draftsSvc.draftObj.date = new Date()
+            
             draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
            
             $rootScope.savedMessage = 'Saved!'
             console.log($rootScope.savedMessage)
             
             draftsSvc.updateDraft(draftsSvc.draftObj).then(function(resp) {
-              console.log('Updated article #', draftsSvc.draftObj.article_id)})
+              console.log('Updated article! Info: ', draftsSvc.draftObj)})
           }, 3000)
           
           

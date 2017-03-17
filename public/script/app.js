@@ -1,4 +1,6 @@
-angular.module("appName", ['ui.router', 'ngTagsInput', 'ngQuill'])
+angular.module("appName", ['ui.router', 
+						   'ngTagsInput', 
+						   'ngQuill'])
 .config(function($stateProvider, $urlRouterProvider) {
 
 $stateProvider
@@ -15,7 +17,7 @@ $stateProvider
 	.state('drafts', {
 		url: '/me/stories/drafts',
 		templateUrl: '/views/drafts.html',
-		controller: 'draftCtrl'
+		controller: 'yourStoriesCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')
