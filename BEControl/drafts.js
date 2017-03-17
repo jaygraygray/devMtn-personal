@@ -12,39 +12,31 @@ module.exports = {
 			if (err) { console.log(err)
 			 } else { res.send("Success!") }})},
 	GetAll : function(req, res, next) {
-		var final_response = []
-		
+		var newOne =[]
 		db.draft_get_all_ids([req.params.author_id],
 			function(err, resp) {
 			if (err) { console.log(err)
 			} else { 
-
-				
-							//for each unique ID, get draft data
 				for (var i = 0; i < resp.length; i++) {
-					
+					(function(i) {
 					db.draft_get_most_recent_version(resp[i].article_id,
 					function(err1, resp1){
 						if(err) { console.log(err1)
 						} else {
-							var newPromise = new Promise(function(resolve, reject) {
-							resolve(resp1)
-							})
-							final_response.push(newPromise)
-							Promise.all(final_response)
-							.then(function(res) { console.log("ASDF", res)})
-						}
-						
+							if (i == resp.length-1) {
+								newOne.push(resp1)
+								res.send(newOne)
+							} else {
+								newOne.push(resp1)
+							}
+						} 
 					})	
+					})(i)
 
-				}
-		}
+				} 
+		} 
+	}) 
 
-	})
-
-	},
-
-	
-		//get all unique draft IDs for author_id
+	}, 
 
 }
