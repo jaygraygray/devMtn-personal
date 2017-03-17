@@ -18,7 +18,7 @@ module.exports = {
 						  req.body.response_parent,
 						  req.body.tagline], 
 		function(err, resp) {
-			if (err) { console.log(err)
-			 } else { res.send("Success!") }})}
+			if (err) { console.log(err)}})},
+		
 
 }

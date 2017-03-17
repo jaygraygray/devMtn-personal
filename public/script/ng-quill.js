@@ -138,7 +138,7 @@ app = angular.module('ngQuill', [])
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
     controller: ('editorCtrl', ['$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
     function ($rootScope, $scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
-      draftsSvc.createArticle();
+      
       var config = {},
         content,
         editorElem,
@@ -369,7 +369,10 @@ app = angular.module('ngQuill', [])
 
 
 
-
+      draftsSvc.createArticle();
+      draftsSvc.getRecentID().then(function(resp) {
+        draftsSvc.draftObj.article_id = resp
+      })
     }])
 
   })

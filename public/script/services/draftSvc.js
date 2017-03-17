@@ -2,16 +2,22 @@ angular.module("appName").service("draftsSvc", function($http) {
 
 this.draftObj = {
 	author_id : 3,
-	article_id : 5,
+	article_id : null,
 	date : new Date(),
 	draftBody : '',
 	tags : [],
 	title: ''
 }
 
-this.updateDraft = function(draftObj) {
-	return $http.post('api/updatedraft/' + draftObj.article_id, this.draftObj)
-	.then(function(resp) { return resp })}
+this.createArticle = function() {
+	return $http.post('/api/createarticle', this.articleObj)
+	.then(function(resp) { return resp.data[0].id })
+}
+
+this.getRecentID = function() {
+	return $http.get('/api/headlines/headline')
+	.then(function(resp) { return resp.data[0].id})
+}
 
 this.articleObj = {
 	author_id : 3,
@@ -31,10 +37,14 @@ this.articleObj = {
 }
 
 
-this.createArticle = function() {
-	return $http.post('api/createarticle', this.articleObj)
+this.updateDraft = function(draftObj) {
+	console.log(this.draftObj)
+	return $http.post('api/updatedraft/' + this.draftObj.article_id, this.draftObj)
 	.then(function(resp) { return resp })}
+
 })
+
+
 
 
 /////////////////////////////////////////////////////////
