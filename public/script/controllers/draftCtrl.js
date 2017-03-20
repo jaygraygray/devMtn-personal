@@ -4,9 +4,10 @@ angular.module('appName')
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
             	
-            	for (var i = 0; i < scope.tags.length; i++) {
-            		scope.pushTag(scope.tags[i].text)
-            	}
+            	var tc = 0
+            	scope.pushTag(scope.tags[tc].text)
+            	tc + 1
+            	
             	console.log(scope.tags)
             	//scope.pushTag(scope.tags)
                 scope.$apply(function (){
@@ -37,9 +38,13 @@ $scope.pushTitle = function(title) {
 
 //declare necessary variables
 
-$scope.tags = draftsSvc.tags
-$scope.showMenu = false;
+setTimeout(function() {
+	$scope.tags = draftsSvc.tags
+	$scope.title = draftsSvc.editTitle
+	draftsSvc.draftObj.title = $scope.title
+}, 200)
 
+$scope.showMenu = false;
 $scope.publishMenu = true
 $scope.dotMenu = true
 $scope.search = true

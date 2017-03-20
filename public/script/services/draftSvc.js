@@ -56,6 +56,8 @@ this.editDraft = function(id) {
 
 this.id
 this.editBody
+this.editTitle
+this.editTags
 
 
 

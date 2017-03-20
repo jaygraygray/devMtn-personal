@@ -148,16 +148,23 @@ app = angular.module('ngQuill', [])
         editorChanged = false,
         editor
 
-      console.log(draftsSvc.editBody)
-      draftsSvc.editDraft(draftsSvc.id).then(function(resp){
-           draftsSvc.editBody = resp.data[0].body  
-      })
-       
+        
+          if ($stateParams.article_id) {
+          draftsSvc.editDraft(draftsSvc.id).then(function(resp){
+               draftsSvc.editBody = resp.data[0].body 
+               draftsSvc.editTitle = resp.data[0].title 
+               draftsSvc.editTags = resp.data[0].tags
+               console.log(resp.data)
+          })   
+        } else {
+          draftsSvc.createArticle();
+          draftsSvc.getRecentID().then(function(resp) {
+            draftsSvc.draftObj.article_id = resp
+          })  
 
-      draftsSvc.createArticle();
-      draftsSvc.getRecentID().then(function(resp) {
-        draftsSvc.draftObj.article_id = resp
-      })  
+        } 
+        
+
 
 
       this.validate = function (text) {
@@ -235,9 +242,13 @@ app = angular.module('ngQuill', [])
         editor = new Quill(editorElem, config)
 
         this.ready = true
-        setTimeout(function(){
-          editorElem.children[0].innerHTML = draftsSvc.editBody
-        }, 200)
+
+        if ($stateParams.article_id) {
+            setTimeout(function(){
+            editorElem.children[0].innerHTML = draftsSvc.editBody
+            draftsSvc.draftObj.article_id = Number($stateParams.article_id)
+          }, 200)
+        }
         
         
         
@@ -319,7 +330,7 @@ app = angular.module('ngQuill', [])
           this.timer = setTimeout(function() {
             
             draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
-           
+            console.log($scope.title)
             $rootScope.savedMessage = 'Saved!'
             console.log($rootScope.savedMessage)
             

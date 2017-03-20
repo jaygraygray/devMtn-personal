@@ -20,10 +20,6 @@ $stateProvider
 		controller: function($stateParams, draftsSvc) {
 			//$stateParams.article_id;
 			draftsSvc.id = $stateParams.article_id;
-
-			draftsSvc.editDraft(draftsSvc.id).then(function(resp){
-				draftsSvc.editBody = resp
-			})
 		}
 	})
 	.state('drafts', {
