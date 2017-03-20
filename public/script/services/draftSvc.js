@@ -38,14 +38,38 @@ this.articleObj = {
 
 
 this.updateDraft = function(draftObj) {
-	console.log(this.draftObj)
 	return $http.post('api/updatedraft/' + this.draftObj.article_id, this.draftObj)
 	.then(function(resp) { return resp })}
 
+
+
+this.deleteDraft = function(id) {
+	
+	return $http.get('api/deletedraft/' + id)
+	.then(function(resp) { return resp})}
+
+
+this.editDraft = function(id) {
+	console.log(id)
+	return $http.get('api/editdraft/' + id)
+	.then(function(resp) { return resp})}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 })
-
-
-
 
 /////////////////////////////////////////////////////////
 // BEGIN MENU CODE

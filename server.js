@@ -2,7 +2,7 @@ const 	express = require('express')
 		bodyParser = require('body-parser')
 		massive = require('massive')
 		cors = require('cors')
-		port = 9990
+		port = 9991
 
 
 //middle ware
@@ -41,6 +41,8 @@ articlesCtrl				= require('./BEControl/articles')
 /////////////////////////////////////////////////////////
 app.post('/api/updatedraft/:id', draftsCtrl.UpdateDraft)
 app.get('/api/getdrafts/:author_id', draftsCtrl.GetAll)
+app.get('/api/deletedraft/:article_id', draftsCtrl.DeleteDraft)
+app.get('api/editdraft/:article_id', draftsCtrl.EditDraft)
 
 /////////////////////////////////////////////////////////
 /////////// ARTICLES 

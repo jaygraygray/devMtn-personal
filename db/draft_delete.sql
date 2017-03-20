@@ -1,0 +1,1 @@
+delete from drafts where article_id = $1

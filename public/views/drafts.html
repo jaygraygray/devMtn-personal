@@ -40,7 +40,7 @@
 				<span class="menu-container">
 				<ul>
 					<li><a href="#">Edit Draft</a></li>
-					<li><a href="#">Delete Draft</a></li>
+					<li><a ui-sref="drafts" data-ui-sref-opts="{reload:true}" ng-click="deleteDraft(draft.article_id)">Delete Draft</a></li>
 				</ul>
 				</span>
 			</div>
