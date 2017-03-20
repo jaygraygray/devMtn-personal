@@ -153,8 +153,10 @@ app = angular.module('ngQuill', [])
           draftsSvc.editDraft(draftsSvc.id).then(function(resp){
                draftsSvc.editBody = resp.data[0].body 
                draftsSvc.editTitle = resp.data[0].title 
-               draftsSvc.editTags = resp.data[0].tags
-               console.log(resp.data)
+               console.log(resp.data[0].tags)
+               draftsSvc.editTags = JSON.parse(resp.data[0].tags)
+               console.log(resp.data[0].tags)
+               
           })   
         } else {
           draftsSvc.createArticle();
@@ -164,8 +166,6 @@ app = angular.module('ngQuill', [])
 
         } 
         
-
-
 
       this.validate = function (text) {
         if (this.maxLength) {
@@ -316,24 +316,12 @@ app = angular.module('ngQuill', [])
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////
-          //create object to send
-          // var tags = $scope.$on('editorCtrlShare',
-          //             function(event, value) {
-          //               return value
-          //             })
-          // console.log(tags)
 
           clearTimeout(this.timer)
           $rootScope.savedMessage = 'Not saved...'
-          //console.log(draftsSvc.savedMessage)
-         
           this.timer = setTimeout(function() {
-            
             draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
-            console.log($scope.title)
             $rootScope.savedMessage = 'Saved!'
-            console.log($rootScope.savedMessage)
-            
             draftsSvc.updateDraft(draftsSvc.draftObj).then(function(resp) {
               console.log('Updated article! Info: ', draftsSvc.draftObj)})
           }, 3000)

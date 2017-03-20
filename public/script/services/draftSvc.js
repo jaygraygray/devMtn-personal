@@ -5,7 +5,7 @@ this.draftObj = {
 	article_id : null,
 	date : new Date(),
 	draftBody : '',
-	tags : [],
+	tags : null,
 	title: ''
 }
 

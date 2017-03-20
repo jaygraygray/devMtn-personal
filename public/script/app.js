@@ -18,7 +18,7 @@ $stateProvider
 		url: '/edit-story/:article_id',
 		templateUrl: '/views/text-editor.html',
 		controller: function($stateParams, draftsSvc) {
-			//$stateParams.article_id;
+			
 			draftsSvc.id = $stateParams.article_id;
 		}
 	})

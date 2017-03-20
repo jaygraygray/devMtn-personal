@@ -4,12 +4,8 @@ angular.module('appName')
         element.bind("keydown keypress", function (event) {
             if(event.which === 13) {
             	
-            	var tc = 0
-            	scope.pushTag(scope.tags[tc].text)
-            	tc + 1
-            	
+            	scope.pushTag(scope.tags)
             	console.log(scope.tags)
-            	//scope.pushTag(scope.tags)
                 scope.$apply(function (){
                     scope.$eval(attrs.myEnter);
                 });
@@ -25,7 +21,15 @@ angular.module('appName')
 //////////////////////////////////////
 
 $scope.pushTag = function(tag) {
-	draftsSvc.draftObj.tags.push(tag)
+	var tagID = tag.length-1
+	//console.log("ID: " + tagID + "  Tag: ", tag[0].text) 
+
+	tag[tagID].id = tagID
+	console.log(tag)
+	tag = JSON.stringify(tag)
+	
+
+	draftsSvc.draftObj.tags = tag
 }
 
 $scope.pushTitle = function(title) {
@@ -39,9 +43,16 @@ $scope.pushTitle = function(title) {
 //declare necessary variables
 
 setTimeout(function() {
-	$scope.tags = draftsSvc.tags
+	$scope.tags = draftsSvc.editTags
+
+	// $scope.tags = [
+	// {"text":"tagone", "id":1},
+	// {"text":"tagtwo", "id":2},
+	// {"text":"tagthree", "id":3}]
+
 	$scope.title = draftsSvc.editTitle
 	draftsSvc.draftObj.title = $scope.title
+	draftsSvc.draftObj.tags = $scope.tags
 }, 200)
 
 $scope.showMenu = false;
