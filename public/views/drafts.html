@@ -33,13 +33,13 @@
 <div class="row">
 	<div class="drafts-list" ng-repeat="draft in drafts">
 		<span ng-repeat="draft in draft">
-		<a href="#"><h2>{{draft.title}}</h2></a>
+		<a href="#"><h2>{{draft.title}}</h2> </a>
 		Last edited {{draft.date | date : 'MMM dd' }}. &#8226;
 		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="editMenu = !editMenu" class="down-arrow">
 			<div class="edit-menu" ng-hide="editMenu">
 				<span class="menu-container">
 				<ul>
-					<li><a href="#">Edit Draft</a></li>
+					<li><a ui-sref="edit-story({article_id: draft.article_id})">Edit Draft</a></li>
 					<li><a ui-sref="drafts" data-ui-sref-opts="{reload:true}" ng-click="deleteDraft(draft.article_id)">Delete Draft</a></li>
 				</ul>
 				</span>

@@ -1,16 +1,23 @@
 const 	express = require('express')
+		//session = require('express-sessions')
 		bodyParser = require('body-parser')
 		massive = require('massive')
 		cors = require('cors')
 		port = 9991
 
 
-//middle ware
+//middleware
 const app = module.exports = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(express.static('public'))
 app.use(cors())
+
+// app.use(session({
+// 	secret: config.secrete,
+// 	resave: true,
+// 	saveUninitialized: true
+// }))
 
 //db connection
 var conn = massive.connectSync({
@@ -42,7 +49,7 @@ articlesCtrl				= require('./BEControl/articles')
 app.post('/api/updatedraft/:id', draftsCtrl.UpdateDraft)
 app.get('/api/getdrafts/:author_id', draftsCtrl.GetAll)
 app.get('/api/deletedraft/:article_id', draftsCtrl.DeleteDraft)
-app.get('api/editdraft/:article_id', draftsCtrl.EditDraft)
+app.get('/api/editdraft/:article_id', draftsCtrl.EditDraft)
 
 /////////////////////////////////////////////////////////
 /////////// ARTICLES 

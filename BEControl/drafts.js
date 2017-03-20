@@ -43,8 +43,11 @@ module.exports = {
 			} else { console.log("Delete successful.")}})
 	},
 	EditDraft : function(req, res) {
+		console.log(req.params.article_id)
 		db.draft_edit([req.params.article_id], function(err, resp) {
 			if (err) { console.log(err)
-			} else { console.log("Retrieval for edit successful.")}})
+			} else {
+				console.log(resp) 
+				res.send(resp)}})
 	},
 }

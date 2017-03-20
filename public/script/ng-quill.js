@@ -136,15 +136,29 @@ app = angular.module('ngQuill', [])
 
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
-    controller: ('editorCtrl', ['$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
-    function ($rootScope, $scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
+    controller: ('editorCtrl', ['$stateParams', '$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
+    function ($stateParams, $rootScope, $scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
       
+
+
       var config = {},
         content,
         editorElem,
         modelChanged = false,
         editorChanged = false,
         editor
+
+      console.log(draftsSvc.editBody)
+      draftsSvc.editDraft(draftsSvc.id).then(function(resp){
+           draftsSvc.editBody = resp.data[0].body  
+      })
+       
+
+      draftsSvc.createArticle();
+      draftsSvc.getRecentID().then(function(resp) {
+        draftsSvc.draftObj.article_id = resp
+      })  
+
 
       this.validate = function (text) {
         if (this.maxLength) {
@@ -221,13 +235,14 @@ app = angular.module('ngQuill', [])
         editor = new Quill(editorElem, config)
 
         this.ready = true
-       
-        ////////////////////////////////
-        // create module 
-        ////////////////////////////////
-
+        setTimeout(function(){
+          editorElem.children[0].innerHTML = draftsSvc.editBody
+        }, 200)
+        
+        
         
 
+      
         editor.on('selection-change', function (range, oldRange, source) {
              ///////////////////////////////////////////////
              // BEGIN USER SELECTION
@@ -279,7 +294,7 @@ app = angular.module('ngQuill', [])
           }.bind(this))
         }.bind(this))
 
-
+      
         
         editor.on('text-change', function (delta, oldDelta, source) {
 
@@ -355,24 +370,16 @@ app = angular.module('ngQuill', [])
         if (this.onEditorCreated) {
           this.onEditorCreated({editor: editor})
         }
-      }
 
-      //if there are changes, and if X TIME has passed without a keydown, execute function. 
-      //OR if there are changes and enter is hit execute function
-      ///////////////////////////////////////////////////////
-      //initialize menu 
-      ////////////////////////////////////////////////////////
+
+
+
+      } //end editor init
+
+
       
-      ///////////////////////////////////////////////////////
-      //end menu 
-      ////////////////////////////////////////////////////////
 
 
-
-      draftsSvc.createArticle();
-      draftsSvc.getRecentID().then(function(resp) {
-        draftsSvc.draftObj.article_id = resp
-      })
     }])
 
   })

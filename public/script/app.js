@@ -14,6 +14,18 @@ $stateProvider
 		templateUrl: '/views/text-editor.html',
 		controller: 'draftCtrl'
 	})
+	.state('edit-story', {
+		url: '/edit-story/:article_id',
+		templateUrl: '/views/text-editor.html',
+		controller: function($stateParams, draftsSvc) {
+			//$stateParams.article_id;
+			draftsSvc.id = $stateParams.article_id;
+
+			draftsSvc.editDraft(draftsSvc.id).then(function(resp){
+				draftsSvc.editBody = resp
+			})
+		}
+	})
 	.state('drafts', {
 		url: '/me/stories/drafts',
 		templateUrl: '/views/drafts.html',

@@ -50,12 +50,12 @@ this.deleteDraft = function(id) {
 
 
 this.editDraft = function(id) {
-	console.log(id)
 	return $http.get('api/editdraft/' + id)
-	.then(function(resp) { return resp})}
+	.then(function(resp) { 
+		return resp})}
 
-
-
+this.id
+this.editBody
 
 
 
