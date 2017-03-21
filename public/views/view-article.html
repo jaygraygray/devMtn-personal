@@ -68,12 +68,89 @@
 </div>
 </div>
 
+<!-- mini article suggestion -->
 <div class="row">
 <div class="suggestions col-sm-12">
-
 <div class="mini-holder col-sm-3">
-	<div class="mini-holder-header"><img src="/images/mini-holder-header.png" class="mini-holder-header-img"></div>
+	<img src="/images/mini-holder-header.png" class="mini-holder-header">
+	<div class="mini-holder-body"><h1>Civil Air Patrol is The Hot New Fashion in Japan</h1></div>
+	<div class="mini-holder-footer">
+		<img src="/images/user5.jpeg" class="mini-holder-profile-pic" />
+		<div class="mini-holder-text">
+			<span class="mini-holder-name">Erin Heiser</span><br>
+			<span class="mini-holder-info">10 min read</span>
+		</div>
+		<ul class="mini-holder-actions">
+			<li><div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number">104</div></div></li>
+			<li><img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</li>
+		</ul>
+	</div>
+</div>
+</div>
+</div>
+<!-- mini article suggestions -->
+
+<!-- BEGIN MAKE RESPONSE -->
+<div class="row light-gray">
+<div class="col-sm-1 col-md-2"></div>
+<div class="col-sm-10 col-md-8">
+
+
+<div class="response"><p>Response</p>
+<div class="make-response">
+<img src="/images/user5.jpeg" class="response-profile-pic" />
+
+
+<div class="response-footer">
+<button class="writer-follow-button">Publish</button>
+</div>
+</div>
 </div>
 
+
+<div class="col-sm-1 col-md-2"></div>
+<!-- END MAKE RESPONSE -->
+
+
+
+<!-- COMMENT DIRECTIVE -->
+<div class="row light-gray comment-body">
+
+<div class="col-sm-12 col-md-12">
+
+<div class="response-container">
+	<div class="response-author-container">
+		<div class="response-author-pic"><img src="../images/user3.jpeg"/></div>
+		<div class="response-author-info">
+			<ul>
+				<li class="response-author-name">Carmen Reinicke</li>
+				<li>Financial Services Consultant by day, writer by night.
+				<li>Mar 16 5 min read</li>
+			</ul>
+		</div>
+	</div>
+	<div class="response-body">
+		<p>This right on the nose, and something I’ve noticed and thought about. I work at a small tech company with a casual dress code. We have zero female c-level execs and the environment is very much that of a boy’s club. There is an unspoken rule that women shouldn’t wear the hoodies and tees like the men do because we appear unkempt and unprofessional. I think this topic of casual wear in the office is a very tangible example of the deeply rooted gender biases in business. We’ve come very far, yet we have so far to go.</p>
+	</div>
+	<div class="response-footer">
+		
+			<div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number">104</div></div>
+		<div class="response-bookmark">
+			<img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;
+		</div>
+	</div>
 </div>
 </div>
+</div>
+<!-- END COMMENT DIRECTIVE -->
+
+
+<!-- SHOW RESPONSES -->
+<div class="row">
+<div class="col-sm-12 col-md-12">
+	<div class="show-responses">
+		<a href="#">Show all responses</a>
+	</div>
+</div>
+</div>
+
