@@ -21,15 +21,11 @@ angular.module('appName')
 //////////////////////////////////////
 
 $scope.pushTag = function(tag) {
-	var tagID = tag.length-1
+	//var tagID = tag.length-1
 	//console.log("ID: " + tagID + "  Tag: ", tag[0].text) 
-
-	tag[tagID].id = tagID
-	console.log(tag)
-	tag = JSON.stringify(tag)
-	
-
-	draftsSvc.draftObj.tags = tag
+	//tag[tagID].id = tagID
+	//console.log(tag)
+	draftsSvc.draftObj.tags = JSON.stringify(tag)
 }
 
 $scope.pushTitle = function(title) {
@@ -44,12 +40,6 @@ $scope.pushTitle = function(title) {
 
 setTimeout(function() {
 	$scope.tags = draftsSvc.editTags
-
-	// $scope.tags = [
-	// {"text":"tagone", "id":1},
-	// {"text":"tagtwo", "id":2},
-	// {"text":"tagthree", "id":3}]
-
 	$scope.title = draftsSvc.editTitle
 	draftsSvc.draftObj.title = $scope.title
 	draftsSvc.draftObj.tags = $scope.tags

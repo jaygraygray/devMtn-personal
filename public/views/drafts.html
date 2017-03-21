@@ -34,7 +34,7 @@
 	<div class="drafts-list" ng-repeat="draft in drafts">
 		<span ng-repeat="draft in draft">
 		<a href="#"><h2>{{draft.title}}</h2> </a>
-		Last edited {{draft.date | date : 'MMM dd' }}. &#8226;
+		Last edited {{draft.date | date : 'MMM dd' }}. &#8226; {{draft.numWords}} words so far
 		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="editMenu = !editMenu" class="down-arrow">
 			<div class="edit-menu" ng-hide="editMenu">
 				<span class="menu-container">

@@ -153,7 +153,6 @@ app = angular.module('ngQuill', [])
           draftsSvc.editDraft(draftsSvc.id).then(function(resp){
                draftsSvc.editBody = resp.data[0].body 
                draftsSvc.editTitle = resp.data[0].title 
-               console.log(resp.data[0].tags)
                draftsSvc.editTags = JSON.parse(resp.data[0].tags)
                console.log(resp.data[0].tags)
                

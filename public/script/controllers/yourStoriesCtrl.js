@@ -4,9 +4,15 @@ function($scope, yourStoriesSvc, draftsSvc) {
 $scope.editMenu = true;
 
 yourStoriesSvc.getAllDrafts(3).then(function(resp) {
-	
+
 	$scope.drafts = resp
 	$scope.numDrafts = resp.length
+	for (var i = 0; i < resp.length; i++) {
+		$scope.drafts[i][0].numWords = resp[i][0].body.split(" ").length
+		console.log($scope.drafts.numWords)
+	}
+	console.log($scope.drafts[0])
+
 	
 })
 
