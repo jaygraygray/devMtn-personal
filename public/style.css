@@ -1588,14 +1588,21 @@ tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {
   border-radius: 3px; }
 
 .side-menu {
-  width: 150px;
-  font-size: .5rem; }
+  font-size: .8rem;
+  position: fixed;
+  top: 200px;
+  left: 50px;
+  display: flex;
+  justify-content: center; }
 
 .side-menu ul {
   list-style: none; }
 
 .side-menu li {
   margin-top: 24px; }
+
+.article-favorites-number-side-menu {
+  padding-top: 18px; }
 
 
 html {

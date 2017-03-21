@@ -155,12 +155,17 @@
 </div>
 <!-- END SHOW RESPONSES -->
 
-<!-- SIDE MENU --><!-- 
+<!-- SIDE MENU --> 
 <div class="side-menu">
 <ul>
 	<li>SHARE</li>
-	<li><div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number">104</div></div></li>
-	<li></li>
-	<li></li>
-	<li></li>
-</div> -->
+	<li><div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number-side-menu"><br>104</div></div></li>
+	<li><img src="/images/twitter.svg" class="article-twitter-response"></li>
+	<li><img src="/images/facebook.svg" class="article-facebook-response"></li>
+	<li><img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</li>
+</div>
+
+
+
+<!-- FOOTER -->
+<!-- END FOOTER -->
