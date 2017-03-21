@@ -2,7 +2,7 @@
 <header-menu></header-menu>
 
 
-
+<div class="container">
 <div class="row">
 <div class="col-sm-12 col-md-12">
 
@@ -27,7 +27,7 @@
 	</div>
 </div>
 
-<div class="col-sm-12 article">
+<div class="col-sm-12 article" body-height>
 	<h1>Can Women Truly Be Casual at the Office?</h1>
 
 	<p>It is no secret that a growing trend in businesses everywhere, large and small, is to cultivate a workplace environment that is cool, trendy, cutting-edge, hip even. From the burgeoning start-up world that boasts offices that are similar to compounds and CEOs in t-shirts to the corporate world, where even blue-blooded companies like IBM are casting off the three-piece suits of the past in favor of blazers and denim, companies everywhere are changing their look.</p>
@@ -67,6 +67,7 @@
 
 </div>
 </div>
+</div></div>
 
 <!-- mini article suggestion -->
 <div class="row">
@@ -89,7 +90,7 @@
 </div>
 </div>
 <!-- mini article suggestions -->
-
+<!--============================================-->
 <!-- BEGIN MAKE RESPONSE -->
 <div class="row light-gray">
 <div class="col-sm-1 col-md-2"></div>
@@ -106,12 +107,10 @@
 </div>
 </div>
 </div>
-
-
 <div class="col-sm-1 col-md-2"></div>
 <!-- END MAKE RESPONSE -->
 
-
+<!--============================================-->
 
 <!-- COMMENT DIRECTIVE -->
 <div class="row light-gray comment-body">
@@ -144,8 +143,10 @@
 </div>
 <!-- END COMMENT DIRECTIVE -->
 
+<!--============================================-->
 
 <!-- SHOW RESPONSES -->
+
 <div class="row">
 <div class="col-sm-12 col-md-12">
 	<div class="show-responses">
@@ -155,8 +156,10 @@
 </div>
 <!-- END SHOW RESPONSES -->
 
+<!--============================================-->
+
 <!-- SIDE MENU --> 
-<div class="side-menu">
+<div class="side-menu" ng-class="{showMenu:showMenuBoolean}" menu-scroll>
 <ul>
 	<li>SHARE</li>
 	<li><div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number-side-menu"><br>104</div></div></li>
@@ -165,12 +168,14 @@
 	<li><img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</li>
 </ul>
 </div>
-
-
 </div>
+<!-- END SIDE MENU -->
+
+<!--============================================-->
+
+
 <!-- FOOTER -->
 <div class="row white article-footer">
-	<div class="col-sm-1 col-md-2 white"></div>
 	<div class="col-sm-3 col-md-3 white center">
 		<div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number-footer">104</div></div>
 		<div class="response-unclicked" ng-class="{'response-clicked':article.userResponded}" ng-click="makeResponse(article.id)"><div class="article-responses-number">10</div></div>
@@ -189,7 +194,7 @@
 			<li><a href="#" class="article">When's the right time?</a></li>
 		</div>
 	</div>
-
 </div>
-
+</div>
 <!-- END FOOTER -->
+

@@ -1,6 +1,8 @@
 @import "_variables.scss";
 
-
+body {
+	overflow-x: hidden;
+}
 .author {
 	display: flex;
 	justify-content: flex-start;
@@ -349,6 +351,14 @@
 	left: 50px;
 	display: flex;
 	justify-content: center;
+	opacity: 0;
+	transition: all .3s;
+
+}
+
+.showMenu {
+	opacity: 1;
+	transition: all .3s;
 }
 
 .side-menu ul {
@@ -409,12 +419,5 @@
 }
 .next {
 	font-size: .8rem;
-	font-weight: bolder;
 	color: #fff;
-}
-
-.article {
-	color: $dark-gray;
-	font-size: 1rem;
-	font-weight: bolder;
 }

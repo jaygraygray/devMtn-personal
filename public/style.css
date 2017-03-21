@@ -1303,6 +1303,9 @@ tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b;
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 6px #c0a16b; }
 
+body {
+  overflow-x: hidden; }
+
 .author {
   display: flex;
   justify-content: flex-start;
@@ -1593,7 +1596,13 @@ tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {
   top: 200px;
   left: 50px;
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  opacity: 0;
+  transition: all .3s; }
+
+.showMenu {
+  opacity: 1;
+  transition: all .3s; }
 
 .side-menu ul {
   list-style: none; }
@@ -1643,13 +1652,7 @@ tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {
 
 .next {
   font-size: .8rem;
-  font-weight: bolder;
   color: #fff; }
-
-.article {
-  color: #4d4d4d;
-  font-size: 1rem;
-  font-weight: bolder; }
 
 
 html {

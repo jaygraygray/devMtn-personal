@@ -29,7 +29,7 @@ $stateProvider
 	.state('article', {
 		url: '/stories/:article_title',
 		templateUrl: '/views/view-article.html',
-		controller: ''
+		controller: 'articleCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')
