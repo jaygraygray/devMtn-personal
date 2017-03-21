@@ -18,7 +18,6 @@ $stateProvider
 		url: '/edit-story/:article_id',
 		templateUrl: '/views/text-editor.html',
 		controller: function($stateParams, draftsSvc) {
-			
 			draftsSvc.id = $stateParams.article_id;
 		}
 	})
@@ -26,6 +25,11 @@ $stateProvider
 		url: '/me/stories/drafts',
 		templateUrl: '/views/drafts.html',
 		controller: 'yourStoriesCtrl'
+	})
+	.state('article', {
+		url: '/stories/:article_title',
+		templateUrl: '/views/view-article.html',
+		controller: ''
 	});
 
 	$urlRouterProvider.otherwise('/')

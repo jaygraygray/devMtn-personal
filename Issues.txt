@@ -10,6 +10,6 @@ Any off-clicks make current menu disappear.
 
 Time permitting, convert custom elements to Angular Bootstrap
 
-Need to: 	build user list of drafts
-			open/edit/update drafts
-			For list-articles directive, only pull PUBLISHED articles
+Need to: For list-articles directive, only pull PUBLISHED articles
+Article View
+Responses 
