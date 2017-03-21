@@ -12,4 +12,10 @@ Time permitting, convert custom elements to Angular Bootstrap
 
 Need to: For list-articles directive, only pull PUBLISHED articles
 Article View
-Responses 
+	-- Clean up Response CSS
+	-- Finish Share Menu
+	-- Build footer
+	-- Add scroll down CSS for header/footer
+	-- Clean up mini-article-container 
+	-- Image upload in text editor
+	-- Correct date and order display for drafts

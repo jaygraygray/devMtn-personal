@@ -1587,6 +1587,16 @@ tags-input.ti-input-sm .tags .input, .input-group-sm tags-input .tags .input {
   box-shadow: -1px 2px 11px -4px black;
   border-radius: 3px; }
 
+.side-menu {
+  width: 150px;
+  font-size: .5rem; }
+
+.side-menu ul {
+  list-style: none; }
+
+.side-menu li {
+  margin-top: 24px; }
+
 
 html {
   font-size: 16px;
