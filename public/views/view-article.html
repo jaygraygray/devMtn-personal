@@ -163,9 +163,33 @@
 	<li><img src="/images/twitter.svg" class="article-twitter-response"></li>
 	<li><img src="/images/facebook.svg" class="article-facebook-response"></li>
 	<li><img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</li>
+</ul>
 </div>
 
 
-
+</div>
 <!-- FOOTER -->
+<div class="row white article-footer">
+	<div class="col-sm-1 col-md-2 white"></div>
+	<div class="col-sm-3 col-md-3 white center">
+		<div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)"><div class="article-favorites-number-footer">104</div></div>
+		<div class="response-unclicked" ng-class="{'response-clicked':article.userResponded}" ng-click="makeResponse(article.id)"><div class="article-responses-number">10</div></div>
+	</div>
+	<div class="col-sm-4 col-md-5 white">
+		<ul class="footer-social">
+			<li><img src="/images/twitter.svg" class="article-twitter-response"></li>
+			<li><img src="/images/facebook.svg" class="article-facebook-response"></li>
+			<li><img src="/images/bookmark-unclicked.svg" class="bookmark-article-response" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</li>
+			<li><img src="/images/three-dots.svg" class="article-three-dots"/></li>
+		</ul>
+	</div>
+	<div class="col-sm-4 col-md-3 white">
+		<ul class="next-story">
+			<li><a href="#" class="next">Next story</a><br></li>
+			<li><a href="#" class="article">When's the right time?</a></li>
+		</div>
+	</div>
+
+</div>
+
 <!-- END FOOTER -->
