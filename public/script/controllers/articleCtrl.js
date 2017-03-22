@@ -3,8 +3,6 @@ angular.module('appName')
 
 
 
-
-
 })
 .directive('menuScroll', function(articleSvc, $window) {
 	var win = angular.element($window)

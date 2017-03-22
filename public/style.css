@@ -1661,6 +1661,19 @@ body {
   font-size: .8rem;
   color: #fff; }
 
+.headroom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: all .5s ease-in-out; }
+
+.headroom--unpinned {
+  bottom: -100px; }
+
+.headroom--pinned {
+  bottom: 0; }
+
 
 html {
   font-size: 16px;

@@ -1,4 +1,19 @@
-Header scroll bar changes width when scrolling down
+CSS in Articles View affects CSS on Home view.
+	-- re-write article actions (like, bookmark, share) into directives
+
+Publish articles
+
+Expand list-articles directive
+
+Responses
+
+Author Bio directive
+
+Add bookmarks to header menu
+
+Mini-Story holder directive
+
+Tags on home page need to display correctly
 
 Keep track of all places userID is manually entered.
 	homeCtrl.js
@@ -10,12 +25,10 @@ Any off-clicks make current menu disappear.
 
 Time permitting, convert custom elements to Angular Bootstrap
 
-Need to: For list-articles directive, only pull PUBLISHED articles
+Need to: 
+For list-articles directive, only pull PUBLISHED articles
 Article View
 	-- Clean up Response CSS
-	-- Finish Share Menu
-	-- Build footer
-	-- Add scroll down CSS for header/footer
 	-- Clean up mini-article-container 
 	-- Image upload in text editor
 	-- Correct date and order display for drafts
