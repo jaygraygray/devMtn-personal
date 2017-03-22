@@ -122,10 +122,12 @@ app = angular.module('ngQuill', [])
       'onSelectionChanged': '&?',
       'ngModel': '<',
       'maxLength': '<',
-      'minLength': '<'
+      'minLength': '<',
+      'action': '@?'
+
     },
     require: {
-      ngModelCtrl: 'ngModel'
+      ngModelCtrl: 'ngModel',
     },
     transclude: {
       'toolbar': '?ngQuillToolbar'
@@ -136,34 +138,15 @@ app = angular.module('ngQuill', [])
 
     // PUT THE MENU CREATING CODE IN A SERVICE. INJECT FROM HERE
     template: '<div class="ng-hide" ng-show="$ctrl.ready"><ng-transclude ng-transclude-slot="toolbar"></ng-transclude></div>',
-    controller: ('editorCtrl', ['$stateParams', '$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
+    controller: (['$stateParams', '$rootScope', '$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftsSvc', 
     function ($stateParams, $rootScope, $scope, $element, $timeout, $transclude, ngQuillConfig, draftsSvc) {
       
-
-
       var config = {},
         content,
         editorElem,
         modelChanged = false,
         editorChanged = false,
         editor
-
-        
-          if ($stateParams.article_id) {
-          draftsSvc.editDraft(draftsSvc.id).then(function(resp){
-               draftsSvc.editBody = resp.data[0].body 
-               draftsSvc.editTitle = resp.data[0].title 
-               draftsSvc.editTags = JSON.parse(resp.data[0].tags)
-               console.log(resp.data[0].tags)
-               
-          })   
-        } else {
-          draftsSvc.createArticle();
-          draftsSvc.getRecentID().then(function(resp) {
-            draftsSvc.draftObj.article_id = resp
-          })  
-
-        } 
         
 
       this.validate = function (text) {
@@ -214,8 +197,34 @@ app = angular.module('ngQuill', [])
           modules: this.modules || ngQuillConfig.modules,
           formats: this.formats || ngQuillConfig.formats,
           placeholder: this.placeholder || ngQuillConfig.placeholder,
-          boundary: ngQuillConfig.boundary
+          boundary: ngQuillConfig.boundary,
+          action: this.action
         }
+
+         ///////////////////////////////////////////////
+         // set body of text to draft if necessary
+         ///////////////////////////////////////////////
+        if ($stateParams.article_id) {
+          draftsSvc.editDraft(draftsSvc.id).then(function(resp){
+               draftsSvc.editBody = resp.data[0].body 
+               draftsSvc.editTitle = resp.data[0].title 
+               draftsSvc.editTags = JSON.parse(resp.data[0].tags)
+               console.log(resp.data[0].tags)
+               
+          })
+         ///////////////////////////////////////////////
+         // If article is being created
+         // generate new article ID
+         ///////////////////////////////////////////////  
+        } else if (config.action == 'article') {
+          draftsSvc.createArticle();
+          draftsSvc.getRecentID().then(function(resp) {
+            draftsSvc.draftObj.article_id = resp
+          })  
+        } 
+
+        console.log(config.action)
+
       }
 
       this.$postLink = function () {
@@ -242,6 +251,9 @@ app = angular.module('ngQuill', [])
 
         this.ready = true
 
+             ///////////////////////////////////////////////
+             // set body of text to draft if necessary
+             ///////////////////////////////////////////////
         if ($stateParams.article_id) {
             setTimeout(function(){
             editorElem.children[0].innerHTML = draftsSvc.editBody
@@ -249,41 +261,8 @@ app = angular.module('ngQuill', [])
           }, 200)
         }
         
-        
-        
-
-      
         editor.on('selection-change', function (range, oldRange, source) {
-             ///////////////////////////////////////////////
-             // BEGIN USER SELECTION
-             ///////////////////////////////////////////////
-          var range = editor.getSelection();
-          if (range) {
-            if (range.length == 0) {
-              console.log('User cursor is at index', range.index);
-            } else {
-              var text = editor.getText(range.index, range.length);
 
-              console.log('User has highlighted: ', text);
-              
-
-              var location = range.index - range.length
-              var mid = editor.getText(location)
-              var bounds = editor.getBounds(location)
-              console.log('location: ', location)
-              console.log('getBounds: TOP: ', bounds.top)
-              console.log('getBounds: LEFT: ', bounds.left)
-
-              this.top = bounds.top
-              this.left = bounds.left
-             
-             ///////////////////////////////////////////////
-             // END USER SELECTION
-             ///////////////////////////////////////////////
-            }
-          } else {
-            console.log('User cursor is not in editor');
-          }
 
           if (this.onSelectionChanged) {
 
@@ -315,18 +294,18 @@ app = angular.module('ngQuill', [])
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////
+          
+          if (config.action == 'article') {
+            clearTimeout(this.timer)
+            $rootScope.savedMessage = 'Not saved...'
+            this.timer = setTimeout(function() {
+              draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
+              $rootScope.savedMessage = 'Saved!'
+              draftsSvc.updateDraft(draftsSvc.draftObj).then(function(resp) {
+                console.log('Updated article! Info: ', draftsSvc.draftObj)})
+            }, 3000) 
+          }
 
-          clearTimeout(this.timer)
-          $rootScope.savedMessage = 'Not saved...'
-          this.timer = setTimeout(function() {
-            draftsSvc.draftObj.draftBody = editorElem.children[0].innerHTML 
-            $rootScope.savedMessage = 'Saved!'
-            draftsSvc.updateDraft(draftsSvc.draftObj).then(function(resp) {
-              console.log('Updated article! Info: ', draftsSvc.draftObj)})
-          }, 3000)
-          
-          
-          
           ///////////////////////////////////////////////////////
           //     end autosave 
           ////////////////////////////////////////////////////////          
