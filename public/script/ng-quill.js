@@ -216,9 +216,11 @@ app = angular.module('ngQuill', [])
          // If article is being created
          // generate new article ID
          ///////////////////////////////////////////////  
-        } else if (config.action == 'article') {
-          draftsSvc.createArticle();
+        }
+        if (config.action == 'article') {
+          draftsSvc.createArticle()
           draftsSvc.getRecentID().then(function(resp) {
+            console.log("ID", resp)
             draftsSvc.draftObj.article_id = resp
           })  
         } 

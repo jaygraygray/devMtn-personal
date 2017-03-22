@@ -1,12 +1,17 @@
 angular.module("appName").service("draftsSvc", function($http) {
 
+this.id
+this.editBody
+this.editTitle
+this.editTags
+
 this.draftObj = {
 	author_id : 3,
 	article_id : null,
 	date : new Date(),
-	draftBody : '',
+	draftBody : null,
 	tags : null,
-	title: ''
+	title: null
 }
 
 this.createArticle = function() {
@@ -15,8 +20,8 @@ this.createArticle = function() {
 }
 
 this.getRecentID = function() {
-	return $http.get('/api/headlines/headline')
-	.then(function(resp) { return resp.data[0].id})
+	return $http.get('/api/getlastid')
+	.then(function(resp) { return resp.data[0].max})
 }
 
 this.articleObj = {
@@ -54,21 +59,10 @@ this.editDraft = function(id) {
 	.then(function(resp) { 
 		return resp})}
 
-this.id
-this.editBody
-this.editTitle
-this.editTags
-
-
-
-
-
-
-
-
-
-
-
+this.publishDraft = function(id) {
+	return $http.post('/api/publishdraft', id)
+	.then(function(resp) {
+		return resp })}
 
 
 })

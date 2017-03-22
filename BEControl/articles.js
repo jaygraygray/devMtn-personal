@@ -18,7 +18,16 @@ module.exports = {
 						  req.body.response_parent,
 						  req.body.tagline], 
 		function(err, resp) {
-			if (err) { console.log(err)}})},
-		
+			if (err) { console.log(err) }})
+	},
+
+	GetLastArticleID : function(req, res) {
+		db.query('SELECT MAX(id) FROM articles', function(err, resp) {
+			if (err) { console.log(err) } else {
+				console.log(resp)
+				res.send(resp)
+			}
+		})
+	}
 
 }

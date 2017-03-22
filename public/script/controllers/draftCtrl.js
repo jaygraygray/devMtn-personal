@@ -1,30 +1,10 @@
 angular.module('appName')
-.directive('addTag', function () {
-    return function (scope, element, attrs) {
-        element.bind("keydown keypress", function (event) {
-            if(event.which === 13) {
-            	
-            	scope.pushTag(scope.tags)
-            	console.log(scope.tags)
-                scope.$apply(function (){
-                    scope.$eval(attrs.myEnter);
-                });
-
-                event.preventDefault();
-            }
-        });
-    };
-})
-.controller('draftCtrl', function($scope, $rootScope, draftsSvc, headerSvc) {
+.controller('draftCtrl', function($stateParams, $scope, $rootScope, draftsSvc, headerSvc) {
 
 
 //////////////////////////////////////
 
 $scope.pushTag = function(tag) {
-	//var tagID = tag.length-1
-	//console.log("ID: " + tagID + "  Tag: ", tag[0].text) 
-	//tag[tagID].id = tagID
-	//console.log(tag)
 	draftsSvc.draftObj.tags = JSON.stringify(tag)
 }
 
@@ -32,25 +12,31 @@ $scope.pushTitle = function(title) {
 	draftsSvc.draftObj.title = title
 }
 
-
+$scope.publish = function(id) {
+	console.log(id)
+	draftsSvc.publishDraft(id)
+	// after click send user to view newly published draft
+}
 
 ///////////////////////////////////////
-
-//declare necessary variables
-
+//hack hack hacky ass code need to clean up
 setTimeout(function() {
 	$scope.tags = draftsSvc.editTags
 	$scope.title = draftsSvc.editTitle
 	draftsSvc.draftObj.title = $scope.title
 	draftsSvc.draftObj.tags = $scope.tags
 }, 200)
+///////////////////////////////////////
 
+$scope.publish_id = $stateParams.article_id
+// menu variables
 $scope.showMenu = false;
 $scope.publishMenu = true
 $scope.dotMenu = true
 $scope.search = true
 $scope.userMenu = true
 $scope.notificationsMenu = true
+
 
 //display notifiations
 $scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
@@ -104,11 +90,19 @@ $scope.getNotifcations = headerSvc.getNotifications().then(function(resp){
 	}
 })
 
-}).directive('headerMenuForWriting', function() {
-	return {
-		restrict: 'AE',
-		templateUrl: '/views/directives/header-for-writing.html',
-		controller: 'draftCtrl'	
-	}
+}).directive('addTag', function () {
+    return function (scope, element, attrs) {
+        element.bind("keydown keypress", function (event) {
+            if(event.which === 13) {
+            	
+            	scope.pushTag(scope.tags)
+            	console.log(scope.tags)
+                scope.$apply(function (){
+                    scope.$eval(attrs.myEnter);
+                });
 
+                event.preventDefault();
+            }
+        });
+    };
 })

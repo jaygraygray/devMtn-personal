@@ -125,6 +125,14 @@ angular.module("appName")
 		}
 	}
 })
+.directive('headerMenuForWriting', function() {
+	return {
+		restrict: 'AE',
+		templateUrl: '/views/directives/header-for-writing.html',
+		controller: 'draftCtrl'	
+	}
+
+})
 .directive('makeTagsSticky', function($window) {
 	var win = angular.element($window)
 	return {

@@ -1,1 +1,1 @@
-SELECT title FROM articles WHERE id = $1
+SELECT title FROM articles WHERE id = $1 and published = true

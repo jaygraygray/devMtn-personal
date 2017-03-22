@@ -50,11 +50,13 @@ app.post('/api/updatedraft/:id', draftsCtrl.UpdateDraft)
 app.get('/api/getdrafts/:author_id', draftsCtrl.GetAll)
 app.get('/api/deletedraft/:article_id', draftsCtrl.DeleteDraft)
 app.get('/api/editdraft/:article_id', draftsCtrl.EditDraft)
+app.post('/api/publishdraft', draftsCtrl.PublishDraft)
 
 /////////////////////////////////////////////////////////
 /////////// ARTICLES 
 /////////////////////////////////////////////////////////
 app.post('/api/createarticle', articlesCtrl.CreateArticle)
+app.get('/api/getlastid', articlesCtrl.GetLastArticleID)
 
 /////////////////////////////////////////////////////////
 /////////// HOME

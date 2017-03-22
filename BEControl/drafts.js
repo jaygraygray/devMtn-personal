@@ -44,11 +44,13 @@ module.exports = {
 			} else { console.log("Delete successful.")}})
 	},
 	EditDraft : function(req, res) {
-		
 		db.draft_edit([req.params.article_id], function(err, resp) {
 			if (err) { console.log(err)
-			} else {
-				
-				res.send(resp)}})
+			} else { res.send(resp)}})
+	},
+	PublishDraft : function(req, res) {
+		db.draft_publish([req.body.article_id], function(err, resp) {
+			if (err) { console.log(err)
+			} else { res.send(resp)}})
 	},
 }
