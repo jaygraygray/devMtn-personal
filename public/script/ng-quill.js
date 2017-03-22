@@ -217,7 +217,7 @@ app = angular.module('ngQuill', [])
          // generate new article ID
          ///////////////////////////////////////////////  
         }
-        if (config.action == 'article') {
+        if (!$stateParams.article_id && config.action == 'article') {
           draftsSvc.createArticle()
           draftsSvc.getRecentID().then(function(resp) {
             console.log("ID", resp)

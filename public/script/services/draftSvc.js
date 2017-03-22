@@ -59,8 +59,8 @@ this.editDraft = function(id) {
 	.then(function(resp) { 
 		return resp})}
 
-this.publishDraft = function(id) {
-	return $http.post('/api/publishdraft', id)
+this.publishDraft = function(articleObj) {
+	return $http.post('/api/publishdraft', articleObj)
 	.then(function(resp) {
 		return resp })}
 

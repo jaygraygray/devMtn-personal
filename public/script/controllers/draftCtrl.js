@@ -12,10 +12,24 @@ $scope.pushTitle = function(title) {
 	draftsSvc.draftObj.title = title
 }
 
-$scope.publish = function(id) {
-	console.log(id)
-	draftsSvc.publishDraft(id)
-	// after click send user to view newly published draft
+$scope.publish = function(article_id) {
+	console.log(article_id)
+	draftsSvc.editDraft(article_id).then(function(resp) {
+		return resp.data[0]
+	}).then(function(articleData) {
+		console.log(articleData)
+		var articleObj = {
+			"title" : articleData.title,
+			"body" : articleData.body,
+			"date_published" : new Date(),
+			"headline_img" : null,
+			"tags" : articleData.tags,
+			"article_id" : article_id
+		}
+		draftsSvc.publishDraft(articleObj).then(function(resp){
+			console.log("PUBLISHED MSG:", resp)
+		})
+	})
 }
 
 ///////////////////////////////////////
@@ -23,12 +37,17 @@ $scope.publish = function(id) {
 setTimeout(function() {
 	$scope.tags = draftsSvc.editTags
 	$scope.title = draftsSvc.editTitle
+	if ($stateParams.article_id) {
+		$scope.publish_id = $stateParams.article_id
+	} else {
+		$scope.publish_id = draftsSvc.draftObj.article_id
+	}
 	draftsSvc.draftObj.title = $scope.title
 	draftsSvc.draftObj.tags = $scope.tags
 }, 200)
 ///////////////////////////////////////
 
-$scope.publish_id = $stateParams.article_id
+
 // menu variables
 $scope.showMenu = false;
 $scope.publishMenu = true

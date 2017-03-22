@@ -49,8 +49,16 @@ module.exports = {
 			} else { res.send(resp)}})
 	},
 	PublishDraft : function(req, res) {
-		db.draft_publish([req.body.article_id], function(err, resp) {
+
+		db.draft_publish([req.body.title,
+						  req.body.body,
+						  req.body.date_published,
+						  req.body.headline_img,
+						  req.body.tags,
+						  req.body.article_id], function(err, resp) {
 			if (err) { console.log(err)
-			} else { res.send(resp)}})
+			} else { 
+				console.log("Article published!")
+				res.send(resp)}})
 	},
 }
