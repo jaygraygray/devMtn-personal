@@ -21,12 +21,13 @@
 
 <div class="article-footer">
 <div class="article-footer-left">
-	<div class="favorite-unclicked" ng-class="{'favorite-clicked':article.userLikedArticle}" ng-click="likeArticle(article.id)">&nbsp;
-	<span class="favorite-text"> {{article.likes | number}}</span></div> 
+	<like-article id="{{article.id}}" articles="{{articles}}"></like-article>
 </div>
-<span class="article-footer-right">{{article.responses | number}} responses 
-<span class="bookmark-unclicked" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</span>
-<img src="images/down-carat.svg" class="down-carat"></span>
+<div class="article-footer-right">{{article.responses | number}} responses 
+	<bookmark-article id="{{article.id}}" articles="{{articles}}"></bookmark-article>
+<!-- <div class="bookmark-unclicked" ng-class="{'bookmark-clicked':article.userBookmarkedArticle}" ng-click="bookmarkArticle(article.id)">&nbsp;</div>
+<img src="images/down-carat.svg" class="down-carat">
+ --></div>
 </div>
 </div>
 <!-- End Article Info -->
