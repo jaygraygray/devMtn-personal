@@ -1,6 +1,7 @@
 angular.module("appName", ['ui.router', 
 						   'ngTagsInput', 
-						   'ngQuill'])
+						   'ngQuill',
+						   'headroom'])
 .config(function($stateProvider, $urlRouterProvider) {
 
 $stateProvider

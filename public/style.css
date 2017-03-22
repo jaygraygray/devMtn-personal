@@ -1618,10 +1618,17 @@ body {
   margin: auto;
   position: fixed;
   bottom: 0;
-  height: 48px;
+  height: 75px;
   border-width: 1px 0 0 0;
   border-style: solid;
-  border-color: #e6e6e6; }
+  border-color: #e6e6e6;
+  transition: all .4s; }
+
+.show-article-footer {
+  position: fixed;
+  bottom: -100px;
+  transition: all .4s;
+  background-color: red; }
 
 .center {
   display: flex;

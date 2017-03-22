@@ -31,7 +31,7 @@ angular.module('appName')
         link: function (scope, element, attrs) {
             articleSvc.articleHeight = element[0].offsetHeight;
         },
-
     }
 }])
+
 
