@@ -1,7 +1,7 @@
 angular.module('appName')
 .service('articleSvc', function($http) {
 
-this.articleHeight = 0;
+this.articleHeight ;
 this.article
 this.getHeadlines = function(cmd) {
 	return $http.get('/api/headlines/' + cmd).then(function(resp) {

@@ -6,51 +6,26 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 	console.log($stateParams.article_id)
 
 	$scope.articles = resp.data
-	console.log($scope.articles)
 	$scope.articles[0].id = Number($stateParams.article_id)
-	$scope.test = "test"
-
-
-//	$scope.tags = $scope.article.tags.split(',')
+	$scope.tags = $scope.article.tags.split(',')
 
 })
 
 
-}).directive('storyView', function() {
-	return {
-		restrict : 'AE',
-		scope: true,
-		templateUrl: '/views/directives/author-bio.html',
-		controller: function($scope, articleSvc, $stateParams) {
-
-			// articleSvc.getArticle($stateParams.article_id).then(function(resp){
-			// 	console.log($scope.articles)
-			// 	$scope.articles = resp.data[0];
-			// 	$scope.articles.wordcount = resp.data[0].body.split(' ').length;
-			// 	$scope.tags = $scope.articles.tags.split(',')
-
-			// })
-		}
-	}
 
 }).directive('likeArticle', function() {
 	return {
 		restrict: 'AE',
 		templateUrl: '/views/directives/like-article.html',
-		// require: '^listArticles', 
-		// require: '^authorBio',
 		scope: {
 			id: '@',
 			articles: "@",
 		},
 		controller: function($scope, articleSvc) {
 			let articles = JSON.parse($scope.articles)
-
 			for (let i = 0; i < articles.length; i++) {
-					console.log("scope", $scope.id)
-					console.log("articleid", articles[i].id)
+
 				if ($scope.id == articles[i].id) {
-					console.log("work plz")
 					$scope.articleSnippet = articles[i]
 				}
 			}
@@ -100,7 +75,9 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		},
 		controller: function($scope, articleSvc) {
 			let articles = JSON.parse($scope.articles)
+
 			for (let i = 0; i < articles.length; i++) {
+
 				if ($scope.id == articles[i].id) {
 					$scope.bookmarkSnippet = articles[i]
 				}
@@ -198,7 +175,7 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		link: function(scope, ele, attrs) {
 			console.log(articleSvc.articleHeight)
 			var offsetTop = ele.prop('offsetTop') - 150
-			var otherOffset = offsetTop + articleSvc.articleHeight - 450
+			var otherOffset = offsetTop + articleSvc.articleHeight - 650
 			win.on('scroll', function(e) {
 				ele[($window.pageYOffset >= offsetTop) ? 'addClass' : 'removeClass']('showMenu');
 			});	
@@ -215,6 +192,7 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
         restrict: 'AE',
         link: function (scope, element, attrs) {
             articleSvc.articleHeight = element[0].offsetHeight;
+            console.log("ele height:", element[0].offsetHeight)
         },
     }
 }])
