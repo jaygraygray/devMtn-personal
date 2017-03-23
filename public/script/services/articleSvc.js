@@ -2,7 +2,7 @@ angular.module('appName')
 .service('articleSvc', function($http) {
 
 this.articleHeight = 0;
-
+this.article
 this.getHeadlines = function(cmd) {
 	return $http.get('/api/headlines/' + cmd).then(function(resp) {
 		return resp
@@ -23,6 +23,13 @@ this.unlikeArticle = function(deleteObj) {
 
 this.unbookmarkArticle = function(deleteObj) {
 	return $http.put('/api/user/deletebookmark', deleteObj).then(function(resp) {
+		return resp
+	})
+}
+
+this.getArticle = function(id) {
+	return $http.get('/api/getarticle/' + id)
+	.then(function(resp) {
 		return resp
 	})
 }

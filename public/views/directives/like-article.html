@@ -1,2 +1,5 @@
-<div class="favorite-unclicked" ng-class="{'favorite-clicked':articleSnippet.userLikedArticle}" ng-click="likeArticleFunc(articleSnippet.id)">&nbsp;
-	<span class="favorite-text"> {{articleSnippet.likes | number}}</span></div>
+<ul class="bookmarks-list">
+	<li><div class="favorite-unclicked" ng-class="{'favorite-clicked':articleSnippet.userLikedArticle}" ng-click="likeArticleFunc(articleSnippet.id)"></li>
+	<li>{{articleSnippet.likes}}</li> 
+	
+</ul>

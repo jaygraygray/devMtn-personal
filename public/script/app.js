@@ -28,7 +28,7 @@ $stateProvider
 		controller: 'yourStoriesCtrl'
 	})
 	.state('article', {
-		url: '/stories/:article_title',
+		url: '/stories/:article_id',
 		templateUrl: '/views/view-article.html',
 		controller: 'articleCtrl'
 	});

@@ -26,7 +26,6 @@
 	height:24px;
 	background-image: url('/images/favorite-unclicked.svg');
 	background-size: 24px 24px;
-	position:relative;
 }
 
 .favorite-clicked {
@@ -34,13 +33,38 @@
 	height:24px;
 	background-image: url('/images/favorite-clicked.svg');
 	background-size: 24px 24px;
-	position:relative;
+
+}
+
+.bookmarks-list {
+	list-style:none;
+	display: flex;
+	align-content: center;
+}
+
+.bookmark-unclicked {
+	margin-left:12px;
+	margin-right:12px;
+	width: 24px;
+	height:24px;
+	opacity:.5;
+	background-image: url('/images/bookmark-unclicked.svg');
+	background-size: 24px 24px;
+}
+
+.bookmark-clicked {
+	margin-left:12px;
+	margin-right:12px;
+	width: 24px;
+	height:24px;
+	opacity:.5;
+	background-image: url('/images/bookmark-clicked.svg');
+	background-size: 24px 24px;
 }
 
 .favorite-text {
-	position: absolute;
-	top:6px;
-	left:32px;
+	margin-bottom: 10px;
+	padding-left: 30px;
 }
 
 .story-container {
@@ -120,26 +144,6 @@
 }
 .story-container a:visited {
 	color:$dark-gray;
-}
-
-.bookmark-unclicked {
-	margin-left:12px;
-	margin-right:12px;
-	width: 24px;
-	height:24px;
-	opacity:.5;
-	background-image: url('/images/bookmark-unclicked.svg');
-	background-size: 24px 24px;
-}
-
-.bookmark-clicked {
-	margin-left:12px;
-	margin-right:12px;
-	width: 24px;
-	height:24px;
-	opacity:.5;
-	background-image: url('/images/bookmark-clicked.svg');
-	background-size: 24px 24px;
 }
 
 

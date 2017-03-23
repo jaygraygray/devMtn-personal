@@ -57,6 +57,7 @@ app.post('/api/publishdraft', draftsCtrl.PublishDraft)
 /////////////////////////////////////////////////////////
 app.post('/api/createarticle', articlesCtrl.CreateArticle)
 app.get('/api/getlastid', articlesCtrl.GetLastArticleID)
+app.get('/api/getarticle/:article_id', articlesCtrl.GetArticle)
 
 /////////////////////////////////////////////////////////
 /////////// HOME

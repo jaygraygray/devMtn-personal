@@ -24,7 +24,14 @@ module.exports = {
 	GetLastArticleID : function(req, res) {
 		db.query('SELECT MAX(id) FROM articles', function(err, resp) {
 			if (err) { console.log(err) } else {
-				console.log(resp)
+				res.send(resp)
+			}
+		})
+	},
+
+	GetArticle : function(req, res) {
+		db.article_get_one([req.params.article_id], function(err, resp) {
+			if (err) { console.log(err) } else {
 				res.send(resp)
 			}
 		})
