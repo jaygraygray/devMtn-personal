@@ -1,2 +1,2 @@
 select * from articles 
-where tags like '%' + $1 + '%'
+where tags like '%' + $1 + '%';

@@ -3,7 +3,7 @@ angular.module('appName')
 
 this.articleHeight ;
 this.article
-this.getHeadlines = function(cmd) {
+this.getHeadlines = function(cmd, tagcmd) {
 	return $http.get('/api/headlines/' + cmd).then(function(resp) {
 		return resp
 	})

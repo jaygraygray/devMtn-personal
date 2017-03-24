@@ -33,9 +33,9 @@ $stateProvider
 		controller: 'articleCtrl'
 	})
 	.state('tags', {
-		url: '/tags/:tag',
+		url: '/tags/?tag',
 		templateUrl: '/views/tags.html',
-		controller: 'articleCtrl'
+		controller: 'tagsCtrl'
 	})
 
 	$urlRouterProvider.otherwise('/')

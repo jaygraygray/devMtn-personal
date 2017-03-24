@@ -105,7 +105,7 @@ if ($stateParams.article_id) {
 							// if use clicks an already liked article, remove like from their list
 						} else {
 							var deleteObj = {
-								user_id : 3,
+								user_id : 2,
 								unliked_id : ','+ articles[i].id
 							}
 							articleSvc.unbookmarkArticle(deleteObj)
@@ -115,6 +115,7 @@ if ($stateParams.article_id) {
 			}	
 		}
 	}
+
 
 }).directive('listArticles', function() {
 	return {
@@ -131,9 +132,14 @@ if ($stateParams.article_id) {
 			// tag = article w/ specific tag
 			// likes = specific likes
 			// bookmarks
+			if ($stateParams.tag) {
+				$scope.text = 'tags/' + $stateParams.tag
+			}
+			console.log($scope.text)
+
 
 			//grab article IDs user has liked
-			userSvc.getArticleLikes(3).then(function(resp) {
+			userSvc.getArticleLikes(2).then(function(resp) {
 				
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
