@@ -27,12 +27,12 @@ module.exports = {
 			res.status(200).send(resp)}})
 	},
 	GetHeadlines : function(req, res) {
-		console.log(req.params.cmd)
+		console.log(req.query.tags)
 		if (req.params.cmd.slice(0,4) == 'tags') {
+			tag = req.params.cmd.slice(5)
 			req.params.cmd = 'tags'
-			var tag = req.params.cmd.slice(5)
-			console.log(tag)	
 		}
+		
 		switch(req.params.cmd) {
 			case 'headline' :
 			db.article_get_container_info_headline(function(err, resp) {
@@ -41,15 +41,14 @@ module.exports = {
 				res.status(200).send(resp)}})
 			break;
 			case 'all' :
-			console.log(req.params.cmd)
 			db.article_get_container_info_all(function(err, resp) {
 				if (err) { console.log(err)
 				} else {
 				res.status(200).send(resp)}})
 			break;
 			case 'tags' :
-			console.log(tag)
-			db.article_get_all_by_tag([tag], function(err, resp) {
+			console.log('made it to tags! yay!')
+			db.article_get_all_by_tag([req.query], function(err, resp) {
 				if (err) { console.log(err)
 				} else {
 				res.status(200).send(resp)}})

@@ -1,9 +1,16 @@
 angular.module('appName')
-.service('articleSvc', function($http) {
+.service('articleSvc', function($http, $stateParams) {
 
 this.articleHeight ;
 this.article
-this.getHeadlines = function(cmd, tagcmd) {
+this.getHeadlines = function(cmd, tag) {
+	if ($stateParams) {
+		console.log($stateParams)
+	return $http.get('/api/headlines/' + cmd + '?' + $stateParams).then(function(resp) {
+		console.log(resp.data)
+		return resp
+	})
+	}
 	return $http.get('/api/headlines/' + cmd).then(function(resp) {
 		return resp
 	})

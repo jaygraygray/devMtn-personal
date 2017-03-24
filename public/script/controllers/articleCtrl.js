@@ -132,10 +132,10 @@ if ($stateParams.article_id) {
 			// tag = article w/ specific tag
 			// likes = specific likes
 			// bookmarks
-			if ($stateParams.tag) {
-				$scope.text = 'tags/' + $stateParams.tag
-			}
-			console.log($scope.text)
+							// if ($stateParams) {
+							// 	console.log($stateParams)
+							// 	$scope.text = 'tags' + $stateParams.tag
+							// }
 
 
 			//grab article IDs user has liked
@@ -143,6 +143,8 @@ if ($stateParams.article_id) {
 				
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
+
+							
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
 				$scope.articles = resp.data
