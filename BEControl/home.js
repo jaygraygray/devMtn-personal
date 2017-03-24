@@ -40,6 +40,12 @@ module.exports = {
 				if (err) { console.log(err)
 				} else {
 				res.status(200).send(resp)}})
+			case 'tag' :
+			console.log(req.params.cmd)
+			db.article_get_all_by_tag([req.params.cmd], function(err, resp) {
+				if (err) { console.log(err)
+				} else {
+				res.status(200).send(resp)}})
 		}
 	},
 	ArticleNotification : function(req,res,next) {

@@ -2,15 +2,14 @@ angular.module('appName')
 .controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window) {
 
 
-articleSvc.getArticle($stateParams.article_id).then(function(resp){
-	console.log($stateParams.article_id)
-
-	$scope.articles = resp.data
-	$scope.articles[0].id = Number($stateParams.article_id)
-	$scope.tags = $scope.article.tags.split(',')
-
-})
-
+if ($stateParams.article_id) {
+	articleSvc.getArticle($stateParams.article_id).then(function(resp){
+		console.log($stateParams.article_id)
+		$scope.articles = resp.data
+		$scope.articles[0].id = Number($stateParams.article_id)
+		$scope.tags = $scope.article.tags.split(',')
+	})
+}
 
 
 }).directive('likeArticle', function() {
@@ -126,7 +125,12 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		transclude: true,
 		templateUrl: '/views/directives/story-holder.html',
 		controller : function($scope, articleSvc, userSvc, $stateParams) {
-
+			//$scope.text = command issued on backend
+			// headline = most recent
+			// all = every story
+			// tag = article w/ specific tag
+			// likes = specific likes
+			// bookmarks
 
 			//grab article IDs user has liked
 			userSvc.getArticleLikes(3).then(function(resp) {
