@@ -79,36 +79,6 @@ app = angular.module('ngQuill', [])
     }
   })
 
-  // app.component('embedMenu', {
-  //   bindings: {
-  //     'modules': '<modules',
-  //     'theme': '@?',
-  //     'readOnly': '<?',
-  //     'formats': '<?',
-  //     'placeholder': '@?',
-  //     'onEditorCreated': '&?',
-  //     'onContentChanged': '&?',
-  //     'onSelectionChanged': '&?',
-  //     'ngModel': '<',
-  //     'maxLength': '<',
-  //     'minLength': '<'
-  //   },
-  //   require: {
-  //     ngModelCtrl: 'ngModel'
-  //   },
-  //   transclude: {
-  //     'toolbar': '?ngQuillToolbar',
-  //     'article': '?ngQuillEditor'
-  //   },
-  //   template: "<div>Hi</div>",
-  //   controller: ['$scope', '$element', '$timeout', '$transclude', 'ngQuillConfig', 'draftSvc', 
-  //       function ($scope, $element, $timeout, $transclude, ngQuillConfig, draftSvc) {
-  //         var text = editor.getText()
-  //         console.log(text)
-  //    }]
-  //  })
-  
-
 
   app.component('ngQuillEditor', {
     bindings: {
@@ -292,7 +262,7 @@ app = angular.module('ngQuill', [])
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
           
-
+          console.log(text)
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////

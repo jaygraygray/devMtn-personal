@@ -21,7 +21,7 @@
 <div class="col-sm-12 article" ng-repeat="article in articles">
 <div body-height>
 	<h1>{{article.title}} </h1>
-	<p>{{article.body}}</p>
+	<p ng-bind-html="article.body"></p>
 
 </div>
 	<div class="article-tags-container">

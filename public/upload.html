@@ -1,0 +1,36 @@
+<html>
+
+<body>
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.1/s3.fine-uploader/s3.fine-uploader.core.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/file-uploader/5.14.1/s3.jquery.fine-uploader/s3.jquery.fine-uploader.js"></script>
+    <title>Upload your files</title>
+</head>
+<body>
+    <script>
+        // Some options to pass to the uploader are discussed on the next page
+        var uploader = new qq.s3.FineUploaderBasic({
+        	debug: true,
+        	retry: {
+        		enableAuto: true
+        	},
+        	// request: {
+        	// 	endpoint: 'mediumclone.s3.amazonaws.com'
+        	// 	accessKey: 
+        	// }
+
+        })
+    </script>
+</body>
+</html>

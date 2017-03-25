@@ -31,6 +31,11 @@ $stateProvider
 		url: '/stories/:article_id',
 		templateUrl: '/views/view-article.html',
 		controller: 'articleCtrl'
+	})
+	.state('tags', {
+		url: '/tags/?tag',
+		templateUrl: '/views/tags.html',
+		controller: 'articleCtrl'
 	});
 
 	$urlRouterProvider.otherwise('/')

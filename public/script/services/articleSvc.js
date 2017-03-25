@@ -1,10 +1,16 @@
 angular.module('appName')
-.service('articleSvc', function($http) {
+.service('articleSvc', function($http, $stateParams) {
 
-this.articleHeight ;
+this.articleHeight  
 this.article
 this.getHeadlines = function(cmd) {
-	return $http.get('/api/headlines/' + cmd).then(function(resp) {
+		return $http.get('/api/headlines/' + cmd).then(function(resp) {
+		return resp
+	})	
+}
+
+this.getHeadlinesByTags = function(tag) {
+	return $http.get('/api/headlinetags/' + tag).then(function(resp) {
 		return resp
 	})
 }
@@ -30,6 +36,7 @@ this.unbookmarkArticle = function(deleteObj) {
 this.getArticle = function(id) {
 	return $http.get('/api/getarticle/' + id)
 	.then(function(resp) {
+		console.log(resp)
 		return resp
 	})
 }

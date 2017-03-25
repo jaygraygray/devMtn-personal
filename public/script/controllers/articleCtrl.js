@@ -1,13 +1,13 @@
 angular.module('appName')
-.controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window) {
+.controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window, $sce) {
 
 
 articleSvc.getArticle($stateParams.article_id).then(function(resp){
-	console.log($stateParams.article_id)
 
 	$scope.articles = resp.data
 	$scope.articles[0].id = Number($stateParams.article_id)
-	$scope.tags = $scope.article.tags.split(',')
+	$scope.tags = $scope.articles[0].tags.split(',')
+	$scope.articles[0].body = $sce.trustAsHtml($scope.articles[0].body)
 
 })
 

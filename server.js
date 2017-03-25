@@ -21,7 +21,7 @@ app.use(cors())
 
 //db connection
 var conn = massive.connectSync({
-	connectionString : "postgres://postgres:password@localhost/massive_demo"
+	connectionString : "postgres://postgres:password@localhost/postgres"
 });
 app.set('db', conn);
 var db = app.get('db');
@@ -58,6 +58,7 @@ app.post('/api/publishdraft', draftsCtrl.PublishDraft)
 app.post('/api/createarticle', articlesCtrl.CreateArticle)
 app.get('/api/getlastid', articlesCtrl.GetLastArticleID)
 app.get('/api/getarticle/:article_id', articlesCtrl.GetArticle)
+app.get('/api/headlinetags/:tag', articlesCtrl.GetHeadlinesByTags)
 
 /////////////////////////////////////////////////////////
 /////////// HOME

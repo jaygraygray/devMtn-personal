@@ -40,8 +40,10 @@ module.exports = {
 				if (err) { console.log(err)
 				} else {
 				res.status(200).send(resp)}})
+			break;
 		}
 	},
+
 	ArticleNotification : function(req,res,next) {
 		db.notifications_create([req.body.user_id_notified,
 			req.body.action,

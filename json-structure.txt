@@ -48,17 +48,17 @@ users
 {
 	"date_joined" : "2013-08-26 12:39:39.122218+02",
 	"last_login" : "2013-08-26 12:39:39.122218+02",
-	"email" : "jlkjasd@bdf.com",
+	"email" : "jeremygray001@gmail.com",
 	"profile_pic" : "http://www.faceplant.gif",
 	"settings" : "{'name': 'Paint house', 'tags': ['Improvements', 'Office'], 'finished': true}",
-	"bio" : "This is some information about me and how awesome I am",
-	"firstname" : "Billy Bob",
-	"lastname" : "Thornton",
-	"tags" : "internet, alcohol, artificial intelligence, politics, food",
-	"bookmarks_list" : "65,897,32,1,98",
+	"bio" : "Teacher, writer, web developer.",
+	"firstname" : "Jeremy",
+	"lastname" : "Gray",
+	"tags" : "politics, future, art, javascript, food",
+	"bookmarks_list" : "1,2,3",
 	"follows" : "3, 41, 2",
 	"followed_by" : "4",
-	"articles_liked" : "34,42,7,86,54,32,65,78,90"
+	"articles_liked" : "1,2,3"
 }
 
 --query for test data
