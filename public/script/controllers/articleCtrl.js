@@ -2,6 +2,7 @@ angular.module('appName')
 .controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window, $sce) {
 
 
+<<<<<<< HEAD
 articleSvc.getArticle($stateParams.article_id).then(function(resp){
 
 	$scope.articles = resp.data
@@ -11,6 +12,16 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 
 })
 
+=======
+if ($stateParams.article_id) {
+	articleSvc.getArticle($stateParams.article_id).then(function(resp){
+		console.log($stateParams.article_id)
+		$scope.articles = resp.data
+		$scope.articles[0].id = Number($stateParams.article_id)
+		$scope.tags = $scope.article.tags.split(',')
+	})
+}
+>>>>>>> c88f4617c96aaa9f944fb79ae59376287b1a87fb
 
 
 }).directive('likeArticle', function() {
@@ -106,7 +117,7 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 							// if use clicks an already liked article, remove like from their list
 						} else {
 							var deleteObj = {
-								user_id : 3,
+								user_id : 2,
 								unliked_id : ','+ articles[i].id
 							}
 							articleSvc.unbookmarkArticle(deleteObj)
@@ -117,6 +128,7 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		}
 	}
 
+
 }).directive('listArticles', function() {
 	return {
 		restrict: 'E',
@@ -126,13 +138,25 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		transclude: true,
 		templateUrl: '/views/directives/story-holder.html',
 		controller : function($scope, articleSvc, userSvc, $stateParams) {
+			//$scope.text = command issued on backend
+			// headline = most recent
+			// all = every story
+			// tag = article w/ specific tag
+			// likes = specific likes
+			// bookmarks
+							// if ($stateParams) {
+							// 	console.log($stateParams)
+							// 	$scope.text = 'tags' + $stateParams.tag
+							// }
 
 
 			//grab article IDs user has liked
-			userSvc.getArticleLikes(3).then(function(resp) {
+			userSvc.getArticleLikes(2).then(function(resp) {
 				
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
+
+							
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
 				$scope.articles = resp.data

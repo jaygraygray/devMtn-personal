@@ -1,6 +1,6 @@
 angular.module('appName')
 .controller('homeCtrl', function($scope, homeSvc, articleSvc, userSvc) {
-var userID = 3
+var userID = 2
 //takes user ID as parameter
 homeSvc.getUserTags(userID).then(function(resp) {
 	$scope.tags = resp.data[0].tags.split(', ')

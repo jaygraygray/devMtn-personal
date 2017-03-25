@@ -3,6 +3,7 @@ angular.module('appName')
 
 this.articleHeight  
 this.article
+<<<<<<< HEAD
 this.getHeadlines = function(cmd) {
 		return $http.get('/api/headlines/' + cmd).then(function(resp) {
 		return resp
@@ -11,6 +12,17 @@ this.getHeadlines = function(cmd) {
 
 this.getHeadlinesByTags = function(tag) {
 	return $http.get('/api/headlinetags/' + tag).then(function(resp) {
+=======
+this.getHeadlines = function(cmd, tag) {
+	if ($stateParams) {
+		console.log($stateParams)
+	return $http.get('/api/headlines/' + cmd + '?' + $stateParams).then(function(resp) {
+		console.log(resp.data)
+		return resp
+	})
+	}
+	return $http.get('/api/headlines/' + cmd).then(function(resp) {
+>>>>>>> c88f4617c96aaa9f944fb79ae59376287b1a87fb
 		return resp
 	})
 }
