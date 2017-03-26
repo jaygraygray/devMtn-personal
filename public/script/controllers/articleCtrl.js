@@ -23,7 +23,7 @@ if ($stateParams.article_id) {
 	})
 }
 
-
+$scope.articleHeight
 
 }).directive('likeArticle', function() {
 	return {
@@ -33,14 +33,30 @@ if ($stateParams.article_id) {
 			id: '@',
 			articles: "@",
 		},
-		controller: function($scope, articleSvc) {
+		controller: function($scope, articleSvc, userSvc) {
 			let articles = JSON.parse($scope.articles)
+			userSvc.getArticleLikes(3).then(function(resp) {
+				return resp.data[0]
+			}).then(function(userArticlesResults) {
+
+			var articlesLiked = userArticlesResults.articles_liked.split(',').map(Number)
+			
 			for (let i = 0; i < articles.length; i++) {
 
 				if ($scope.id == articles[i].id) {
 					$scope.articleSnippet = articles[i]
+					$scope.articleSnippet.userLikedarticle
+				}
+
+				if (articles.indexOf($scope.articles[i].id) === -1) {
+					if ($scope.articleSnippet) { $scope.articleSnippet.userLikedarticle = false }
+					$scope.articles[i].userLikedArticle = false
+				} else {
+					if ($scope.articleSnippet) { $scope.articleSnippet.userLikedarticle = true }
+					$scope.articles[i].userLikedArticle = true
 				}
 			}
+			})
 			$scope.likeArticleFunc = function(id) {
 				console.log(id)
 				for (let i = 0; i < articles.length; i++) {
@@ -73,9 +89,10 @@ if ($stateParams.article_id) {
 					}	
 				}
 			}
-		}			
-		},	
+		}
 	}
+	}			
+		
 }).directive('bookmarkArticle', function() {
 	return {
 		restrict: 'AE',
@@ -85,23 +102,42 @@ if ($stateParams.article_id) {
 			id: '@',
 			articles: "@"
 		},
-		controller: function($scope, articleSvc) {
+		controller: function($scope, articleSvc, userSvc) {
+			
 			let articles = JSON.parse($scope.articles)
+			userSvc.getArticleLikes(3).then(function(resp) {
+				return resp.data[0]
+			}).then(function(userArticlesResults) {
 
+			var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
+			
 			for (let i = 0; i < articles.length; i++) {
 
 				if ($scope.id == articles[i].id) {
 					$scope.bookmarkSnippet = articles[i]
+					$scope.bookmarkSnippet.userBookMarkedarticle
 				}
+				if (bookmarks.indexOf(articles[i].id) === -1) {
+					if ($scope.bookmarkSnippet) {$scope.bookmarkSnippet.userBookmarkedArticle = false}
+						$scope.articles[i].userBookmarkedArticle = false
+				} else {
+					if ($scope.bookmarkSnippet) {$scope.bookmarkSnippet.userBookmarkedArticle = true}
+						$scope.articles[i].userBookmarkedArticle = true
+				}	
 			}
+
+			})
+			console.log($scope.bookmarkSnippet)
 			$scope.bookmarkArticle = function(id) {
 				console.log(id)
 				for (let i = 0; i < articles.length; i++) {
+
 					if (articles[i].id == id) {
 						//change button styles
 						articles[i].userBookmarkedArticle = ! articles[i].userBookmarkedArticle
+						
 						//if the user clicks an unliked article, create notification
-						if (articles[i].userBookmarkedArticle === true) {
+						if (articles[i].userBookmarkedArticle === true || $scope.bookmarkSnippet === true) {
 							articles[i].likes++;
 							var obj = {
 								article_id_array : ',' + id,
@@ -124,7 +160,8 @@ if ($stateParams.article_id) {
 							articleSvc.unbookmarkArticle(deleteObj)
 						}	
 					}
-				}	
+				}
+
 			}	
 		}
 	}
@@ -142,22 +179,18 @@ if ($stateParams.article_id) {
 			//$scope.text = command issued on backend
 			// headline = most recent
 			// all = every story
-			// tag = article w/ specific tag
 			// likes = specific likes
 			// bookmarks
 							// if ($stateParams) {
 							// 	console.log($stateParams)
 							// 	$scope.text = 'tags' + $stateParams.tag
 							// }
-
-
 			//grab article IDs user has liked
-			userSvc.getArticleLikes(2).then(function(resp) {
-				
+			userSvc.getArticleLikes(3).then(function(resp) {
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
 
-							
+			
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
 				$scope.articles = resp.data
@@ -185,6 +218,7 @@ if ($stateParams.article_id) {
 					}	
 				}
 				this.data = resp.data
+				console.log($scope.articles)
 				
 			})
 		})
@@ -192,15 +226,25 @@ if ($stateParams.article_id) {
 
 	};
 
-})
+}).directive('bodyHeight', ['articleSvc', function(articleSvc) {
+    return {
+        restrict: 'AE',
+        link: function (scope, element, attrs) {
+            scope.articleHeight = element[0].offsetHeight;
+            console.log("SVC ele height:",  scope.articleHeight )
+            console.log('DIR ele height:', element[0].offsetHeight)
+        },
+    }
+}])
 .directive('menuScroll', function(articleSvc, $window) {
 	var win = angular.element($window)
 	return {
 		restrict: 'AE',
 		link: function(scope, ele, attrs) {
-			console.log(articleSvc.articleHeight)
+
 			var offsetTop = ele.prop('offsetTop') - 150
-			var otherOffset = offsetTop + articleSvc.articleHeight - 650
+			var otherOffset = offsetTop + scope.articleHeight + 450
+			console.log(otherOffset)
 			win.on('scroll', function(e) {
 				ele[($window.pageYOffset >= offsetTop) ? 'addClass' : 'removeClass']('showMenu');
 			});	
@@ -212,14 +256,6 @@ if ($stateParams.article_id) {
 		}
 	}
 })
-.directive('bodyHeight', ['articleSvc', function(articleSvc) {
-    return {
-        restrict: 'AE',
-        link: function (scope, element, attrs) {
-            articleSvc.articleHeight = element[0].offsetHeight;
-            console.log("ele height:", element[0].offsetHeight)
-        },
-    }
-}])
+
 
 

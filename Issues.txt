@@ -17,7 +17,7 @@ Tags on home page need to display correctly
 
 Keep track of all places userID is manually entered.
 	homeCtrl.js - line 3
-	articleCtrl - line 108, 120
+	articleCtrl - line 108, 120, 153
 
 Make display of header components more elegant: only one open at a time. 
 Any off-clicks make current menu disappear.
@@ -31,3 +31,10 @@ Article View
 	-- Clean up mini-article-container 
 	-- Image upload in text editor
 	-- Correct date and order display for drafts
+
+
+CSS ISSUES: 
+	- Home header menu not sticking correctly
+	- Article View footer
+	- Bookmark on side menu
+	- Spacing on liked article
