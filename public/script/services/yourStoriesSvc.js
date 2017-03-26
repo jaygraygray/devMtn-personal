@@ -8,5 +8,12 @@ this.getAllDrafts = function(author_id) {
 	})
 }
 
+this.getAllPublished = function(author_id) {
+	return $http.get('/api/getauthorarticles/' + author_id)
+	.then(function(resp) {
+		return resp.data
+	})
+}
+
 
 })

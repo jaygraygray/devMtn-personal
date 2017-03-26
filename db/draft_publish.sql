@@ -7,8 +7,3 @@ headline_img = $4,
 published = true,
 tags = $5
 where id = $6;
-
-update drafts
-set
-published = true
-where article_id = $6;

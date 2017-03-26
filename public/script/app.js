@@ -27,6 +27,11 @@ $stateProvider
 		templateUrl: '/views/drafts.html',
 		controller: 'yourStoriesCtrl'
 	})
+	.state('published', {
+		url: '/me/stories/published',
+		templateUrl: '/views/published.html',
+		controller: 'yourStoriesCtrl'
+	})
 	.state('article', {
 		url: '/stories/:article_id',
 		templateUrl: '/views/view-article.html',

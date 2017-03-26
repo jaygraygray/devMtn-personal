@@ -59,6 +59,7 @@ app.post('/api/createarticle', articlesCtrl.CreateArticle)
 app.get('/api/getlastid', articlesCtrl.GetLastArticleID)
 app.get('/api/getarticle/:article_id', articlesCtrl.GetArticle)
 app.get('/api/headlinetags/:tag', articlesCtrl.GetHeadlinesByTags)
+app.get('/api/getauthorarticles/:author_id', articlesCtrl.GetAllPublishedByAuthorId)
 
 /////////////////////////////////////////////////////////
 /////////// HOME

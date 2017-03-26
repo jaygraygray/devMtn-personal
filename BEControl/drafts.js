@@ -49,7 +49,7 @@ module.exports = {
 			} else { res.send(resp)}})
 	},
 	PublishDraft : function(req, res) {
-
+		db.query('UPDATE drafts SET published = true WHERE article_id = ' + req.body.article_id)
 		db.draft_publish([req.body.title,
 						  req.body.body,
 						  req.body.date_published,

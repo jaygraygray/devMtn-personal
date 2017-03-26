@@ -52,7 +52,8 @@ button {
   font-weight: bolder;
   color: #4d4d4d;
   margin-bottom: 1.5rem;
-  margin-top: 2rem; }
+  margin-top: 2rem;
+  border-style: none; }
 
 .drafts-list {
   font-size: 1rem;

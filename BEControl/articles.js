@@ -24,28 +24,26 @@ module.exports = {
 	GetLastArticleID : function(req, res) {
 		db.query('SELECT MAX(id) FROM articles', function(err, resp) {
 			if (err) { console.log(err) } else {
-				res.send(resp)
-			}
-		})
+				res.send(resp)}})
 	},
 
 	GetArticle : function(req, res) {
-
 		db.article_get_one([req.params.article_id], function(err, resp) {
 			if (err) { console.log(err) } else {
-				console.log(resp)
-				res.send(resp)
-			}
-		})
+				res.send(resp)}})
 	},
 
 	GetHeadlinesByTags : function(req, res) {
-		console.log(req.params.tag)
 		db.query("SELECT * FROM articles WHERE tags LIKE '%"+req.params.tag+"%'", function(err, resp) {
-			if (err) { console.log(err)
-			} else {
-				console.log(resp)
-			res.status(200).send(resp)}})
+			if (err) { console.log(err)} else {
+				res.status(200).send(resp)}})
+	},
+
+	GetAllPublishedByAuthorId : function(req, res) {
+		db.article_get_all_ids([req.params.author_id],
+			function(err, resp) {
+			if (err) { console.log(err) } else { 
+				res.send(resp)}})
 	}
 
 }

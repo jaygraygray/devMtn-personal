@@ -24,27 +24,27 @@
 
 <div class="row">
 <div class="drafts">
-	<div class="drafts-menu-active col-sm-2"><span class="emph"><a ui-sref="drafts">Drafts {{numDrafts}}</span></a></div>
-	<div class="drafts-menu col-sm-2"><a ui-sref="published">Public  {{numArticles}}</a></div>
+	<div class="drafts-menu col-sm-2"><a ui-sref="drafts">Drafts {{numDrafts}}</a></div>
+	<div class="drafts-menu-active col-sm-2"><span class="emph">Public {{numArticles}}</span></div>
 	<div class="col-sm-8 drafts-menu">&nbsp;</div>
 </div>
 </div>
 
 <div class="row">
-	<div class="drafts-list" ng-repeat="results in drafts">
-		<span ng-repeat="draft in results">
-		<a ui-sref="edit-story({article_id: draft.article_id})"><h2>{{draft.title}}</h2> </a>
-		Last edited {{draft.date | date : 'MMM dd' }}. &#8226; {{draft.numWords}} words so far
+	<div class="drafts-list" ng-repeat="article in published">
+		<!-- <span ng-repeat="draft in draft"> -->
+		<a ui-sref="article({article_id: article.id})"><h2>{{article.title}}</h2> </a>
+		Last edited {{article.date_published | date : 'MMM dd' }}.
 		&nbsp;&nbsp;<img src="images/down-carat.svg" ng-click="editMenu = !editMenu" class="down-arrow">
 			<div class="edit-menu" ng-hide="editMenu">
 				<span class="menu-container">
 				<ul>
-					<li><a ui-sref="edit-story({article_id: draft.article_id})">Edit Draft</a></li>
-					<li><a ui-sref="drafts" data-ui-sref-opts="{reload:true}" ng-click="deleteDraft(draft.article_id)">Delete Draft</a></li>
+					<li><a ui-sref="edit-story({article_id: article.article_id})">Edit Article</a></li>
+					<li><a ui-sref="drafts" data-ui-sref-opts="{reload:true}" ng-click="deleteDraft(article.article_id)">Delete Article</a></li>
 				</ul>
 				</span>
 			</div>
-		</span>
+		<!-- </span> -->
 	</div>
 </div>
 
