@@ -38,5 +38,3 @@ FIXES:
 	- Article View footer
 	- Bookmark on side menu
 	- Spacing on liked article
-	- Tags are displaying wrong on published articles in article view
-	- After Publish is clicked, send to published article.
