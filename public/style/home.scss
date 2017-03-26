@@ -85,3 +85,22 @@
 	color:$light-gray;
 	width:95%;
 }
+
+
+
+.title-container {
+	width: 80%;
+	margin: auto;
+	text-align: center;
+}
+
+
+h2 {
+	width:100%;
+	margin-top: 36px;
+	border-width: 0 0 1px 0;
+	border-style: solid;
+	border-color: $light-gray;
+	color: $dark-gray;
+	padding: 0 48px 12px 48px;
+}

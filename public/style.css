@@ -222,6 +222,20 @@ button {
   color: #BDBDBD;
   width: 95%; }
 
+.title-container {
+  width: 80%;
+  margin: auto;
+  text-align: center; }
+
+h2 {
+  width: 100%;
+  margin-top: 36px;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: #BDBDBD;
+  color: #4d4d4d;
+  padding: 0 48px 12px 48px; }
+
 /*!
  * Quill Editor v1.2.2
  * https://quilljs.com/

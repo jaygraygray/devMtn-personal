@@ -202,13 +202,17 @@ $scope.articleHeight
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
 				//loop through all results to see if user has liked each specific article
 				for (let i = 0; i < $scope.articles.length; i++) {
-					//get word count
+					//get word coun
+					
 					$scope.articles[i].wordcount
 					$scope.articles[i].wordcount = $scope.articles[i].body.split(' ').length
-				
+
+					$scope.articles[i].preview 
+					$scope.articles[i].preview = $scope.articles[i].body.split(' ').slice(0, 25)
+					$scope.articles[i].preview = $sce.trustAsHtml($scope.articles[i].preview.join(' '))
 
 					//label body of article as safe to display HTML
-					$scope.articles[i].body = $sce.trustAsHtml($scope.articles[i].body)
+					//$scope.articles[i].body = $sce.trustAsHtml($scope.articles[i].preview)
 
 					//add userLikedProperty
 					$scope.articles[i].userLikedArticle
@@ -266,14 +270,6 @@ $scope.articleHeight
 
 		}
 	}
-}).filter ('wordCount', function() {
-	return function(input, count) {
-		var words = input.split(/\s+/);
-		if (words.length > words) {
-			input = words.slice(0, words).join(' ') + '\u2026'
-		}
-	}
-	return input
 })
 
 

@@ -52,7 +52,9 @@ draft_id 	SERIAL PRIMARY KEY NOT NULL,
 author_id	INT,
 article_id 	INT,
 date 		date,
-body		text
+body		text,
+title		varchar(255)
+tags 		varchar(255)
 );
 
 CREATE TABLE notifications (

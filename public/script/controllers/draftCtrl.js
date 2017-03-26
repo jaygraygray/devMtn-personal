@@ -1,5 +1,5 @@
 angular.module('appName')
-.controller('draftCtrl', function($stateParams, $scope, $rootScope, draftsSvc, headerSvc) {
+.controller('draftCtrl', function($stateParams, $scope, $rootScope, draftsSvc, headerSvc, $state) {
 
 
 //////////////////////////////////////
@@ -28,6 +28,8 @@ $scope.publish = function(article_id) {
 		}
 		draftsSvc.publishDraft(articleObj).then(function(resp){
 			console.log("PUBLISHED MSG:", resp)
+		}).then(function(resp) {
+			$state.go('article', article_id)
 		})
 	})
 }

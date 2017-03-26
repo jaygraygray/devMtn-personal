@@ -195,7 +195,7 @@ app = angular.module('ngQuill', [])
           })  
         } 
 
-        console.log(config.action)
+        
 
       }
 
