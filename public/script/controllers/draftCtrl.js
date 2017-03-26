@@ -12,26 +12,25 @@ $scope.pushTitle = function(title) {
 	draftsSvc.draftObj.title = title
 }
 
-$scope.publish = function(article_id) {
-	console.log(article_id)
-	draftsSvc.editDraft(article_id).then(function(resp) {
+$scope.publish = function(id) {
+
+	draftsSvc.editDraft(id).then(function(resp) {
 		return resp.data[0]
 	}).then(function(articleData) {
-		console.log(articleData)
+		
 		var articleObj = {
 			"title" : articleData.title,
 			"body" : articleData.body,
 			"date_published" : new Date(),
 			"headline_img" : null,
 			"tags" : articleData.tags,
-			"article_id" : article_id
+			"article_id" : id
 		}
 		draftsSvc.publishDraft(articleObj).then(function(resp){
-			console.log("PUBLISHED MSG:", resp)
-		}).then(function(resp) {
-			$state.go('article', article_id)
+			$state.go('article', {article_id : articleObj.article_id})
 		})
 	})
+	
 }
 
 ///////////////////////////////////////

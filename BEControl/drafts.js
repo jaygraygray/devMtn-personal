@@ -58,7 +58,6 @@ module.exports = {
 						  req.body.article_id], function(err, resp) {
 			if (err) { console.log(err)
 			} else { 
-				console.log("Article published!")
-				res.send(resp)}})
+				res.send('Success!')}})
 	},
 }
