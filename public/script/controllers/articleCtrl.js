@@ -2,7 +2,7 @@ angular.module('appName')
 .controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window, $sce) {
 
 
-<<<<<<< HEAD
+
 articleSvc.getArticle($stateParams.article_id).then(function(resp){
 
 	$scope.articles = resp.data
@@ -12,16 +12,17 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 
 })
 
-=======
+
 if ($stateParams.article_id) {
 	articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		console.log($stateParams.article_id)
 		$scope.articles = resp.data
 		$scope.articles[0].id = Number($stateParams.article_id)
-		$scope.tags = $scope.article.tags.split(',')
+		$scope.tags = $scope.articles[0].tags.split(',')
+		$scope.articles[0].body = $sce.trustAsHtml($scope.articles[0].body)
 	})
 }
->>>>>>> c88f4617c96aaa9f944fb79ae59376287b1a87fb
+
 
 
 }).directive('likeArticle', function() {
@@ -117,7 +118,7 @@ if ($stateParams.article_id) {
 							// if use clicks an already liked article, remove like from their list
 						} else {
 							var deleteObj = {
-								user_id : 2,
+								user_id : 3,
 								unliked_id : ','+ articles[i].id
 							}
 							articleSvc.unbookmarkArticle(deleteObj)

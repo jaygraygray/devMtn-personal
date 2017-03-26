@@ -17,9 +17,7 @@ Tags on home page need to display correctly
 
 Keep track of all places userID is manually entered.
 	homeCtrl.js - line 3
-	userSvc.js
-	ng-quill.js
-	articleCtrl - line 108, 136
+	articleCtrl - line 108, 120
 
 Make display of header components more elegant: only one open at a time. 
 Any off-clicks make current menu disappear.

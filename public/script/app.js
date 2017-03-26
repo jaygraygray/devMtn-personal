@@ -35,13 +35,9 @@ $stateProvider
 	.state('tags', {
 		url: '/tags/?tag',
 		templateUrl: '/views/tags.html',
-<<<<<<< HEAD
-		controller: 'articleCtrl'
-	});
-=======
 		controller: 'tagsCtrl'
-	})
->>>>>>> c88f4617c96aaa9f944fb79ae59376287b1a87fb
+	});
+
 
 	$urlRouterProvider.otherwise('/')
 })
