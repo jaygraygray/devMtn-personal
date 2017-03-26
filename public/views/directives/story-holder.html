@@ -9,13 +9,13 @@
 <div class="col-xs-10 author-bio" ng-click="test(article.id)">
 	<a href="#">{{article.firstname}} {{article.lastname}}</a>
 	<br>
-	{{article.date_published | date : 'MMM dd'}} &#183; 2 min read
+	{{article.date_published | date : 'MMM dd'}} &#183; {{article.wordcount | number}} words 
 </div>
 </div>
 <!-- End Author Mini Bio -->
 <!--Article Info -->
-<a ui-sref="article({article_id: {{article.id}}})"><h1> {{article.title}} </h1></a> {{article.id}}
-<img src="/images/first_article.jpeg" class="img-responsive">
+<a ui-sref="article({article_id: {{article.id}}})"><h1> {{article.title}} </h1></a>
+<div ng-bind-html="article.body"></div>
 <br><br>
 <p class="read-more">Read more...</p>
 

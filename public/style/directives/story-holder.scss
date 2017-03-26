@@ -146,9 +146,33 @@
 	color:$dark-gray;
 }
 
-
 .down-carat {
 	opacity:.5;
 	width:24px;
 	height:24px;
+}
+
+p {
+	font-size: 1.2rem;
+	color: $dark-gray;
+	line-height: 25px;
+	margin-top: 24px;
+	margin-bottom: 24px;
+}
+
+blockquote {
+	font-size: 1.5rem;
+    line-height: 36px;
+    border-style: solid;
+    border-width: 0 0 0 5px;
+    padding-left: 12px;
+    margin-left: 28px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    color: $dark-gray;
+}
+
+h2 {
+	font-size: 2rem;
+	color: $dark-gray;
 }

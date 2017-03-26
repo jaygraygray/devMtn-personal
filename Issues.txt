@@ -33,8 +33,9 @@ Article View
 	-- Correct date and order display for drafts
 
 
-CSS ISSUES: 
+FIXES:
 	- Home header menu not sticking correctly
 	- Article View footer
 	- Bookmark on side menu
 	- Spacing on liked article
+	- Link all tags to tag-view page (article-view.html, )

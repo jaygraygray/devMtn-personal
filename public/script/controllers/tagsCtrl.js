@@ -1,4 +1,6 @@
-angular.module('appName').controller('tagsCtrl', function($scope) {
+angular.module('appName').controller('tagsCtrl', function($scope, $stateParams) {
+
+$scope.tagTitle = $stateParams.tag
 
 }).directive('listByTags', function() {
 	return {

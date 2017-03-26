@@ -14,11 +14,12 @@ articleSvc.getArticle($stateParams.article_id).then(function(resp){
 
 
 if ($stateParams.article_id) {
+	
 	articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		console.log($stateParams.article_id)
 		$scope.articles = resp.data
 		$scope.articles[0].id = Number($stateParams.article_id)
-		$scope.tags = $scope.articles[0].tags.split(',')
+		$scope.tags = $scope.articles[0].tags.split(', ')
 		$scope.articles[0].body = $sce.trustAsHtml($scope.articles[0].body)
 	})
 }
@@ -127,7 +128,7 @@ $scope.articleHeight
 			}
 
 			})
-			console.log($scope.bookmarkSnippet)
+	
 			$scope.bookmarkArticle = function(id) {
 				console.log(id)
 				for (let i = 0; i < articles.length; i++) {
@@ -175,7 +176,7 @@ $scope.articleHeight
 		},
 		transclude: true,
 		templateUrl: '/views/directives/story-holder.html',
-		controller : function($scope, articleSvc, userSvc, $stateParams) {
+		controller : function($scope, articleSvc, userSvc, $stateParams, $sce) {
 			//$scope.text = command issued on backend
 			// headline = most recent
 			// all = every story
@@ -193,12 +194,22 @@ $scope.articleHeight
 			
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlines($scope.text).then(function(resp) {
+	
 				$scope.articles = resp.data
+
 					//check to see if article ID is present in the user's liked list
 					var articles = userArticlesResults.articles_liked.split(',').map(Number)
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
 				//loop through all results to see if user has liked each specific article
 				for (let i = 0; i < $scope.articles.length; i++) {
+					//get word count
+					$scope.articles[i].wordcount
+					$scope.articles[i].wordcount = $scope.articles[i].body.split(' ').length
+				
+
+					//label body of article as safe to display HTML
+					$scope.articles[i].body = $sce.trustAsHtml($scope.articles[i].body)
+
 					//add userLikedProperty
 					$scope.articles[i].userLikedArticle
 					$scope.articles[i].userBookmarkedArticle
@@ -218,7 +229,7 @@ $scope.articleHeight
 					}	
 				}
 				this.data = resp.data
-				console.log($scope.articles)
+				
 				
 			})
 		})
@@ -255,6 +266,14 @@ $scope.articleHeight
 
 		}
 	}
+}).filter ('wordCount', function() {
+	return function(input, count) {
+		var words = input.split(/\s+/);
+		if (words.length > words) {
+			input = words.slice(0, words).join(' ') + '\u2026'
+		}
+	}
+	return input
 })
 
 

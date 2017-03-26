@@ -28,6 +28,6 @@
 		<p class="side-bar-header-subtitle">Tags you follow</p>
 	</div>
 	<div class="side-bar-tags">
-		<span class="followed-tag" ng-repeat="tag in tags">{{tag}}</span>
+		<span class="followed-tag" ng-repeat="tag in tags"><a ui-sref="tags({tag: tag})">{{tag}}</a></span>
 	</div>
 </div>
