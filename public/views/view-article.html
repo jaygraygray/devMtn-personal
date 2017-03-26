@@ -21,9 +21,10 @@
 <div class="col-sm-12 article" ng-repeat="article in articles">
 <div>
 	<h1>{{article.title}} </h1>
-	<p ng-bind-html="article.body"></p>
-
-
+	<p>
+	<span ng-bind-html="article.body"></span>
+	</p>
+	
 	<div class="article-tags-container">
 		<span class="article-tag" ng-repeat="tag in tags"><a ui-sref="tags({tag:tag})">{{tag}}</a></span>
 	</div>

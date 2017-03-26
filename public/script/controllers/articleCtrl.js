@@ -2,26 +2,23 @@ angular.module('appName')
 .controller('articleCtrl', function($stateParams, $scope, $http, articleSvc, $window, $sce) {
 
 
-
-articleSvc.getArticle($stateParams.article_id).then(function(resp){
-
-	$scope.articles = resp.data
-	$scope.articles[0].id = Number($stateParams.article_id)
-	$scope.tags = $scope.articles[0].tags.split(',')
-	$scope.articles[0].body = $sce.trustAsHtml($scope.articles[0].body)
-
-})
-
-
 if ($stateParams.article_id) {
 	
 	articleSvc.getArticle($stateParams.article_id).then(function(resp){
-		console.log($stateParams.article_id)
+		
 		$scope.articles = resp.data
+		console.log($scope.articles[0])
 		$scope.articles[0].id = Number($stateParams.article_id)
-		$scope.tags = $scope.articles[0].tags.split(', ')
+		
+		if ($scope.articles[0].tags) {
+			$scope.tags = $scope.articles[0].tags.split(', ')
+		} else {
+			$scope.tags = ''
+		}
 		$scope.articles[0].body = $sce.trustAsHtml($scope.articles[0].body)
+
 	})
+	
 }
 
 $scope.articleHeight
