@@ -270,6 +270,3 @@ $scope.articleHeight
 		}
 	}
 })
-
-
-

@@ -1714,7 +1714,7 @@ body {
 
 .top-tags {
   opacity: 0;
-  transition: all .7s;
+  transition: all .5s;
   margin: auto;
   width: 75%; }
 
@@ -1728,24 +1728,24 @@ body {
     visibility: hidden; }
   .side-bar {
     opacity: 0;
-    transition: all .7s; }
+    transition: all .5s; }
   .top-tags {
     padding-top: 24px;
     padding-bottom: 48px;
     opacity: 1;
-    transition: all .7s; } }
+    transition: all .5s; } }
 
 @media (max-width: 992px) {
   .spacer {
     display: none; }
   .side-bar {
     opacity: 0;
-    transition: all .7s; }
+    transition: all .5s; }
   .top-tags {
     padding-top: 24px;
     padding-bottom: 48px;
     opacity: 1;
-    transition: all .7s; } }
+    transition: all .5s; } }
 
 @media (max-width: 1200px) {
   .user-menu-container {
