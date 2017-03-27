@@ -173,6 +173,7 @@ app = angular.module('ngQuill', [])
 
          ///////////////////////////////////////////////
          // set body of text to draft if necessary
+         // 
          ///////////////////////////////////////////////
         if ($stateParams.article_id) {
           draftsSvc.editDraft(draftsSvc.id).then(function(resp){
@@ -262,7 +263,7 @@ app = angular.module('ngQuill', [])
           var html = editorElem.children[0].innerHTML
           var text = editor.getText()
           
-          console.log(text)
+          
           ///////////////////////////////////////////////////////
           //initialize autosave 
           ////////////////////////////////////////////////////////

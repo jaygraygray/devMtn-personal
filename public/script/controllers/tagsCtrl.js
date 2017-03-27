@@ -28,7 +28,9 @@ $scope.tagTitle = $stateParams.tag
 							
 			//get the headline info for articles according to $scope.text input
 			articleSvc.getHeadlinesByTags($stateParams.tag).then(function(resp) {
+
 				$scope.articles = resp.data
+				console.log($scope.articles)
 					//check to see if article ID is present in the user's liked list
 					var articles = userArticlesResults.articles_liked.split(',').map(Number)
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
@@ -37,6 +39,8 @@ $scope.tagTitle = $stateParams.tag
 					//add userLikedProperty
 					$scope.articles[i].userLikedArticle
 					$scope.articles[i].userBookmarkedArticle
+					$scope.articles[i].wordcount
+					$scope.articles[i].wordcount = $scope.articles[i].body.split(' ').length
 
 					
 					if (articles.indexOf($scope.articles[i].id) === -1) {

@@ -148,6 +148,10 @@ button {
   padding-right: 10px;
   transition: all .5s; }
 
+.side-bar {
+  opacity: 1;
+  transition: all .5s; }
+
 .side-bar-header {
   margin-top: 42px;
   padding-bottom: 12px;
@@ -1708,17 +1712,40 @@ body {
 .white {
   background-color: #fff; }
 
+.top-tags {
+  opacity: 0;
+  transition: all .7s;
+  margin: auto;
+  width: 75%; }
+
+.header-tags {
+  display: flex;
+  list-style: none;
+  justify-content: space-around; }
+
 @media (max-width: 768px) {
   .write-a-story {
     visibility: hidden; }
   .side-bar {
-    display: none; } }
+    opacity: 0;
+    transition: all .7s; }
+  .top-tags {
+    padding-top: 24px;
+    padding-bottom: 48px;
+    opacity: 1;
+    transition: all .7s; } }
 
 @media (max-width: 992px) {
   .spacer {
     display: none; }
   .side-bar {
-    display: none; } }
+    opacity: 0;
+    transition: all .7s; }
+  .top-tags {
+    padding-top: 24px;
+    padding-bottom: 48px;
+    opacity: 1;
+    transition: all .7s; } }
 
 @media (max-width: 1200px) {
   .user-menu-container {
@@ -1852,7 +1879,8 @@ body {
 .follower-text {
   width: 233px;
   float: right;
-  padding-top: 13px; }
+  padding-top: 13px;
+  color: #000; }
 
 .menu-section {
   border-width: 0 0 1px 0;

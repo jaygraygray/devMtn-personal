@@ -50,7 +50,6 @@ module.exports = {
 		var results = []
 		db.query("SELECT bookmarks_list FROM users WHERE id="+req.params.user_id, function(err, resp) {
 			if (err) {console.log(err)} else {
-				console.log(resp[0])
 				var bookmarks = resp[0].bookmarks_list.split(',')
 
 				for (var i = 0; i < bookmarks.length; i++) {

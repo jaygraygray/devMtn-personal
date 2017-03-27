@@ -1,5 +1,10 @@
 @import "_variables.scss";
 
+.side-bar {
+	opacity: 1;
+	transition: all .5s;
+}
+
 .side-bar-header {
 	margin-top:42px;
 	padding-bottom:12px;
