@@ -19,6 +19,17 @@
 
 
 <div class="col-sm-12 article" ng-repeat="article in articles">
+<div class="col-sm-12 author">
+	<div class="author-pic"><img src="../images/profile.png"/></div>
+	<div class="author-info col-sm-8">
+	<ul>
+		<li class="author-name">{{article.firstname}} {{article.lastname}}</li>
+		<li>{{article.bio}}</li>
+	</ul>
+	</div>
+	
+</div>
+
 <div>
 	<h1>{{article.title}} </h1>
 	<p>
@@ -41,11 +52,11 @@
 		</ul>		
 	</div>
 	<div class="col-sm-12 author">
-		<div class="author-pic"><img src="../images/user3.jpeg"/></div>
+		<div class="author-pic"><img src="../images/profile.png"/></div>
 		<div class="author-info col-sm-8">
 		<ul>
-			<li class="author-name">Carmen Reinicke</li>
-			<li>Financial Services Consultant by day, writer by night</li>
+			<li class="author-name">{{article.firstname}} {{article.lastname}}</li>
+			<li>{{article.bio}}</li>
 		</ul>
 		</div>
 		<div class="col-sm-4"><button class="writer-follow-button">Follow</button></div>
@@ -62,7 +73,7 @@
 
 <!-- END SIDE MENU -->
 
-<div class="row white page-footer" headroom>
+<!-- <div class="row white page-footer" headroom>
 	<div class="col-sm-3 col-md-3 white center">
 		<like-article id="{{article.id}}" articles="{{articles}}"></like-article>
 		<div class="response-unclicked" ng-class="{'response-clicked':article.userResponded}" ng-click="makeResponse(article.id)"><div class="article-responses-number">10</div></div>
@@ -79,7 +90,7 @@
 			<li><a href="#" class="article">When's the right time?</a></li>
 	</div>
 </div>
-</div>
+</div> -->
 
 
 <!--spacer-->   

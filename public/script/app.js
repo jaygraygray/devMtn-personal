@@ -51,3 +51,19 @@ $stateProvider
 
 	$urlRouterProvider.otherwise('/')
 })
+
+
+// for (let i = 0; i < articles.length; i++) {
+
+// 	if ($scope.id == articles[i].id) {
+// 		$scope.bookmarkSnippet = articles[i]
+// 		$scope.bookmarkSnippet.userBookmarkedarticle
+// 	}
+// 	if (bookmarks.indexOf(articles[i].id) === -1) {
+// 		if ($scope.bookmarkSnippet) {$scope.bookmarkSnippet.userBookmarkedArticle = false}
+// 			$scope.articles[i].userBookmarkedArticle = false
+// 	} else {
+// 		if ($scope.bookmarkSnippet) {$scope.bookmarkSnippet.userBookmarkedArticle = true}
+// 			$scope.articles[i].userBookmarkedArticle = true
+// 	}	
+// }

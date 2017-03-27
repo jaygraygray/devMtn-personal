@@ -74,7 +74,7 @@ button {
   width: 120px;
   border-width: 1px;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   z-index: 2;
   margin-right: 48px;
   color: #BDBDBD;
@@ -1168,7 +1168,7 @@ tags-input .host {
 
 tags-input .tags .tag-item {
   color: #fff;
-  background: #e6e6e6;
+  background: #BDBDBD;
   border: 1px solid #d2d2d2;
   border-radius: 2px;
   padding: 8px;
@@ -1378,7 +1378,7 @@ body {
   border-style: solid;
   border-color: #BDBDBD;
   border-radius: 2px;
-  background-color: #e6e6e6;
+  background-color: #BDBDBD;
   font-size: .8rem;
   text-align: center;
   vertical-align: middle;
@@ -1396,7 +1396,7 @@ body {
   display: flex;
   border-style: solid;
   border-width: 0 0 1px 0;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   padding-bottom: 36px; }
 
 .article-response-left {
@@ -1452,7 +1452,7 @@ body {
   margi-top: 4px; }
 
 .suggestions {
-  background-color: #e6e6e6;
+  background-color: #BDBDBD;
   padding: 48px;
   display: flex;
   justify-content: space-between;
@@ -1516,7 +1516,7 @@ body {
   margin-left: 44px; }
 
 .light-gray {
-  background-color: #e6e6e6; }
+  background-color: #BDBDBD; }
 
 .response p {
   font-size: 1rem;
@@ -1528,7 +1528,7 @@ body {
 .make-response {
   border-width: 1px;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   border-radius: 5px;
   background-color: #fff;
   -webkit-box-shadow: -1px 2px 11px -4px black;
@@ -1639,7 +1639,7 @@ body {
   height: 75px;
   border-width: 1px 0 0 0;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   transition: all .4s; }
 
 .show-article-footer {
@@ -1663,7 +1663,7 @@ body {
   list-style: none;
   border-width: 0 2px 0 0;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   padding-right: 24px;
   padding: 3px 12px 3px 0;
   margin-top: 12px;
@@ -1819,7 +1819,7 @@ body {
   width: 320px;
   border-width: 1px;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   position: absolute;
   top: 70px;
   right: 0;
@@ -2000,7 +2000,7 @@ h1 {
 .connect {
   border-width: 1px 0 1px 0;
   border-style: solid;
-  border-color: #e6e6e6;
+  border-color: #BDBDBD;
   padding: 12px; }
 
 .publish-button {

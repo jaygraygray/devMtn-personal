@@ -7,6 +7,7 @@ if ($stateParams.article_id) {
 	articleSvc.getArticle($stateParams.article_id).then(function(resp){
 		
 		$scope.articles = resp.data
+		console.log($scope.articles)
 		console.log($scope.articles[0])
 		$scope.articles[0].id = Number($stateParams.article_id)
 		
@@ -104,10 +105,10 @@ $scope.articleHeight
 		controller: function($scope, articleSvc, userSvc) {
 			
 			let articles = JSON.parse($scope.articles)
-			userSvc.getArticleLikes(3).then(function(resp) {
+
+			userSvc.getBookmarks(3).then(function(resp) {
 				return resp.data[0]
 			}).then(function(userArticlesResults) {
-
 			var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
 			
 			for (let i = 0; i < articles.length; i++) {
@@ -133,10 +134,10 @@ $scope.articleHeight
 
 					if (articles[i].id == id) {
 						//change button styles
-						articles[i].userBookmarkedArticle = ! articles[i].userBookmarkedArticle
+						articles[i].userBookmarkedArticle = !articles[i].userBookmarkedArticle
 						
 						//if the user clicks an unliked article, create notification
-						if (articles[i].userBookmarkedArticle === true || $scope.bookmarkSnippet === true) {
+						if (articles[i].userBookmarkedArticle === true) {
 							articles[i].likes++;
 							var obj = {
 								article_id_array : ',' + id,
