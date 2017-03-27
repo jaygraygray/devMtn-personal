@@ -1,24 +1,15 @@
-angular.module('appName').controller('tagsCtrl', function($scope, $stateParams) {
+angular.module('appName').controller('bookmarksCtrl', function($scope, $stateParams) {
 
-$scope.tagTitle = $stateParams.tag
 
-}).directive('listByTags', function() {
+}).directive('listByBookmarks', function() {
 	return {
 		restrict: 'E',
 		scope: {
 			tag: '@'
 		},
 		transclude: true,
-		templateUrl: '/views/directives/story-holder.html',
+		templateUrl: '/views/directives/bookmarks-holder.html',
 		controller : function($scope, articleSvc, userSvc, $stateParams) {
-			//$scope.text = command issued on backend
-			// headline = most recent
-			// all = every story
-			// likes = specific likes
-			// bookmarks
-
-
-
 			//grab article IDs user has liked
 			userSvc.getArticleLikes(3).then(function(resp) {
 				
@@ -27,8 +18,16 @@ $scope.tagTitle = $stateParams.tag
 
 							
 			//get the headline info for articles according to $scope.text input
-			articleSvc.getHeadlinesByTags($stateParams.tag).then(function(resp) {
+			articleSvc.getBookmarks(3).then(function(resp) {
 				$scope.articles = resp.data
+				console.log($scope.articles)
+				// for (var i = 0; i < $scope.articles.length; i++) {
+				// 	if ($scope.articles[i] === null) {
+				// 		$scope.articles.splice(i,1)
+
+				// 	}
+				// }
+				console.log($scope.articles)
 					//check to see if article ID is present in the user's liked list
 					var articles = userArticlesResults.articles_liked.split(',').map(Number)
 					var bookmarks = userArticlesResults.bookmarks_list.split(',').map(Number)
@@ -59,5 +58,5 @@ $scope.tagTitle = $stateParams.tag
 		}
 
 	};
-
 })
+

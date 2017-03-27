@@ -20,19 +20,19 @@ angular.module("appName")
 
 						// Create proper textual responses
 						switch($scope.notifications[i].action) {
-							case 'l':
-							$scope.notifications[i].action = 'PLEASEsdfsdfHANGE';
+							case 'L':
+							$scope.notifications[i].action = 'liked your ';
 							break;
-							case 'b':
+							case 'B':
 							$scope.notifications[i].action = 'bookmarked your';
 							break;
-							case 'f':
+							case 'F':
 							$scope.notifications[i].action = 'followed you';
 							break;
-							case 's':
+							case 'S':
 							$scope.notifications[i].action = 'shared your';
 							break;
-							case 'r':
+							case 'S':
 							$scope.notifications[i].action = 'responded to';
 							break;
 						}
@@ -83,19 +83,19 @@ angular.module("appName")
 
 						// Create proper textual responses
 						switch($scope.notifications[i].action) {
-							case 'l':
-							$scope.notifications[i].action = 'PLEASEsdfsdfHANGE';
+							case 'L':
+							$scope.notifications[i].action = 'liked your ';
 							break;
-							case 'b':
+							case 'B':
 							$scope.notifications[i].action = 'bookmarked your';
 							break;
-							case 'f':
+							case 'B':
 							$scope.notifications[i].action = 'followed you';
 							break;
-							case 's':
+							case 'S':
 							$scope.notifications[i].action = 'shared your';
 							break;
-							case 'r':
+							case 'R':
 							$scope.notifications[i].action = 'responded to';
 							break;
 						}

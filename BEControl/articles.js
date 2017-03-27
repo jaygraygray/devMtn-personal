@@ -44,6 +44,33 @@ module.exports = {
 			function(err, resp) {
 			if (err) { console.log(err) } else { 
 				res.send(resp)}})
+	},
+
+	GetBookmarks : function(req, res) {
+		var results = []
+		db.query("SELECT bookmarks_list FROM users WHERE id="+req.params.user_id, function(err, resp) {
+			if (err) {console.log(err)} else {
+				console.log(resp[0])
+				var bookmarks = resp[0].bookmarks_list.split(',')
+
+				for (var i = 0; i < bookmarks.length; i++) {
+					(function(i) {
+						db.query("select * from articles where id = " + bookmarks[i] + "ORDER BY id DESC",
+						function(err1, resp1) {
+							if (err) { console.log(err) } else {
+								if (i == bookmarks.length-1) {
+									results.push(resp1)
+									res.send(results)
+								} else {
+									results.push(resp1)
+								}
+							}
+							
+						})
+					})(i) 
+				}
+			}
+		})
 	}
 
 }

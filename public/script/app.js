@@ -41,7 +41,12 @@ $stateProvider
 		url: '/tags/?tag',
 		templateUrl: '/views/tags.html',
 		controller: 'tagsCtrl'
-	});
+	})
+	.state('bookmarks', {
+		url: '/bookmarks/:user_id',
+		templateUrl: '/views/bookmarks.html',
+		controller: 'bookmarksCtrl'
+	})
 
 
 	$urlRouterProvider.otherwise('/')

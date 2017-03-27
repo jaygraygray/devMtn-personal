@@ -1,0 +1,22 @@
+<div ng-repeat="data in articles">
+<div class="story-container" ng-repeat="article in data">
+<div class="col-xs-12 article-tags"></div>
+
+<!--Author Mini-Bio -->
+<div class="row">
+
+<div class="col-xs-10 author-bio" ng-click="test(article.id)">
+	<a href="#">{{article.firstname}} {{article.lastname}}</a>
+	<br>
+	{{article.date_published | date : 'MMM dd'}} &#183; {{article.wordcount | number}} words 
+</div>
+</div>
+<!-- End Author Mini Bio -->
+<!--Article Info -->
+<a ui-sref="article({article_id: article.id})"><h1> {{article.title}} </h1></a>
+<div ng-bind-html="article.preview"></div>
+
+</div>
+</div>
+<!-- End Article Info -->
+<!-- End Article -->

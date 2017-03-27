@@ -23,6 +23,7 @@ if ($stateParams.article_id) {
 
 $scope.articleHeight
 
+
 }).directive('likeArticle', function() {
 	return {
 		restrict: 'AE',

@@ -24,9 +24,9 @@
 </div>
 </div>
 
-
-<make-tags-sticky class="tagholder">
-<div class="row white">
+<!-- 
+<make-tags-sticky class="tagholder"> -->
+<!-- <div class="row white tagholder" make-tags-sticky>
 	<div class="col-sm-1 col-md-1"></div>
 	<div class="col-xs-12 col-sm-11 col-md-10 tags-container">
 	<ul class="tags-ul">
@@ -39,8 +39,9 @@
 		<li><a ui-sref="tags({tag: 'food'})">Food</a></li>
 	</ul>
 	</div>
-</div></make-tags-sticky>
-
+</div> -->
+<!-- </make-tags-sticky>
+ -->
 
 <notifications>
 <div class="notifications-container" ng-hide="notificationsMenu">
@@ -71,7 +72,7 @@
 	</div>
 	<div class="menu-section">
 		<ul>
-			<li><a href="#">Bookmarks</li>
+			<li><a ui-sref="bookmarks({user_id : 3})">Bookmarks</a></li>
 			<li><a href="#">Reading history</li>
 			<li><a href="#">Publications</li>
 			<li><a href="#">Follow your interests</li>

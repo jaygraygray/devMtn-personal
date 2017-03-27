@@ -3,7 +3,6 @@ var db = app.get('db')
 module.exports = {
 
 	UpdateDraft : function(req, res) {
-		console.log(req.body.tags)
 		db.draft_update([req.body.author_id,
 						  req.body.article_id,
 						  req.body.date,

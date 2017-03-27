@@ -60,6 +60,7 @@ app.get('/api/getlastid', articlesCtrl.GetLastArticleID)
 app.get('/api/getarticle/:article_id', articlesCtrl.GetArticle)
 app.get('/api/headlinetags/:tag', articlesCtrl.GetHeadlinesByTags)
 app.get('/api/getauthorarticles/:author_id', articlesCtrl.GetAllPublishedByAuthorId)
+app.get('/api/getbookmarks/:user_id', articlesCtrl.GetBookmarks)
 
 /////////////////////////////////////////////////////////
 /////////// HOME
